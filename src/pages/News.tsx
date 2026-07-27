@@ -1,8 +1,16 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ExternalLink, Filter } from 'lucide-react'
-import { NEWS_SORTED, YEARS, CATEGORIES, CATEGORY_STYLES, type Category } from '../data/news'
+import {
+  NEWS_SORTED,
+  YEARS,
+  CATEGORIES,
+  CATEGORY_STYLES,
+  type Category,
+  type NewsItem,
+} from '../data/news'
 import WaveDivider from '../components/WaveDivider'
+import NewsModal from '../components/NewsModal'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const ALL = 'All'
@@ -24,6 +32,7 @@ export default function News() {
   )
   const [year, setYear] = useState<string>(ALL)
   const [category, setCategory] = useState<Category | typeof ALL>(ALL)
+  const [open, setOpen] = useState<NewsItem | null>(null)
 
   const items = useMemo(
     () =>
@@ -109,7 +118,8 @@ export default function News() {
                   return (
                     <article
                       key={`${n.date}-${n.title}`}
-                      className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden"
+                      onClick={() => setOpen(n)}
+                      className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cursor-pointer"
                     >
                       <div className={`h-2 bg-gradient-to-r ${style.tile}`} />
                       <div className="p-6 flex flex-col flex-1">
@@ -122,8 +132,26 @@ export default function News() {
                           </time>
                         </div>
 
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{n.title}</h3>
+                        {/*
+                          The heading carries the real control, so the card is
+                          reachable by keyboard and announced properly. The
+                          click handler on the article is a mouse affordance
+                          only — it duplicates this button, never replaces it.
+                        */}
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setOpen(n)
+                            }}
+                            className="text-left hover:text-blue-500 transition-colors"
+                          >
+                            {n.title}
+                          </button>
+                        </h3>
                         <p className="text-sm text-gray-600 flex-1">{n.summary}</p>
+
+                        <p className="mt-3 text-sm text-blue-500 font-medium">Read the full story</p>
 
                         <div className="mt-4 pt-4 border-t flex items-center justify-between gap-2">
                           <span className="text-xs text-gray-400">{n.region}</span>
@@ -131,6 +159,7 @@ export default function News() {
                             href={n.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="text-xs text-blue-500 hover:text-blue-600 inline-flex items-center gap-1"
                           >
                             {n.source}
@@ -165,6 +194,8 @@ export default function News() {
       </main>
 
       <WaveDivider />
+
+      {open && <NewsModal item={open} onClose={() => setOpen(null)} />}
     </>
   )
 }
