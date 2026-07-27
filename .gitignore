@@ -1,0 +1,18 @@
+node_modules
+dist
+dist-ssr
+.vercel
+*.local
+.DS_Store
+.env
+.env.*
+
+# Confidential source material must never enter this repo.
+# The ACRA business profile contains shareholder personal data
+# (residential addresses, NRIC / passport numbers).
+*.pdf
+*.docx
+
+# Build artefacts
+tsconfig.tsbuildinfo
+.claude/

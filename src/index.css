@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* The nav is fixed at h-16; offset anchor targets so headings are not hidden. */
+[id] {
+  scroll-margin-top: 4rem;
+}
