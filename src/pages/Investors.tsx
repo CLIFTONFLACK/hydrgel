@@ -49,8 +49,10 @@ const DRIVERS = [
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <>
-      <p className="text-sm font-semibold uppercase tracking-wider text-green-500">{eyebrow}</p>
-      <h2 className="text-3xl md:text-4xl font-bold text-blue-500 mt-2 mb-8">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wider text-green-700">{eyebrow}</p>
+      <h2 className="text-3xl md:text-4xl font-bold text-blue-500 mt-2 mb-8 tracking-tight">
+        {title}
+      </h2>
     </>
   )
 }
@@ -65,11 +67,11 @@ export default function Investors() {
     <>
       <main className="pt-16">
         {/* ---------------------------------------------------------- hero */}
-        <section className="relative bg-white py-16">
+        <section className="relative bg-white py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center md:text-left">
               <div className="order-2 md:order-1">
-                <p className="text-sm font-semibold uppercase tracking-wider text-green-500">
+                <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
                   Investor information
                 </p>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mt-3">
@@ -85,13 +87,13 @@ export default function Investors() {
                 <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                   <a
                     href="#request-deck"
-                    className="bg-blue-500 text-white px-8 py-3 rounded-md hover:bg-blue-600 font-medium"
+                    className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 font-medium"
                   >
                     Request the investor deck
                   </a>
                   <Link
                     to="/news"
-                    className="border border-blue-500 text-blue-500 px-8 py-3 rounded-md hover:bg-blue-50 font-medium"
+                    className="border border-blue-600 text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 font-medium"
                   >
                     Why now
                   </Link>
@@ -109,10 +111,10 @@ export default function Investors() {
         </section>
 
         {/* ------------------------------------------------------ the need */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="The opportunity" title="A market defined by failure of supply" />
-            <p className="text-gray-600 max-w-3xl mb-12">
+            <p className="text-lg text-gray-600 max-w-2xl mb-12 leading-relaxed">
               Water insecurity is among the world's fastest-accelerating humanitarian and economic
               threats. Over two billion people lack reliable access to safe drinking water, and
               disasters, pollution and climate stress continue to multiply. Existing solutions
@@ -122,7 +124,7 @@ export default function Investors() {
               {DRIVERS.map(({ Icon, bg, color, title, body }) => (
                 <div key={title} className={`${bg} p-6 rounded-2xl`}>
                   <Icon className={`h-6 w-6 ${color} mb-4`} />
-                  <h3 className="text-xl font-semibold text-green-500 mb-2">{title}</h3>
+                  <h3 className="text-xl font-semibold text-green-700 mb-2">{title}</h3>
                   <p className="text-gray-600 text-sm">{body}</p>
                 </div>
               ))}
@@ -131,7 +133,7 @@ export default function Investors() {
         </section>
 
         {/* ---------------------------------------------------- technology */}
-        <section className="bg-white py-16">
+        <section className="bg-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="The technology" title="A cryogel platform, not a filter" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -162,13 +164,13 @@ export default function Investors() {
         </section>
 
         {/* ------------------------------------------------------- proof */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Proof" title="Validated against WHO and UNHCR standards" />
             <div className="overflow-x-auto">
               <table className="w-full min-w-[32rem] bg-white rounded-2xl overflow-hidden shadow-sm">
                 <thead>
-                  <tr className="bg-blue-500 text-white text-left">
+                  <tr className="bg-blue-600 text-white text-left">
                     <th className="px-6 py-4 font-semibold">Test</th>
                     <th className="px-6 py-4 font-semibold">Before</th>
                     <th className="px-6 py-4 font-semibold">After</th>
@@ -179,7 +181,7 @@ export default function Investors() {
                     <tr key={row.test} className={i % 2 ? 'bg-gray-50' : ''}>
                       <td className="px-6 py-4 font-medium text-gray-900">{row.test}</td>
                       <td className="px-6 py-4 text-gray-600">{row.before}</td>
-                      <td className="px-6 py-4 text-green-600 font-semibold">{row.after}</td>
+                      <td className="px-6 py-4 text-green-700 font-semibold">{row.after}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -192,13 +194,13 @@ export default function Investors() {
         </section>
 
         {/* ---------------------------------------------------------- IP */}
-        <section className="bg-white py-16">
+        <section className="bg-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Intellectual property" title="Patented and exclusively licensed" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="border rounded-2xl p-8">
                 <FileText className="h-6 w-6 text-blue-500 mb-4" />
-                <h3 className="text-xl font-semibold text-green-500 mb-2">US 10,939,677 B2</h3>
+                <h3 className="text-xl font-semibold text-green-700 mb-2">US 10,939,677 B2</h3>
                 <p className="text-gray-600 text-sm mb-4">Approved March 2021.</p>
                 <ul className="space-y-2 text-sm text-gray-700">
                   {['Cryogel materials', 'Preparation method', 'Application for disinfection'].map(
@@ -213,7 +215,7 @@ export default function Investors() {
               </div>
               <div className="border rounded-2xl p-8">
                 <Beaker className="h-6 w-6 text-blue-500 mb-4" />
-                <h3 className="text-xl font-semibold text-green-500 mb-2">
+                <h3 className="text-xl font-semibold text-green-700 mb-2">
                   Exclusive worldwide licence
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">Signed with NTUitive, November 2024.</p>
@@ -227,7 +229,7 @@ export default function Investors() {
         </section>
 
         {/* -------------------------------------------------- positioning */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Positioning" title="Lowest cost per litre, highest adaptability" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -253,7 +255,7 @@ export default function Investors() {
         </section>
 
         {/* ------------------------------------------------------ partners */}
-        <section className="bg-white py-16">
+        <section className="bg-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Pilot programme" title="Four sectors, four proving grounds" />
             <p className="text-gray-600 max-w-3xl mb-12">
@@ -266,7 +268,7 @@ export default function Investors() {
               {PARTNERS.map((p) => (
                 <div key={p.sector} className="border rounded-2xl p-6">
                   <div className="flex items-center justify-between gap-3 mb-3">
-                    <h3 className="text-lg font-semibold text-green-500">{p.sector}</h3>
+                    <h3 className="text-lg font-semibold text-green-700">{p.sector}</h3>
                     <span className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700 whitespace-nowrap">
                       {p.geography}
                     </span>
@@ -279,7 +281,7 @@ export default function Investors() {
         </section>
 
         {/* ----------------------------------------------------- milestones */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Traction" title="Where we are" />
             <ol className="relative border-l-2 border-blue-200 ml-3 space-y-8">
@@ -292,10 +294,10 @@ export default function Investors() {
                       <Circle className="h-6 w-6 text-gray-300" />
                     )}
                   </span>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-400">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
                     {m.date}
                   </p>
-                  <h3 className="text-xl font-semibold text-green-500 mt-1">{m.title}</h3>
+                  <h3 className="text-xl font-semibold text-green-700 mt-1">{m.title}</h3>
                   <p className="text-gray-600 mt-1">{m.body}</p>
                 </li>
               ))}
@@ -304,18 +306,20 @@ export default function Investors() {
         </section>
 
         {/* ---------------------------------------------------------- team */}
-        <section className="bg-white py-16">
+        <section className="bg-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Team" title="Founders and inventors" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {FOUNDERS.map((m) => (
                 <div key={m.name} className="border rounded-2xl p-8">
                   <h3 className="text-xl font-bold text-blue-500">{m.name}</h3>
-                  <p className="text-sm text-green-500 font-semibold mb-4">{m.role}</p>
+                  <p className="text-sm text-green-700 font-semibold mb-4">{m.role}</p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     {m.bullets.map((b) => (
                       <li key={b} className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-0.5">&bull;</span>
+                        <span className="text-blue-600 mr-2 mt-0.5" aria-hidden="true">
+                          &bull;
+                        </span>
                         <span>{b}</span>
                       </li>
                     ))}
@@ -332,11 +336,13 @@ export default function Investors() {
               {INVENTORS.map((m) => (
                 <div key={m.name} className="bg-gray-50 rounded-2xl p-8">
                   <h3 className="text-xl font-bold text-blue-500">{m.name}</h3>
-                  <p className="text-sm text-green-500 font-semibold mb-4">{m.role}</p>
+                  <p className="text-sm text-green-700 font-semibold mb-4">{m.role}</p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     {m.bullets.map((b) => (
                       <li key={b} className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-0.5">&bull;</span>
+                        <span className="text-blue-600 mr-2 mt-0.5" aria-hidden="true">
+                          &bull;
+                        </span>
                         <span>{b}</span>
                       </li>
                     ))}
@@ -348,13 +354,13 @@ export default function Investors() {
         </section>
 
         {/* ----------------------------------------------------- corporate */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading eyebrow="Corporate" title="Company facts" />
             <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {CORPORATE.map((f) => (
                 <div key={f.label} className="bg-white rounded-2xl p-6 shadow-sm">
-                  <dt className="text-xs uppercase tracking-wider text-gray-400">{f.label}</dt>
+                  <dt className="text-xs uppercase tracking-wider text-gray-500">{f.label}</dt>
                   <dd className="mt-2 text-gray-900 font-semibold">{f.value}</dd>
                 </div>
               ))}
@@ -363,7 +369,7 @@ export default function Investors() {
         </section>
 
         {/* -------------------------------------------------- request deck */}
-        <section id="request-deck" className="bg-blue-500 text-white py-16">
+        <section id="request-deck" className="bg-blue-600 text-white py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Request the investor deck</h2>
             <p className="text-blue-50 mb-8">
@@ -372,12 +378,12 @@ export default function Investors() {
             </p>
             <a
               href="mailto:clifton@hydrgel.com?subject=HYDRGEL%20investor%20deck%20request&body=Name%3A%0AOrganisation%3A%0ARole%3A%0A%0AI%27d%20like%20to%20review%20the%20HYDRGEL%20investor%20materials."
-              className="inline-flex items-center gap-2 bg-white text-blue-500 px-8 py-3 rounded-md hover:bg-gray-100 font-semibold"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-gray-100 font-semibold"
             >
               <Mail className="h-5 w-5" />
               Email the CEO
             </a>
-            <p className="mt-8 text-sm text-blue-100">
+            <p className="mt-8 text-sm text-blue-50">
               Clifton Flack, CEO —{' '}
               <a href="mailto:clifton@hydrgel.com" className="underline">
                 clifton@hydrgel.com
@@ -394,7 +400,7 @@ export default function Investors() {
         {/* -------------------------------------------------- disclaimer */}
         <section className="bg-white py-12">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-xs text-gray-400 leading-relaxed text-center">
+            <p className="text-xs text-gray-500 leading-relaxed text-center">
               This page is provided for information only. It does not constitute an offer to sell or
               a solicitation of an offer to buy any security, nor investment advice or a
               recommendation, in any jurisdiction. Forward-looking statements about pilots, partners

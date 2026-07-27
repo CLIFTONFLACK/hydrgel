@@ -4,7 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
+        // Default for body, UI and long-form reading.
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        // Brand voice: headings, the wordmark, primary buttons.
+        display: ['Montserrat', 'sans-serif'],
+      },
+      maxWidth: {
+        // ~68 characters at our body size — inside the 65–75 readable range.
+        measure: '34rem',
       },
     },
   },

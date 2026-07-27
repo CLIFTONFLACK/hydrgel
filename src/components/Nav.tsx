@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 /** Home-page sections reachable by scroll; everything else is a real route. */
@@ -57,15 +57,25 @@ export default function Nav() {
               </button>
             ))}
             {ROUTES.map((r) => (
-              <Link key={r.to} to={r.to} className="text-gray-600 hover:text-gray-900">
+              <NavLink
+                key={r.to}
+                to={r.to}
+                className={({ isActive }) =>
+                  `transition-colors ${
+                    isActive
+                      ? 'text-blue-600 font-semibold'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`
+                }
+              >
                 {r.label}
-              </Link>
+              </NavLink>
             ))}
             <Link
               to="/investors"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="font-display font-medium bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
             >
-              Learn More
+              Investor brief
             </Link>
           </div>
 
@@ -93,15 +103,26 @@ export default function Nav() {
               </button>
             ))}
             {ROUTES.map((r) => (
-              <Link
+              <NavLink
                 key={r.to}
                 to={r.to}
                 onClick={() => setOpen(false)}
-                className="block py-2 text-gray-600 hover:text-gray-900"
+                className={({ isActive }) =>
+                  `block py-2 ${
+                    isActive ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-gray-900'
+                  }`
+                }
               >
                 {r.label}
-              </Link>
+              </NavLink>
             ))}
+            <Link
+              to="/investors"
+              onClick={() => setOpen(false)}
+              className="mt-2 block text-center font-display font-medium bg-blue-600 text-white px-4 py-2.5 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Investor brief
+            </Link>
           </div>
         </div>
       )}

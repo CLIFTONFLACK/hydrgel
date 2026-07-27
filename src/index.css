@@ -2,11 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /*
+    Headings wear the brand face; everything else inherits Inter from the
+    Tailwind `sans` default. Setting this once here avoids sprinkling
+    `font-display` across every heading in the app.
+  */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.display');
+  }
+
+  body {
+    color: theme('colors.gray.700');
+  }
+
+  /* The nav is fixed at h-16; keep anchor targets clear of it. */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /*
+    A single visible focus treatment for keyboard users across the site.
+    The original build had none, so tabbing through was invisible.
+  */
+  :focus-visible {
+    outline: 2px solid theme('colors.blue.500');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
-/* The nav is fixed at h-16; offset anchor targets so headings are not hidden. */
-[id] {
-  scroll-margin-top: 4rem;
+@layer utilities {
+  /* Long-form reading: comfortable leading plus spacing between paragraphs. */
+  .prose-story p {
+    line-height: 1.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -50,7 +50,7 @@ export default function News() {
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl md:text-5xl font-bold text-blue-500">water security newsroom</h1>
-            <h2 className="text-xl md:text-2xl text-green-500 mt-4">
+            <h2 className="text-xl md:text-2xl text-green-700 mt-4">
               the conversation HYDRGEL is built for
             </h2>
             <p className="mt-6 text-gray-600 max-w-3xl">
@@ -61,24 +61,30 @@ export default function News() {
           </div>
         </section>
 
-        <section className="bg-gray-50 py-8 sticky top-16 z-40 border-y">
+        {/*
+          Sticky, so it must stay shallow — this was three stacked rows plus
+          generous padding, which ate most of a phone viewport. Count now sits
+          inline with the year chips, and the chips are 44px-tall touch targets.
+        */}
+        <section className="bg-gray-50/95 backdrop-blur py-3 sticky top-16 z-40 border-y">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-2 mb-4 text-gray-500 text-sm">
-              <Filter className="h-4 w-4" />
-              <span>
-                Showing <strong className="text-gray-900">{items.length}</strong> of{' '}
-                {NEWS_SORTED.length} items
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 text-gray-500 text-sm mr-1">
+                <Filter className="h-4 w-4" />
+                <span className="tabular-nums">
+                  <strong className="text-gray-900">{items.length}</strong>
+                  <span className="hidden sm:inline"> of {NEWS_SORTED.length}</span>
+                </span>
               </span>
-            </div>
 
-            <div className="flex flex-wrap gap-2 mb-3">
               {[ALL, ...YEARS].map((y) => (
                 <button
                   key={y}
                   onClick={() => setYear(y)}
-                  className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  aria-pressed={year === y}
+                  className={`min-h-[2.25rem] px-3 rounded-full text-sm transition-colors ${
                     year === y
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-blue-600 text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-100 border'
                   }`}
                 >
@@ -87,14 +93,15 @@ export default function News() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-2">
               {[ALL, ...CATEGORIES].map((c) => (
                 <button
                   key={c}
                   onClick={() => setCategory(c as Category | typeof ALL)}
-                  className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  aria-pressed={category === c}
+                  className={`min-h-[2.25rem] px-3 rounded-full text-sm transition-colors ${
                     category === c
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-green-700 text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-100 border'
                   }`}
                 >
@@ -127,7 +134,7 @@ export default function News() {
                           <span className={`text-xs px-2 py-1 rounded-full ${style.chip}`}>
                             {n.category}
                           </span>
-                          <time dateTime={n.date} className="text-xs text-gray-400">
+                          <time dateTime={n.date} className="text-xs text-gray-500">
                             {formatDate(n.date)}
                           </time>
                         </div>
@@ -151,16 +158,16 @@ export default function News() {
                         </h3>
                         <p className="text-sm text-gray-600 flex-1">{n.summary}</p>
 
-                        <p className="mt-3 text-sm text-blue-500 font-medium">Read the full story</p>
+                        <p className="mt-3 text-sm text-blue-600 font-medium">Read the full story</p>
 
                         <div className="mt-4 pt-4 border-t flex items-center justify-between gap-2">
-                          <span className="text-xs text-gray-400">{n.region}</span>
+                          <span className="text-xs text-gray-500">{n.region}</span>
                           <a
                             href={n.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="text-xs text-blue-500 hover:text-blue-600 inline-flex items-center gap-1"
+                            className="text-xs text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
                           >
                             {n.source}
                             <ExternalLink className="h-3 w-3" />
@@ -175,7 +182,7 @@ export default function News() {
           </div>
         </section>
 
-        <section className="bg-blue-500 text-white py-16">
+        <section className="bg-blue-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Every one of these stories is a supply failure at the point of need.
@@ -185,7 +192,7 @@ export default function News() {
             </p>
             <Link
               to="/investors"
-              className="inline-block mt-8 bg-white text-blue-500 px-8 py-3 rounded-md hover:bg-gray-100 font-semibold"
+              className="inline-block mt-8 bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-gray-100 font-semibold"
             >
               See the opportunity
             </Link>

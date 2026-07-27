@@ -75,7 +75,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`text-gray-400 ${hover} transition-colors`}
+                  className={`text-gray-500 ${hover} transition-colors`}
                 >
                   <Icon className="h-6 w-6" />
                 </a>
@@ -104,16 +104,20 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="text-center space-y-2">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-500">
               Copyright {new Date().getFullYear()} HYDRGEL PTE. LTD. All rights reserved
             </p>
-            <p className="text-sm text-gray-400">
-              Built with <span className="text-red-500">&hearts;</span> by{' '}
+            <p className="text-sm text-gray-500">
+              Built with{' '}
+              <span className="text-red-600" aria-hidden="true">
+                &hearts;
+              </span>
+              <span className="sr-only">love</span> by{' '}
               <a
                 href="https://neonpixeldesigns.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-600 transition-colors"
+                className="text-blue-600 hover:text-blue-700 transition-colors"
               >
                 Neon Pixel Designs
               </a>

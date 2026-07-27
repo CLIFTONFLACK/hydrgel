@@ -1,7 +1,6 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import { X, ExternalLink, Calendar, MapPin } from 'lucide-react'
 import { CATEGORY_STYLES, type NewsItem } from '../data/news'
-import { STORIES } from '../data/stories'
 
 interface Props {
   item: NewsItem
@@ -27,7 +26,31 @@ export default function NewsModal({ item, onClose }: Props) {
   const restoreRef = useRef<HTMLElement | null>(null)
 
   const style = CATEGORY_STYLES[item.category]
-  const paragraphs = STORIES[item.id] ?? [item.summary]
+
+  /*
+    Story bodies are a large, growing blob of text — every word of every
+    story, for an index a scheduled agent appends to indefinitely. Loading
+    that eagerly made the whole newsroom pay for content it may never show,
+    so it lives in its own chunk fetched the first time a modal opens.
+    Vite caches the module, so subsequent opens are instant.
+  */
+  const [paragraphs, setParagraphs] = useState<string[] | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    setParagraphs(null)
+    import('../data/stories')
+      .then((m) => {
+        if (!cancelled) setParagraphs(m.STORIES[item.id] ?? [item.summary])
+      })
+      .catch(() => {
+        // Network failure on the chunk: fall back to the excerpt we already have.
+        if (!cancelled) setParagraphs([item.summary])
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [item.id, item.summary])
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -100,7 +123,7 @@ export default function NewsModal({ item, onClose }: Props) {
             ref={closeRef}
             onClick={onClose}
             aria-label="Close story"
-            className="p-1 -m-1 text-gray-400 hover:text-gray-900 transition-colors rounded"
+            className="p-1 -m-1 text-gray-500 hover:text-gray-900 transition-colors rounded"
           >
             <X className="h-5 w-5" />
           </button>
@@ -111,7 +134,7 @@ export default function NewsModal({ item, onClose }: Props) {
             {item.title}
           </h2>
 
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
             <span className="inline-flex items-center gap-1">
               <Calendar className="h-3.5 w-3.5" />
               <time dateTime={item.date}>{formatDate(item.date)}</time>
@@ -122,23 +145,37 @@ export default function NewsModal({ item, onClose }: Props) {
             </span>
           </div>
 
-          <div className="mt-6 space-y-4">
-            {paragraphs.map((p, i) => (
-              <p key={i} className="text-gray-700 leading-relaxed">
-                {p}
-              </p>
-            ))}
-          </div>
+          {paragraphs === null ? (
+            /* Skeleton sized like real copy, so the panel does not jump. */
+            <div className="mt-6 space-y-4" aria-live="polite" aria-busy="true">
+              <span className="sr-only">Loading the full story</span>
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="space-y-2">
+                  <div className="h-3.5 bg-gray-100 rounded w-full" />
+                  <div className="h-3.5 bg-gray-100 rounded w-full" />
+                  <div className="h-3.5 bg-gray-100 rounded w-4/5" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-6 space-y-5 prose-story">
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-[1.0625rem] text-gray-700">
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
 
           <div className="mt-8 pt-5 border-t">
-            <p className="text-xs text-gray-400 mb-2">
+            <p className="text-xs text-gray-500 mb-2">
               Written by HYDRGEL from reporting by the primary source below.
             </p>
             <a
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-blue-500 hover:text-blue-600 inline-flex items-center gap-1.5 font-medium"
+              className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1.5 font-medium"
             >
               Read the original at {item.source}
               <ExternalLink className="h-3.5 w-3.5" />

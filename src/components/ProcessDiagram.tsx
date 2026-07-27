@@ -11,7 +11,7 @@ export default function ProcessDiagram() {
       <ol className="space-y-6">
         {STEPS.map((s, i) => (
           <li key={s.n} className="relative flex items-start">
-            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
               {s.n}
             </div>
             {i < STEPS.length - 1 && (
@@ -21,7 +21,7 @@ export default function ProcessDiagram() {
               />
             )}
             <div className="ml-4">
-              <h4 className="font-semibold text-green-500">{s.title}</h4>
+              <h4 className="font-semibold text-green-700">{s.title}</h4>
               <p className="text-sm text-gray-600 mt-1">{s.body}</p>
             </div>
           </li>
