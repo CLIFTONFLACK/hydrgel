@@ -27,7 +27,7 @@ export default function NewsModal({ item, onClose }: Props) {
   const restoreRef = useRef<HTMLElement | null>(null)
 
   const style = CATEGORY_STYLES[item.category]
-  const paragraphs = STORIES[item.date] ?? [item.summary]
+  const paragraphs = STORIES[item.id] ?? [item.summary]
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {

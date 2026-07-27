@@ -23,6 +23,12 @@ export type Category =
   | 'HYDRGEL'
 
 export interface NewsItem {
+  /**
+   * Stable unique key, `YYYY-MM-DD-short-slug`. Used to look up the long-form
+   * story in `stories.ts` and as the React list key. Dates alone are not safe
+   * for this — two significant water events can fall on the same day.
+   */
+  id: string
   /** ISO 8601, YYYY-MM-DD. */
   date: string
   title: string
@@ -59,6 +65,7 @@ export const CATEGORY_STYLES: Record<Category, { chip: string; tile: string }> =
 export const NEWS: NewsItem[] = [
   // ---------------------------------------------------------------- 2024 ---
   {
+    id: '2024-09-05-el-ni-o-drought-pushes',
     date: '2024-09-05',
     title: 'El Niño drought pushes six Southern African states into emergency',
     summary:
@@ -69,6 +76,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unocha.org/publications/report/mozambique/southern-africa-el-nino-regional-humanitarian-overview-september-2024',
   },
   {
+    id: '2024-10-01-hurricane-helene-leaves-asheville-without',
     date: '2024-10-01',
     title: 'Hurricane Helene leaves Asheville without drinkable water for weeks',
     summary:
@@ -79,6 +87,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.bpr.org/2024-10-01/water-supplies-are-dwindling-in-asheville-after-helenes-devastation',
   },
   {
+    id: '2024-10-08-us-epa-finalises-rule-requiring',
     date: '2024-10-08',
     title: 'US EPA finalises rule requiring lead pipe replacement within ten years',
     summary:
@@ -89,6 +98,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.epa.gov/newsreleases/biden-harris-administration-issues-final-rule-requiring-replacement-lead-pipes-within',
   },
   {
+    id: '2024-10-19-global-oral-cholera-vaccine-stockpile',
     date: '2024-10-19',
     title: 'Global oral cholera vaccine stockpile runs empty',
     summary:
@@ -99,6 +109,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://healthpolicy-watch.news/global-stockpile-is-empty-but-cholera-vaccines-are-being-shipped/',
   },
   {
+    id: '2024-10-29-valencia-flash-floods-kill-237',
     date: '2024-10-29',
     title: 'Valencia flash floods kill 237 after a year of rain falls in eight hours',
     summary:
@@ -109,6 +120,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://earthobservatory.nasa.gov/images/153533/valencia-floods',
   },
   {
+    id: '2024-11-21-cop29-launches-baku-declaration-water',
     date: '2024-11-21',
     title: 'COP29 launches the Baku Declaration on Water for Climate Action',
     summary:
@@ -119,6 +131,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://cop29.az/en/pages/cop29-declaration-on-water-for-climate-action',
   },
   {
+    id: '2024-11-30-hydrgel-signs-exclusive-worldwide-licence',
     date: '2024-11-30',
     title: 'HYDRGEL signs exclusive worldwide licence with NTUitive',
     summary:
@@ -129,6 +142,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.ntuitive.sg/',
   },
   {
+    id: '2024-12-10-cholera-deaths-climb-half-outbreaks',
     date: '2024-12-10',
     title: 'Cholera deaths climb by half as outbreaks outpace response',
     summary:
@@ -141,6 +155,7 @@ export const NEWS: NewsItem[] = [
 
   // ---------------------------------------------------------------- 2025 ---
   {
+    id: '2025-01-10-los-angeles-wildfires-trigger-first-ever',
     date: '2025-01-10',
     title: 'Los Angeles wildfires trigger first-ever "do not drink" notices',
     summary:
@@ -151,6 +166,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.npr.org/sections/shots-health-news/2025/01/11/nx-s1-5254227/la-fires-palisades-water-advisories',
   },
   {
+    id: '2025-02-11-water-technology-funding-hits-record',
     date: '2025-02-11',
     title: 'Water technology funding hits a record — and stays a rounding error',
     summary:
@@ -161,6 +177,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://netzeroinsights.com/resources/water-tech-startups-to-watch/',
   },
   {
+    id: '2025-03-10-unicef-nine-ten-people-gaza',
     date: '2025-03-10',
     title: 'UNICEF: nine in ten people in Gaza cannot access safe drinking water',
     summary:
@@ -171,6 +188,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://news.un.org/en/story/2025/03/1160961',
   },
   {
+    id: '2025-03-20-g-nter-bl-schl-awarded',
     date: '2025-03-20',
     title: 'Günter Blöschl awarded the 2025 Stockholm Water Prize',
     summary:
@@ -181,6 +199,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://siwi.org/news/hydrologist-gunter-bloschl-receives-stockholm-water-prize-2025',
   },
   {
+    id: '2025-03-21-un-world-water-development-report',
     date: '2025-03-21',
     title: 'UN World Water Development Report 2025 focuses on mountains and glaciers',
     summary:
@@ -191,6 +210,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unwater.org/publications/un-world-water-development-report-2025',
   },
   {
+    id: '2025-03-22-world-water-day-2025-marks',
     date: '2025-03-22',
     title: 'World Water Day 2025 marks glacier preservation',
     summary:
@@ -201,6 +221,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unwater.org/our-work/world-water-day',
   },
   {
+    id: '2025-03-28-myanmar-earthquake-cuts-water-sanitation',
     date: '2025-03-28',
     title: 'Myanmar earthquake cuts water and sanitation for millions',
     summary:
@@ -211,6 +232,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unocha.org/myanmar',
   },
   {
+    id: '2025-04-10-who-prequalifies-simplified-oral-cholera',
     date: '2025-04-10',
     title: 'WHO prequalifies a simplified oral cholera vaccine',
     summary:
@@ -221,6 +243,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
   },
   {
+    id: '2025-05-09-california-clears-all-wildfire-hit-water',
     date: '2025-05-09',
     title: 'California clears all wildfire-hit water systems to resume safe supply',
     summary:
@@ -231,6 +254,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.waterboards.ca.gov/losangeles/water_issues/programs/2025_post_fire/index.html',
   },
   {
+    id: '2025-05-14-us-epa-moves-extend-pfas',
     date: '2025-05-14',
     title: 'US EPA moves to extend PFAS compliance deadline to 2031',
     summary:
@@ -241,6 +265,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.epa.gov/sdwa/proposed-pfoa-and-pfos-compliance-extension-rule',
   },
   {
+    id: '2025-05-20-hydrogel-device-pulls-drinking-water',
     date: '2025-05-20',
     title: 'Hydrogel device pulls drinking water from air at 11 percent humidity',
     summary:
@@ -251,6 +276,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://techxplore.com/news/2025-05-atmospheric-harvesting-optimization-hygroscopic-hydrogel.html',
   },
   {
+    id: '2025-06-22-cholera-response-constrained-persistent-vaccine',
     date: '2025-06-22',
     title: 'Cholera response constrained by a persistent vaccine shortfall',
     summary:
@@ -261,6 +287,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
   },
   {
+    id: '2025-06-30-veolia-takes-full-ownership-water',
     date: '2025-06-30',
     title: 'Veolia takes full ownership of Water Technologies and Solutions',
     summary:
@@ -271,6 +298,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.veolia.com/en/our-media/press-releases/veolia-acquires-cdpqs-30-stake-water-technologies-and-solutions-achieving',
   },
   {
+    id: '2025-07-03-sudan-cholera-emergency-spreads-water',
     date: '2025-07-03',
     title: 'Sudan cholera emergency spreads as water treatment collapses',
     summary:
@@ -281,6 +309,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unocha.org/publications/report/sudan/sudan-cholera-operational-update-3-july-2025',
   },
   {
+    id: '2025-07-04-texas-hill-country-flash-floods',
     date: '2025-07-04',
     title: 'Texas Hill Country flash floods kill 139',
     summary:
@@ -291,6 +320,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://tdem.texas.gov/disasters/july-flooding-25-0026',
   },
   {
+    id: '2025-08-26-who-unicef-one-four-people',
     date: '2025-08-26',
     title: 'WHO and UNICEF: one in four people still lack safely managed drinking water',
     summary:
@@ -301,6 +331,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef',
   },
   {
+    id: '2025-08-27-world-water-week-convenes-stockholm',
     date: '2025-08-27',
     title: 'World Water Week convenes in Stockholm on water and change',
     summary:
@@ -311,6 +342,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://siwi.org/about-world-water-week',
   },
   {
+    id: '2025-09-13-cholera-fatalities-rise-sharply-against',
     date: '2025-09-13',
     title: 'Cholera fatalities rise sharply against a depleted vaccine supply',
     summary:
@@ -321,6 +353,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
   },
   {
+    id: '2025-09-24-solar-desalination-prototype-produces-fresh',
     date: '2025-09-24',
     title: 'Solar desalination prototype produces fresh water without grid power',
     summary:
@@ -331,6 +364,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://techxplore.com/news/2025-09-solar-desalination-technology-sunlight-fresh.html',
   },
   {
+    id: '2025-10-10-iranian-reservoirs-fall-record-lows',
     date: '2025-10-10',
     title: 'Iranian reservoirs fall to record lows after six years of drought',
     summary:
@@ -341,6 +375,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.csis.org/analysis/satellite-imagery-shows-tehrans-accelerating-water-crisis',
   },
   {
+    id: '2025-10-13-sudan-passes-120-000-cholera',
     date: '2025-10-13',
     title: 'Sudan passes 120,000 cholera cases with fatality rate near three percent',
     summary:
@@ -351,6 +386,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
   },
   {
+    id: '2025-11-22-iran-water-shortages-spread-across',
     date: '2025-11-22',
     title: 'Iran water shortages spread across major cities',
     summary:
@@ -361,6 +397,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.iranintl.com/en/202511227008',
   },
   {
+    id: '2025-12-01-tehran-confronts-day-zero-officials',
     date: '2025-12-01',
     title: 'Tehran confronts "Day Zero" as officials float evacuation',
     summary:
@@ -371,6 +408,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.cnn.com/2025/12/01/climate/iran-water-crisis-evacuate-tehran',
   },
   {
+    id: '2025-12-08-un-warns-new-era-water',
     date: '2025-12-08',
     title: 'UN warns of a new era of water scarcity as demand accelerates',
     summary:
@@ -381,6 +419,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://news.un.org/en/story/2025/12/1166582',
   },
   {
+    id: '2025-12-26-singapores-pub-opens-feasibility-study',
     date: '2025-12-26',
     title: 'Singapore\'s PUB opens feasibility study for a new desalination plant',
     summary:
@@ -393,6 +432,7 @@ export const NEWS: NewsItem[] = [
 
   // ---------------------------------------------------------------- 2026 ---
   {
+    id: '2026-01-26-dakar-hosts-high-level-preparations-2026',
     date: '2026-01-26',
     title: 'Dakar hosts high-level preparations for the 2026 UN Water Conference',
     summary:
@@ -403,6 +443,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.waterdiplomat.org/story/2025/12/high-level-preparatory-meeting-2026-un-water-conference',
   },
   {
+    id: '2026-02-19-attribution-study-revisits-valencia-flood',
     date: '2026-02-19',
     title: 'Attribution study revisits the Valencia flood in a fossil-fuel-free counterfactual',
     summary:
@@ -413,6 +454,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.euronews.com/2026/02/19/valencias-deadly-flood-still-haunts-spain-would-it-have-happened-in-a-fossil-fuel-free-wor',
   },
   {
+    id: '2026-03-05-xylem-completes-divestment-international-metering',
     date: '2026-03-05',
     title: 'Xylem completes divestment of its international metering business',
     summary:
@@ -423,6 +465,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://smartwatermagazine.com/news/smart-water-magazine/aurelius-acquire-xylems-international-water-and-heat-metering-business',
   },
   {
+    id: '2026-03-19-un-world-water-development-report',
     date: '2026-03-19',
     title: 'UN World Water Development Report 2026: Water for All People',
     summary:
@@ -433,6 +476,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unesco.org/en/articles/united-nations-world-water-development-report-2026',
   },
   {
+    id: '2026-03-22-world-water-day-2026-takes',
     date: '2026-03-22',
     title: 'World Water Day 2026 takes on water and gender',
     summary:
@@ -443,6 +487,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.unwater.org/our-work/world-water-day',
   },
   {
+    id: '2026-03-24-kaveh-madani-named-2026-stockholm',
     date: '2026-03-24',
     title: 'Kaveh Madani named 2026 Stockholm Water Prize laureate',
     summary:
@@ -453,6 +498,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://siwi.org/prizes/',
   },
   {
+    id: '2026-04-14-managed-aquifer-recharge-mapped-global',
     date: '2026-04-14',
     title: 'Managed aquifer recharge mapped as a global scarcity buffer',
     summary:
@@ -463,6 +509,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.nature.com/articles/s44221-026-00672-3',
   },
   {
+    id: '2026-05-15-machine-learning-maps-put-180',
     date: '2026-05-15',
     title: 'Machine learning maps put 180–220 million at risk from manganese in groundwater',
     summary:
@@ -473,6 +520,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.nature.com/natwater/articles?year=2026',
   },
   {
+    id: '2026-05-29-coastal-groundwater-decline-threatens-supply',
     date: '2026-05-29',
     title: 'Coastal groundwater decline threatens supply for half the world\'s drinking water',
     summary:
@@ -483,6 +531,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.eurekalert.org/news-releases/1124102',
   },
   {
+    id: '2026-05-30-solar-desalination-device-produces-fresh',
     date: '2026-05-30',
     title: 'Solar desalination device produces fresh water without brine waste',
     summary:
@@ -493,6 +542,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.sciencedaily.com/releases/2026/05/260530053418.htm',
   },
   {
+    id: '2026-06-01-thin-snowpack-shrinking-glaciers-raise',
     date: '2026-06-01',
     title: 'Thin snowpack and shrinking glaciers raise Alpine drought alarm',
     summary:
@@ -503,6 +553,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.the-ski-guru.com/2026/06/01/alps-drought-2026-water-reserves/',
   },
   {
+    id: '2026-06-04-dushanbe-conference-presses-transboundary-water',
     date: '2026-06-04',
     title: 'Dushanbe conference presses transboundary water cooperation',
     summary:
@@ -513,6 +564,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.mofa.gov.ae/en/MediaHub/News/2026/6/4/UAE-Global-Water-Dialogue',
   },
   {
+    id: '2026-06-23-un-launches-disclosure-initiative-ai',
     date: '2026-06-23',
     title: 'UN launches disclosure initiative on AI data centre water use',
     summary:
@@ -523,6 +575,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://axis-intelligence.com/ai-data-center-water-usage-statistics/',
   },
   {
+    id: '2026-06-26-uae-steps-up-water-diplomacy',
     date: '2026-06-26',
     title: 'UAE steps up water diplomacy ahead of the Abu Dhabi conference',
     summary:
@@ -533,6 +586,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.mofa.gov.ae/en/missions/beirut/media-hub/embassy-news/26-6-2026-1',
   },
   {
+    id: '2026-07-16-texas-hill-country-floods-again',
     date: '2026-07-16',
     title: 'Texas Hill Country floods again, a year after the Guadalupe disaster',
     summary:
@@ -543,6 +597,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.forbes.com/sites/marshallshepherd/2026/07/16/the-texas-hill-country-is-flooding-again---and-its-bad/',
   },
   {
+    id: '2026-07-23-attribution-study-finds-climate-change',
     date: '2026-07-23',
     title: 'Attribution study finds climate change deepening European drought',
     summary:
@@ -553,6 +608,7 @@ export const NEWS: NewsItem[] = [
     url: 'https://www.worldweatherattribution.org/increasingly-hot-europe-faces-more-severe-droughts-and-growing-challenges-for-water-and-land-management/',
   },
   {
+    id: '2026-07-24-european-drought-forces-irrigation-curbs',
     date: '2026-07-24',
     title: 'European drought forces irrigation curbs and island emergencies',
     summary:

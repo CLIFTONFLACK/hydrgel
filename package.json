@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/validate-news.mjs && tsc -b && vite build",
+    "validate:news": "node scripts/validate-news.mjs",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },

@@ -117,7 +117,7 @@ export default function News() {
                   const style = CATEGORY_STYLES[n.category]
                   return (
                     <article
-                      key={`${n.date}-${n.title}`}
+                      key={n.id}
                       onClick={() => setOpen(n)}
                       className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cursor-pointer"
                     >
