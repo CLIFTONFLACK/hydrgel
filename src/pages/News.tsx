@@ -46,7 +46,7 @@ export default function News() {
 
   return (
     <>
-      <main className="pt-16">
+      <main id="main" className="pt-16">
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl md:text-5xl font-bold text-blue-500">water security newsroom</h1>

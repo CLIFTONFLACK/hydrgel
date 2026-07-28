@@ -8,19 +8,14 @@ import {
   CheckCircle,
   Circle,
   Mail,
+  ArrowRight,
 } from 'lucide-react'
 import WaveDivider from '../components/WaveDivider'
+import { SectionHeading } from '../components/Section'
 import CostChart from '../components/CostChart'
 import ProcessDiagram from '../components/ProcessDiagram'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-import {
-  EFFICACY,
-  MILESTONES,
-  PARTNERS,
-  FOUNDERS,
-  INVENTORS,
-  CORPORATE,
-} from '../data/investor'
+import { EFFICACY, MILESTONES, PARTNERS, CORPORATE } from '../data/investor'
 
 const DRIVERS = [
   {
@@ -46,17 +41,6 @@ const DRIVERS = [
   },
 ]
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
-  return (
-    <>
-      <p className="text-sm font-semibold uppercase tracking-wider text-green-700">{eyebrow}</p>
-      <h2 className="text-3xl md:text-4xl font-bold text-blue-500 mt-2 mb-8 tracking-tight">
-        {title}
-      </h2>
-    </>
-  )
-}
-
 export default function Investors() {
   useDocumentMeta(
     'Investors | HYDRGEL',
@@ -65,7 +49,7 @@ export default function Investors() {
   )
   return (
     <>
-      <main className="pt-16">
+      <main id="main" className="pt-16">
         {/* ---------------------------------------------------------- hero */}
         <section className="relative bg-white py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,50 +289,24 @@ export default function Investors() {
           </div>
         </section>
 
-        {/* ---------------------------------------------------------- team */}
+        {/* Full biographies now live on /team; this is the pointer to them. */}
         <section className="bg-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading eyebrow="Team" title="Founders and inventors" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {FOUNDERS.map((m) => (
-                <div key={m.name} className="border rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-blue-500">{m.name}</h3>
-                  <p className="text-sm text-green-700 font-semibold mb-4">{m.role}</p>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {m.bullets.map((b) => (
-                      <li key={b} className="flex items-start">
-                        <span className="text-blue-600 mr-2 mt-0.5" aria-hidden="true">
-                          &bull;
-                        </span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-12 mb-6 text-gray-600 max-w-3xl">
-              HYDRGEL was born from a collaboration between the Singapore Deep-Tech Alliance and
-              Nanyang Technological University. The underlying science is the work of:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {INVENTORS.map((m) => (
-                <div key={m.name} className="bg-gray-50 rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-blue-500">{m.name}</h3>
-                  <p className="text-sm text-green-700 font-semibold mb-4">{m.role}</p>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {m.bullets.map((b) => (
-                      <li key={b} className="flex items-start">
-                        <span className="text-blue-600 mr-2 mt-0.5" aria-hidden="true">
-                          &bull;
-                        </span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <SectionHeading eyebrow="Team" title="Operators and inventors" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                HYDRGEL pairs the NTU scientists who created the cryogel platform &mdash; Professor
+                Hu Xiao and Dr. Liang Yen Nan &mdash; with founders who have taken technology from
+                laboratory to market before. Full biographies, affiliations and the institutions
+                behind the company are on the team page.
+              </p>
+              <Link
+                to="/team"
+                className="inline-flex items-center gap-2 font-display font-semibold border border-blue-600 text-blue-600 px-7 py-3 rounded-md hover:bg-blue-50 transition-colors"
+              >
+                Meet the team
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>

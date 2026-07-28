@@ -10,6 +10,8 @@
  *
  * Also excluded per instruction: the current raise amount, grant status and
  * use-of-funds. Those live in the deck, released on request.
+ *
+ * Team biographies live in `data/team.ts` and render on /team.
  */
 
 export interface EfficacyRow {
@@ -95,56 +97,6 @@ export const PARTNERS: Partner[] = [
     sector: 'Humanitarian relief',
     geography: 'Israel / Global',
     body: 'An internationally established first-responder organisation running disaster relief missions worldwide.',
-  },
-]
-
-export interface TeamMember {
-  name: string
-  role: string
-  bullets: string[]
-}
-
-export const FOUNDERS: TeamMember[] = [
-  {
-    name: 'Clifton Flack',
-    role: 'Co-Founder & CEO',
-    bullets: [
-      'Founder and CEO of CiiTECH (UK/Israel), raising $3m and growing the business past £10M+ revenue in consumer wellness brands.',
-      'COO of SLA Pharma, driving commercialisation of clinically proven gastrointestinal treatments.',
-      'Co-founder of iCAN and CannaTech (Israel), raising $4.5m to build global innovation platforms in nutrition.',
-      'Led global digital strategy at McCann across multi-million dollar accounts, managing teams of 18+ across Europe, Israel and APAC.',
-    ],
-  },
-  {
-    name: 'Ruzbeh Masani',
-    role: 'Co-Founder & CTO',
-    bullets: [
-      'Led development of novel process technologies at Nestlé, securing patent WO/2018/189275 and delivering US$13M/year in savings.',
-      'Managed US$2M annual R&D budgets with stakeholders across Europe, the Middle East and Latin America.',
-      'Launched operations at a US$136M greenfield Nestlé factory, training 450 operators and cutting downtime by 40%.',
-      'Founded and built the R&D division at a water systems manufacturer, delivering 2,000+ SKUs behind US$30M annual revenue.',
-    ],
-  },
-]
-
-export const INVENTORS: TeamMember[] = [
-  {
-    name: 'Professor Hu Xiao',
-    role: 'Inventor — NTU',
-    bullets: [
-      'Professor at the NTU School of Science and Engineering.',
-      'Director of the Nanyang Environment and Water Research Institute (NEWRI).',
-      'Environmental Chemistry and Materials Centre (ECMC).',
-    ],
-  },
-  {
-    name: 'Dr. Liang Yen Nan',
-    role: 'Inventor — NTU',
-    bullets: [
-      'Senior Research Fellow at NEWRI, ECMC.',
-      'Ph.D. in Materials Science from Nanyang Technological University.',
-      '11 years of experience in materials technology and R&D.',
-    ],
   },
 ]
 

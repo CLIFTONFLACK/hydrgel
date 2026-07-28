@@ -5,6 +5,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import News from './pages/News'
 import Investors from './pages/Investors'
+import About from './pages/About'
+import Team from './pages/Team'
+import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
 /**
@@ -26,8 +29,11 @@ export default function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/news" element={<News />} />
         <Route path="/investors" element={<Investors />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

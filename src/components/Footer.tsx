@@ -40,16 +40,17 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Links</h3>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <button onClick={() => goToSection('use-cases')} className="text-gray-600 hover:text-gray-900">
-                  Use Cases
-                </button>
-              </li>
+            <ul className="mt-4 space-y-2 text-sm">
               <li>
                 <button onClick={() => goToSection('solution')} className="text-gray-600 hover:text-gray-900">
                   Solution
                 </button>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-600 hover:text-gray-900">About Us</Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-gray-600 hover:text-gray-900">Team</Link>
               </li>
               <li>
                 <Link to="/news" className="text-gray-600 hover:text-gray-900">News</Link>
@@ -58,9 +59,7 @@ export default function Footer() {
                 <Link to="/investors" className="text-gray-600 hover:text-gray-900">Investors</Link>
               </li>
               <li>
-                <button onClick={() => goToSection('contact')} className="text-gray-600 hover:text-gray-900">
-                  Contact Us
-                </button>
+                <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -108,19 +107,7 @@ export default function Footer() {
               Copyright {new Date().getFullYear()} HYDRGEL PTE. LTD. All rights reserved
             </p>
             <p className="text-sm text-gray-500">
-              Built with{' '}
-              <span className="text-red-600" aria-hidden="true">
-                &hearts;
-              </span>
-              <span className="sr-only">love</span> by{' '}
-              <a
-                href="https://neonpixeldesigns.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700 transition-colors"
-              >
-                Neon Pixel Designs
-              </a>
+              Built and Operated by HYDRGEL Water Solutions
             </p>
           </div>
         </div>

@@ -60,7 +60,7 @@ export default function Home() {
   )
   return (
     <>
-      <main className="pt-16">
+      <main id="main" className="pt-16">
         {/* Hero gets more room than the sections below it — the page was a
             uniform py-16 throughout, which flattened its hierarchy. */}
         <section id="hero" className="relative bg-white py-20 md:py-28">
@@ -90,12 +90,12 @@ export default function Home() {
                     How it works
                     <ArrowRight className="h-4 w-4" />
                   </a>
-                  <a
-                    href="#contact"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center justify-center font-display font-medium border border-gray-300 text-gray-700 px-7 py-3 rounded-md hover:border-gray-400 hover:text-gray-900 transition-colors"
                   >
                     Talk to the team
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="relative order-1 md:order-2">
@@ -302,13 +302,13 @@ export default function Home() {
                   Humanitarian relief, defence, mining and rural development teams needing
                   safe drinking water in the field.
                 </p>
-                <a
-                  href="mailto:info@hydrgel.com?subject=HYDRGEL%20deployment%20enquiry&body=Organisation%3A%0ACountry%20or%20region%3A%0AWhat%20you%20need%3A%0AApproximate%20numbers%20of%20people%3A"
+                <Link
+                  to="/contact"
                   className="mt-6 inline-flex items-center justify-center gap-2 font-display font-semibold bg-white text-blue-600 px-6 py-3 rounded-md hover:bg-gray-100 transition-colors"
                 >
                   <Mail className="h-4 w-4" />
                   Talk to the team
-                </a>
+                </Link>
               </div>
 
               <div className="bg-blue-700 rounded-2xl p-6 flex flex-col">
