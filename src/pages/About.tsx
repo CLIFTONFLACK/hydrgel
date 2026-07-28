@@ -13,12 +13,16 @@ const OFFERINGS = [
     phase: 'Phase one',
     title: 'HYDRGEL pouches',
     body: 'A pre-manufactured, lightweight pouch using cryogel technology to purify water in about three minutes. Reusable up to 100 times, delivering roughly 50 litres of drinking water per person.',
+    image: '/images/pack.jpg',
+    alt: 'HYDRGEL personal water purification pouches',
   },
   {
     Icon: ContainerIcon,
     phase: 'Phase two',
     title: 'HYDRLAB',
     body: 'A container-based laboratory and production unit, rapidly deployed to disaster zones. HYDRLAB analyses local water threats and produces customised HYDRGEL pouches on site within hours.',
+    image: '/images/manu.jpg',
+    alt: 'HYDRLAB container-based mobile laboratory and production unit',
   },
 ]
 
@@ -97,16 +101,24 @@ export default function About() {
         <Section>
           <SectionHeading eyebrow="What we do" title="Core offerings" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {OFFERINGS.map(({ Icon, phase, title, body }) => (
-              <div key={title} className="border rounded-2xl p-6 sm:p-8">
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <Icon className="h-6 w-6 text-blue-600" />
-                  <span className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700 font-medium">
-                    {phase}
-                  </span>
+            {OFFERINGS.map(({ Icon, phase, title, body, image, alt }) => (
+              <div key={title} className="border rounded-2xl overflow-hidden flex flex-col">
+                <img
+                  src={image}
+                  alt={alt}
+                  loading="lazy"
+                  className="w-full h-52 sm:h-60 object-cover"
+                />
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <Icon className="h-6 w-6 text-blue-600" />
+                    <span className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700 font-medium">
+                      {phase}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-700 mb-2">{title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{body}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-green-700 mb-2">{title}</h3>
-                <p className="text-gray-600 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>

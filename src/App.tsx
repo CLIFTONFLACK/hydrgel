@@ -11,21 +11,42 @@ import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
 /**
- * Scrolls to the top on route change, but leaves in-page hash navigation
- * (the home page's #hero / #solution links) alone.
+ * Keeps the site opening at the top.
+ *
+ * Route changes were already handled, but browsers default to
+ * `scrollRestoration = 'auto'`, which restores the previous offset on reload
+ * and back-navigation — so refreshing halfway down /news reopened it halfway
+ * down. Switching to 'manual' hands that decision to us.
+ *
+ * Hash links still win, so the home page's #solution anchor keeps working.
  */
-function ScrollToTop() {
+function ScrollManager() {
   const { pathname, hash } = useLocation()
+
   useEffect(() => {
-    if (!hash) window.scrollTo(0, 0)
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1))
+      if (el) {
+        el.scrollIntoView()
+        return
+      }
+    }
+    window.scrollTo(0, 0)
   }, [pathname, hash])
+
   return null
 }
 
 export default function App() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollManager />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

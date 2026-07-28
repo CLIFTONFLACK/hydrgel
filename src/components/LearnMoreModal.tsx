@@ -7,11 +7,15 @@ const OFFERINGS = [
     Icon: Droplets,
     title: 'HYDRGEL pouches',
     body: 'A lightweight, reusable pouch that purifies 330 ml of contaminated water in about three minutes. No power, no replacement filters, no maintenance. Reusable up to 100 times.',
+    image: '/images/pack.jpg',
+    alt: 'HYDRGEL personal water purification pouches',
   },
   {
     Icon: ContainerIcon,
     title: 'HYDRLAB',
     body: 'A container-based mobile lab and production unit, deployed to disaster zones to analyse local water and produce pouches matched to what is actually in it.',
+    image: '/images/manu.jpg',
+    alt: 'HYDRLAB container-based mobile laboratory and production unit',
   },
 ]
 
@@ -39,11 +43,14 @@ export default function LearnMoreModal({ onClose }: { onClose: () => void }) {
         </p>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {OFFERINGS.map(({ Icon, title, body }) => (
-            <div key={title} className="bg-gray-50 rounded-xl p-5">
-              <Icon className="h-5 w-5 text-blue-600 mb-3" />
-              <h3 className="font-semibold text-green-700 mb-1.5">{title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
+          {OFFERINGS.map(({ Icon, title, body, image, alt }) => (
+            <div key={title} className="bg-gray-50 rounded-xl overflow-hidden">
+              <img src={image} alt={alt} loading="lazy" className="w-full h-28 object-cover" />
+              <div className="p-5">
+                <Icon className="h-5 w-5 text-blue-600 mb-3" />
+                <h3 className="font-semibold text-green-700 mb-1.5">{title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
+              </div>
             </div>
           ))}
         </div>

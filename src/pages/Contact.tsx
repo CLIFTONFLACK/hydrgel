@@ -1,47 +1,10 @@
+import { useState } from 'react'
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
 import WaveDivider from '../components/WaveDivider'
+import ContactFormModal from '../components/ContactFormModal'
+import { CONTACT_ROUTES, type ContactRoute } from '../data/contactRoutes'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-
-/**
- * Routed by what the visitor actually wants, because the audiences are very
- * different: a relief agency, a defence buyer and an investor need different
- * first conversations. Each mailto is pre-filled with the details we would
- * otherwise have to ask for in a reply.
- */
-const ROUTES = [
-  {
-    title: 'Deploy HYDRGEL',
-    who: 'Humanitarian relief, defence, mining, rural development',
-    body: 'Tell us where you operate and what you need. We will come back with what is realistic on the current timeline, including pilot availability.',
-    email: 'info@hydrgel.com',
-    subject: 'HYDRGEL deployment enquiry',
-    template:
-      'Organisation:\nCountry or region:\nWhat you need:\nApproximate number of people:\nTimeline:',
-    cta: 'Enquire about deployment',
-    primary: true,
-  },
-  {
-    title: 'Investment',
-    who: 'Investors and funds',
-    body: 'Request the company presentation. It covers the technology, the patent position, the pilot programme and the current round.',
-    email: 'clifton@hydrgel.com',
-    subject: 'HYDRGEL investor deck request',
-    template: 'Name:\nOrganisation:\nRole:\n\nI would like to review the HYDRGEL investor materials.',
-    cta: 'Request the deck',
-    primary: false,
-  },
-  {
-    title: 'Technical & partnerships',
-    who: 'Research, manufacturing, distribution',
-    body: 'Questions on the cryogel platform, formulation, testing, manufacturing or distribution partnerships.',
-    email: 'ruzbeh@hydrgel.com',
-    subject: 'HYDRGEL technical enquiry',
-    template: 'Organisation:\nArea of interest:\nWhat you would like to discuss:',
-    cta: 'Contact the CTO',
-    primary: false,
-  },
-]
 
 const SOCIALS = [
   { href: 'https://www.linkedin.com/company/hydrgel', label: 'LinkedIn', Icon: Linkedin },
@@ -50,11 +13,9 @@ const SOCIALS = [
   { href: 'https://www.facebook.com/profile.php?id=61561245953864', label: 'Facebook', Icon: Facebook },
 ]
 
-function mailto(email: string, subject: string, body: string) {
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-}
-
 export default function Contact() {
+  const [openRoute, setOpenRoute] = useState<ContactRoute | null>(null)
+
   useDocumentMeta(
     'Contact | HYDRGEL',
     'Talk to HYDRGEL about deploying water purification in the field, investing in the company, or technical and manufacturing partnerships.',
@@ -70,16 +31,16 @@ export default function Contact() {
             Start the right conversation
           </h1>
           <p className="mt-6 text-lg text-gray-600 max-w-2xl leading-relaxed">
-            Pick the route that matches what you need. Each one opens an email with the details
-            we would otherwise have to ask you for, so the first reply can be a useful one.
+            Pick the route that matches what you need. Each one asks for the details we would
+            otherwise have to come back for, so the first reply can be a useful one.
           </p>
         </Section>
 
         <Section tone="sunken">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {ROUTES.map((r) => (
+            {CONTACT_ROUTES.map((r) => (
               <div
-                key={r.title}
+                key={r.id}
                 className={`rounded-2xl p-6 sm:p-8 flex flex-col ${
                   r.primary ? 'bg-white border-2 border-blue-600' : 'bg-white border'
                 }`}
@@ -92,8 +53,8 @@ export default function Contact() {
                 <h2 className="text-xl font-bold text-blue-500">{r.title}</h2>
                 <p className="text-xs text-gray-500 mt-1">{r.who}</p>
                 <p className="mt-4 text-sm text-gray-600 leading-relaxed flex-1">{r.body}</p>
-                <a
-                  href={mailto(r.email, r.subject, r.template)}
+                <button
+                  onClick={() => setOpenRoute(r)}
                   className={`mt-6 inline-flex items-center justify-center gap-2 font-display font-semibold px-6 py-3 rounded-md transition-colors ${
                     r.primary
                       ? 'bg-blue-600 text-white hover:bg-blue-700'
@@ -102,8 +63,15 @@ export default function Contact() {
                 >
                   {r.cta}
                   <ArrowRight className="h-4 w-4" />
-                </a>
-                <p className="mt-3 text-xs text-gray-500 text-center break-all">{r.email}</p>
+                </button>
+                {/* Direct address stays visible for anyone who would rather
+                    use their own mail client than a form. */}
+                <p className="mt-3 text-xs text-gray-500 text-center break-all">
+                  or email{' '}
+                  <a href={`mailto:${r.email}`} className="hover:text-blue-600 transition-colors">
+                    {r.email}
+                  </a>
+                </p>
               </div>
             ))}
           </div>
@@ -185,6 +153,10 @@ export default function Contact() {
       </main>
 
       <WaveDivider />
+
+      {openRoute && (
+        <ContactFormModal route={openRoute} onClose={() => setOpenRoute(null)} />
+      )}
     </>
   )
 }
