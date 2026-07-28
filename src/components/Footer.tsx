@@ -40,26 +40,32 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Links</h3>
+            {/* Mirrors the nav: Team and Contact sit under About. */}
             <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-600 hover:text-gray-900">About Us</Link>
+                <ul className="mt-2 ml-3 space-y-2 border-l border-gray-200 pl-3">
+                  <li>
+                    <Link to="/team" className="text-gray-600 hover:text-gray-900">Team</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact Us</Link>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <Link to="/news" className="text-gray-600 hover:text-gray-900">News</Link>
+              </li>
               <li>
                 <button onClick={() => goToSection('solution')} className="text-gray-600 hover:text-gray-900">
                   Solution
                 </button>
               </li>
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-gray-900">About Us</Link>
-              </li>
-              <li>
-                <Link to="/team" className="text-gray-600 hover:text-gray-900">Team</Link>
-              </li>
-              <li>
-                <Link to="/news" className="text-gray-600 hover:text-gray-900">News</Link>
-              </li>
-              <li>
                 <Link to="/investors" className="text-gray-600 hover:text-gray-900">Investors</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact Us</Link>
               </li>
             </ul>
           </div>
