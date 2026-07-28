@@ -66,7 +66,7 @@ export default function Contact() {
       <main id="main" className="pt-16">
         <Section space="loose">
           <p className="text-sm font-semibold uppercase tracking-wider text-green-700">Contact</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mt-3 tracking-tight text-balance">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mt-3 tracking-tight text-balance uppercase">
             Start the right conversation
           </h1>
           <p className="mt-6 text-lg text-gray-600 max-w-2xl leading-relaxed">

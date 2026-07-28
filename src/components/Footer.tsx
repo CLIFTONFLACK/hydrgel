@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Social Media</h3>
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Social media</h3>
             <div className="mt-4 flex space-x-4">
               {SOCIALS.map(({ href, label, Icon, hover }) => (
                 <a
@@ -89,7 +89,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Contact Us</h3>
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Contact us</h3>
             <ul className="mt-4 space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-blue-500 flex-shrink-0" />

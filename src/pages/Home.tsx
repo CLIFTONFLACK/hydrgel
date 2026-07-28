@@ -19,11 +19,11 @@ const STATS = [
 
 const RESPONDER_POINTS = [
   {
-    title: 'Clean Water for Climate Disasters',
+    title: 'Clean water for climate disasters',
     body: 'In emergency relief scenarios, where following a crisis, large groups of people need immediate drinkable water.',
   },
   {
-    title: 'Clean Water in Conflict Zones',
+    title: 'Clean water in conflict zones',
     body: 'The world is becoming a more dangerous place. Humanitarian supplies of safe drinking water are a reality',
   },
 ]
@@ -33,21 +33,21 @@ const REVOLUTION_CARDS = [
     Icon: AlertCircle,
     iconColor: 'text-red-500',
     bg: 'bg-red-50',
-    title: '$600bn Cost Of Disaster',
+    title: '$600bn cost of disaster',
     body: 'Water related disasters continue to break annual records as climate change takes effect globally.',
   },
   {
     Icon: Users,
     iconColor: 'text-pink-500',
     bg: 'bg-pink-50',
-    title: '2.8Bn Need Water Security',
+    title: '2.8bn need water security',
     body: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.',
   },
   {
     Icon: Shield,
     iconColor: 'text-orange-500',
     bg: 'bg-orange-50',
-    title: 'Unprecedented Conflicts',
+    title: 'Unprecedented conflicts',
     body: 'Unprecedented numbers of conflict have left millions searching for safe drinkable water just to survive.',
   },
 ]
@@ -67,13 +67,19 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center text-center md:text-left">
               <div className="order-2 md:order-1">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
-                  <span className="text-blue-500">drinkable water at</span>
+                {/*
+                  Caps come from CSS, not from typing capitals into the string.
+                  Screen readers spell out hard-coded all-caps letter by letter,
+                  and it breaks copy-paste and search indexing; text-transform
+                  renders identically while the underlying text stays readable.
+                */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight uppercase">
+                  <span className="text-blue-500">Drinkable water at</span>
                   <br />
                   <span className="text-blue-500">the point of need</span>
                 </h1>
                 <h2 className="text-xl sm:text-2xl md:text-3xl text-green-700 mt-5 leading-snug">
-                  clean drinking water
+                  Clean drinking water
                   <br />
                   is a right, not a luxury
                 </h2>
@@ -114,8 +120,8 @@ export default function Home() {
         <div id="use-cases">
           <section className="bg-gray-50 py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl md:text-3xl text-center text-blue-500 mb-12">
-                the world is suffering more than ever from water disasters
+              <h2 className="text-2xl md:text-3xl text-center text-blue-500 mb-12 text-balance">
+                The world is suffering more than ever from water disasters
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {STATS.map((s) => (
@@ -162,7 +168,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
-                  <h2 className="text-4xl font-bold text-blue-500 mb-6">
+                  <h2 className="text-3xl md:text-4xl font-bold text-blue-500 mb-6 tracking-tight">
                     HYDRLAB is a first
                     <br />
                     responder solution
@@ -219,8 +225,8 @@ export default function Home() {
                 />
               </div>
               <div>
-                <h2 className="text-4xl font-bold text-blue-500">
-                  personal water
+                <h2 className="text-3xl md:text-4xl font-bold text-blue-500 tracking-tight">
+                  Personal water
                   <br />
                   purification solution
                 </h2>
@@ -229,7 +235,7 @@ export default function Home() {
                   nano-technology using a hydro gel and silver based medium, providing a lightweight
                   and reusable device.
                 </p>
-                <h3 className="text-lg font-bold text-green-700 mt-6 mb-2">HOW IT WORKS:</h3>
+                <h3 className="text-lg font-bold text-green-700 mt-6 mb-2">How it works</h3>
                 <p className="mb-8">
                   Pour 330 ml (the size of a coke can) of dirty water into our patented pouch and
                   after only 3 minutes the silver based gel compounds do their magic, absorbing and

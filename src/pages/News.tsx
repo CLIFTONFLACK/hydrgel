@@ -49,9 +49,11 @@ export default function News() {
       <main id="main" className="pt-16">
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-500">water security newsroom</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-500 tracking-tight uppercase">
+              Water security newsroom
+            </h1>
             <h2 className="text-xl md:text-2xl text-green-700 mt-4">
-              the conversation HYDRGEL is built for
+              The conversation HYDRGEL is built for
             </h2>
             <p className="mt-6 text-gray-600 max-w-3xl">
               A running record of the crises, research, regulation and investment shaping global

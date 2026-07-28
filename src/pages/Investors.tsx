@@ -58,8 +58,8 @@ export default function Investors() {
                 <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
                   Investor information
                 </p>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mt-3">
-                  ending the
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-500 mt-3 leading-[1.05] tracking-tight uppercase">
+                  Ending the
                   <br />
                   world's thirst
                 </h1>
