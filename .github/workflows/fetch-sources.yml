@@ -1,0 +1,75 @@
+name: Fetch newsroom sources
+
+# The newsroom routine runs in a cloud sandbox whose egress policy denies every
+# publisher we cite — who.int, unicef.org, news.un.org, reliefweb.int and the
+# rest all answer 403 at the proxy. It can search, but it cannot read a source
+# or confirm a URL returns 200, and it is not allowed to publish a figure it
+# has not read. So it stops without writing anything.
+#
+# This runner has open egress. It fetches the feeds and articles ahead of each
+# scheduled run and force-pushes the result to the `sources-cache` branch,
+# which the routine hydrates and reads from disk. Same trick as
+# ingest-week.yml in the linkedin repo, pointed inward instead of outward.
+#
+# `sources-cache` is an orphan branch rewritten as a single commit every run,
+# so the snapshot never accumulates history and never touches main — no
+# production deploy is triggered by a source refresh.
+
+on:
+  schedule:
+    # 05:30 UTC on Mon/Wed/Fri, ~35 minutes ahead of the newsroom routine's
+    # 06:00 cron. GitHub's scheduler can run late under load; the routine
+    # tolerates a stale snapshot and reports its age rather than failing.
+    - cron: "30 5 * * 1,3,5"
+  workflow_dispatch:
+
+# Never let two runs force-push the branch at once.
+concurrency:
+  group: fetch-sources
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch feeds and articles
+        run: node scripts/fetch-sources.mjs .sources-out
+
+      - name: Publish snapshot to sources-cache
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cd .sources-out
+          git init -q
+          git config user.name "hydrgel-sourcebot"
+          git config user.email "actions@github.com"
+          git checkout -q -b sources-cache
+          git add -A
+          git commit -q -m "Source snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push -q --force \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            sources-cache
+
+      - name: Summary
+        run: |
+          set -euo pipefail
+          node -e '
+            const i = require("./.sources-out/index.json");
+            const dead = i.feeds.filter(f => f.error);
+            console.log(`Generated ${i.generated_at}`);
+            console.log(`Articles: ${i.counts.ok} ok, ${i.counts.failed} failed`);
+            if (dead.length) {
+              console.log("Dead feeds:");
+              for (const f of dead) console.log(`  - ${f.slug}: ${f.error}`);
+            }
+          ' >> "$GITHUB_STEP_SUMMARY"

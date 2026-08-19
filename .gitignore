@@ -13,6 +13,12 @@ dist-ssr
 *.pdf
 *.docx
 
+# Source snapshots. Written by scripts/fetch-sources.mjs on the runner and
+# hydrated from the sources-cache branch by the newsroom routine — never
+# committed to main.
+.sources/
+.sources-out/
+
 # Build artefacts
 tsconfig.tsbuildinfo
 .claude/
