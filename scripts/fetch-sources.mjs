@@ -43,16 +43,31 @@ const CONCURRENCY = 4
  */
 /** SOURCES_FEEDS overrides the list with the same JSON shape — used by the tests. */
 const FEEDS = process.env.SOURCES_FEEDS ? JSON.parse(process.env.SOURCES_FEEDS) : [
-  { slug: 'who-don', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/feeds/entity/csr/don/en/rss.xml' },
+  // --- confirmed live (21 Aug 2026 run) ---
   { slug: 'who-news', name: 'WHO news', url: 'https://www.who.int/rss-feeds/news-english.xml' },
   { slug: 'un-news', name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
-  { slug: 'reliefweb', name: 'ReliefWeb updates', url: 'https://reliefweb.int/updates/rss.xml' },
-  { slug: 'reliefweb-disasters', name: 'ReliefWeb disasters', url: 'https://reliefweb.int/disasters/rss.xml' },
-  { slug: 'unicef', name: 'UNICEF press releases', url: 'https://www.unicef.org/press-releases/rss.xml' },
   { slug: 'nature-water', name: 'Nature Water', url: 'https://www.nature.com/natwater.rss' },
-  { slug: 'epa-news', name: 'US EPA news releases', url: 'https://www.epa.gov/newsreleases/search/rss' },
   { slug: 'phys-environment', name: 'Phys.org environment', url: 'https://phys.org/rss-feed/earth-news/environment-news/' },
-  { slug: 'eurekalert-earth', name: 'EurekAlert earth science', url: 'https://www.eurekalert.org/rss/earth_science.xml' },
+
+  // --- candidates replacing feeds that died in that run ---
+  // who-don 404'd on the old /feeds/entity/ path; try the pattern who-news uses.
+  { slug: 'who-don', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/rss-feeds/disease-outbreak-news-english.xml' },
+  // unicef press-releases/rss.xml 404'd.
+  { slug: 'unicef-media', name: 'UNICEF media', url: 'https://www.unicef.org/media/rss.xml' },
+  { slug: 'unicef-root', name: 'UNICEF', url: 'https://www.unicef.org/rss.xml' },
+  // reliefweb answered 202 — a bot interstitial rather than content. Headlines view may differ.
+  { slug: 'reliefweb-headlines', name: 'ReliefWeb headlines', url: 'https://reliefweb.int/updates/rss.xml?view=headlines' },
+  // epa /newsreleases/search/rss answered 202.
+  { slug: 'epa-news', name: 'US EPA news releases', url: 'https://www.epa.gov/rss/epa-news.xml' },
+  // eurekalert earth_science.xml 404'd.
+  { slug: 'eurekalert', name: 'EurekAlert', url: 'https://www.eurekalert.org/rss.xml' },
+
+  // --- additional water-heavy sources ---
+  { slug: 'who-africa', name: 'WHO African Region', url: 'https://www.afro.who.int/rss.xml' },
+  { slug: 'guardian-water', name: 'Guardian water', url: 'https://www.theguardian.com/environment/water/rss' },
+  { slug: 'sciencedaily-water', name: 'ScienceDaily water', url: 'https://www.sciencedaily.com/rss/earth_climate/water.xml' },
+  { slug: 'circle-of-blue', name: 'Circle of Blue', url: 'https://www.circleofblue.org/feed/' },
+  { slug: 'smart-water', name: 'Smart Water Magazine', url: 'https://smartwatermagazine.com/rss.xml' },
 ]
 
 /**
