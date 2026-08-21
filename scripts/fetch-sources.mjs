@@ -26,8 +26,12 @@ import crypto from 'crypto'
 
 const OUT = path.resolve(process.argv[2] || '.sources-out')
 
-/** Only items published within this window are considered. */
-const WINDOW_DAYS = 14
+/**
+ * Only items published within this window are considered. Widen it via
+ * WINDOW_DAYS to backfill — though feeds only carry so much history, so a
+ * larger number reaches further only if the publisher still lists the items.
+ */
+const WINDOW_DAYS = Number(process.env.WINDOW_DAYS) || 14
 /** Per feed, after the relevance filter. Keeps one noisy feed from crowding out the rest. */
 const MAX_ITEMS_PER_FEED = 25
 /** Article text is truncated to this many characters. Enough to verify a claim. */
