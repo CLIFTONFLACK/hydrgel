@@ -43,32 +43,34 @@ const CONCURRENCY = 4
  */
 /** SOURCES_FEEDS overrides the list with the same JSON shape — used by the tests. */
 const FEEDS = process.env.SOURCES_FEEDS ? JSON.parse(process.env.SOURCES_FEEDS) : [
-  // --- confirmed live (21 Aug 2026 run) ---
+  // Every entry below returned 200 and parsed on the 21 Aug 2026 runs. Feeds
+  // that answered 404, 403 or 202 have been dropped rather than left to log a
+  // failure every run: who.int/feeds/entity/csr/don, unicef.org (both
+  // /media/rss.xml and /rss.xml), epa.gov news, eurekalert.org and
+  // smartwatermagazine.com. See the humanitarian-sources note below.
   { slug: 'who-news', name: 'WHO news', url: 'https://www.who.int/rss-feeds/news-english.xml' },
+  { slug: 'who-africa', name: 'WHO African Region', url: 'https://www.afro.who.int/rss.xml' },
   { slug: 'un-news', name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
   { slug: 'nature-water', name: 'Nature Water', url: 'https://www.nature.com/natwater.rss' },
   { slug: 'phys-environment', name: 'Phys.org environment', url: 'https://phys.org/rss-feed/earth-news/environment-news/' },
-
-  // --- candidates replacing feeds that died in that run ---
-  // who-don 404'd on the old /feeds/entity/ path; try the pattern who-news uses.
-  { slug: 'who-don', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/rss-feeds/disease-outbreak-news-english.xml' },
-  // unicef press-releases/rss.xml 404'd.
-  { slug: 'unicef-media', name: 'UNICEF media', url: 'https://www.unicef.org/media/rss.xml' },
-  { slug: 'unicef-root', name: 'UNICEF', url: 'https://www.unicef.org/rss.xml' },
-  // reliefweb answered 202 — a bot interstitial rather than content. Headlines view may differ.
-  { slug: 'reliefweb-headlines', name: 'ReliefWeb headlines', url: 'https://reliefweb.int/updates/rss.xml?view=headlines' },
-  // epa /newsreleases/search/rss answered 202.
-  { slug: 'epa-news', name: 'US EPA news releases', url: 'https://www.epa.gov/rss/epa-news.xml' },
-  // eurekalert earth_science.xml 404'd.
-  { slug: 'eurekalert', name: 'EurekAlert', url: 'https://www.eurekalert.org/rss.xml' },
-
-  // --- additional water-heavy sources ---
-  { slug: 'who-africa', name: 'WHO African Region', url: 'https://www.afro.who.int/rss.xml' },
   { slug: 'guardian-water', name: 'Guardian water', url: 'https://www.theguardian.com/environment/water/rss' },
   { slug: 'sciencedaily-water', name: 'ScienceDaily water', url: 'https://www.sciencedaily.com/rss/earth_climate/water.xml' },
   { slug: 'circle-of-blue', name: 'Circle of Blue', url: 'https://www.circleofblue.org/feed/' },
-  { slug: 'smart-water', name: 'Smart Water Magazine', url: 'https://smartwatermagazine.com/rss.xml' },
 ]
+
+/*
+ * Humanitarian sources are the gap in this list. UNICEF, WHO Disease Outbreak
+ * News and ReliefWeb are the natural homes for cholera, displacement and WASH
+ * emergency reporting — the stories this newsroom most wants — and none of
+ * them is reachable by RSS from a runner. UNICEF answers 403, ReliefWeb 202;
+ * both look like bot protection rather than a wrong path, so a different URL
+ * is unlikely to help.
+ *
+ * The route worth taking is ReliefWeb's public JSON API at api.reliefweb.int,
+ * which is built for programmatic access and aggregates UNICEF, WHO and OCHA
+ * reporting in one place. That needs a JSON source type alongside the feed
+ * parser, which is why it is a note here rather than an entry above.
+ */
 
 /**
  * An item must hit one of these to be fetched. The feeds above carry far more
