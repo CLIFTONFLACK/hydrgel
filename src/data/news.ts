@@ -629,6 +629,61 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/08/1168165',
   },
+  {
+    id: '2026-08-03-sinking-land-outpaces-rising-seas',
+    date: '2026-08-03',
+    title: 'Sinking land outpaces rising seas in the world\'s densest coastal cities',
+    summary:
+      'Researchers at the Technical University of Munich and Tulane University found people in densely populated coastal regions face relative sea-level rise averaging about 6 millimetres a year, nearly three times the coastline-weighted global average of 2.1 millimetres. The difference is land subsidence, driven substantially by groundwater pumping beneath the cities themselves.',
+    category: 'Research',
+    region: 'Global',
+    source: 'ScienceDaily / Nature Communications',
+    url: 'https://www.sciencedaily.com/releases/2026/08/260801042824.htm',
+  },
+  {
+    id: '2026-08-04-record-low-danube-forces-nuclear',
+    date: '2026-08-04',
+    title: 'Record-low Danube forces nuclear shutdowns across central Europe',
+    summary:
+      'Successive heatwaves dropped the Danube to record lows, and Hungary prepared to shut down the nuclear plant supplying more than 40 percent of its electricity. All but one of its four reactors were already offline, cutting output to roughly a tenth of capacity. Romania faced comparable pressure.',
+    category: 'Crisis',
+    region: 'Europe',
+    source: 'Circle of Blue',
+    url: 'https://www.circleofblue.org/2026/water-policy-politics/stress-conflict-migration/hotspots-h2o/hotspots-h2o-scenes-from-an-overheating-drying-world/',
+  },
+  {
+    id: '2026-08-10-us-nitrate-cancer-review-stalls',
+    date: '2026-08-10',
+    title: 'US nitrate cancer review stalls after the office behind it is closed',
+    summary:
+      'The EPA has not advanced its reassessment of nitrate health risks for more than two years, and the office responsible for such assessments has been eliminated. The drinking water threshold it would have revisited was set more than three decades ago to prevent infant methaemoglobinaemia, not cancer.',
+    category: 'Policy',
+    region: 'United States',
+    source: 'Circle of Blue / The New Lede',
+    url: 'https://www.circleofblue.org/2026/agriculture/epa-stalls-long-planned-nitrate-cancer-review-as-pollution-crisis-grows/',
+  },
+  {
+    id: '2026-08-10-michigan-permits-dairy-cafo-in',
+    date: '2026-08-10',
+    title: 'Michigan permits a large dairy operation in a manure-saturated watershed',
+    summary:
+      'State regulators approved a Clean Water Act permit for a dairy operation housing up to 3,450 cows in Gratiot County, forecast to generate between 16 and 34 million gallons of liquid manure a year. The regulator acknowledged pollution concerns but said the applicant had met the permit requirements.',
+    category: 'Policy',
+    region: 'United States',
+    source: 'Circle of Blue / The New Lede',
+    url: 'https://www.circleofblue.org/2026/agriculture/michigan-regulators-approve-dairy-cafo-in-pollution-hotspot/',
+  },
+  {
+    id: '2026-08-14-thames-water-restarts-desalination-after',
+    date: '2026-08-14',
+    title: 'Thames Water prepares to restart desalination after the drought passes',
+    summary:
+      'The UK\'s only mainland desalination plant will not be ready until winter, long after the current drought is expected to have ended. Opened in 2011 for £270 million, the Beckton plant has run five times in fifteen years, producing about seven days of London\'s demand. Its total cost is now put at £500 million.',
+    category: 'Industry',
+    region: 'United Kingdom',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/business/2026/aug/14/thames-water-desalination-plant-reservoir-drought',
+  },
 ]
 
 /** Newest first. */
