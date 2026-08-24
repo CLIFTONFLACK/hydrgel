@@ -618,6 +618,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-07-climate-europe-drought-severe.html',
   },
+  {
+    id: '2026-08-19-sudan-displacement-climbs-floods-power',
+    date: '2026-08-19',
+    title: 'Sudan displacement climbs as floods and power loss halt water pumping',
+    summary:
+      'IOM reported at least 200,000 more people displaced across Kordofan since late 2025, with drone strikes on El Obeid\'s main electrical transformer causing outages that stopped water pumping. Seasonal flooding destroyed or damaged nearly 1,350 shelters in Tawila\'s camps in North Darfur, and more than 4.5 million returnees face areas where services no longer function.',
+    category: 'Humanitarian',
+    region: 'Sudan',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/08/1168165',
+  },
 ]
 
 /** Newest first. */
