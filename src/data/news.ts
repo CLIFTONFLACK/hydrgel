@@ -629,6 +629,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/08/1168165',
   },
+  {
+    id: '2026-08-25-machine-learning-cuts-chlorination',
+    date: '2026-08-25',
+    title: 'Machine learning cuts chlorination by-products while holding disinfection margin',
+    summary:
+      'Nature Water published DISoptimizer, a framework that sets chlorine dose from the water in front of a plant rather than holding a fixed dose. Trained on experimental datasets and externally validated, it cut formation of the four trihalomethanes grouped as THM4 by 5 to 35 percent against fixed dosing while maintaining residual chlorine margins.',
+    category: 'Research',
+    region: 'Global',
+    source: 'Nature Water',
+    url: 'https://www.nature.com/articles/s44221-026-00702-0',
+  },
 ]
 
 /** Newest first. */
