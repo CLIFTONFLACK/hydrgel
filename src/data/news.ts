@@ -640,6 +640,17 @@ export const NEWS: NewsItem[] = [
     source: 'Nature Water',
     url: 'https://www.nature.com/articles/s44221-026-00702-0',
   },
+  {
+    id: '2026-08-24-fracking-linked-salinity-radium',
+    date: '2026-08-24',
+    title: 'Fracking-linked salinity may be mobilising radium into Pennsylvania well water',
+    summary:
+      'A Penn State team sampled 91 private wells and springs in southwestern Pennsylvania and found elevated salt concentrations nearer gas extraction sites, alongside raised radium. Salinity appears to displace the radioactive element from surrounding rock into groundwater, though the researchers stress other environmental factors could also explain the pattern.',
+    category: 'Research',
+    region: 'United States',
+    source: 'Phys.org',
+    url: 'https://phys.org/news/2026-08-natural-gas-drilling-salt-boosting.html',
+  },
 ]
 
 /** Newest first. */
