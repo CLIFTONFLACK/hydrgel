@@ -651,6 +651,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-08-natural-gas-drilling-salt-boosting.html',
   },
+  {
+    id: '2026-08-28-himalayan-glacial-flood-nepal',
+    date: '2026-08-28',
+    title: 'Himalayan glacial flood kills hundreds on the Nepal–Tibet border',
+    summary:
+      'A glacier collapse and the landslide that followed sent catastrophic flooding down the border between Nepal and the Tibet autonomous region of China. Nepal confirmed 538 dead with around 1,000 still missing, and some 560 remained unaccounted for on the Chinese side. WHO warned that displacement and disrupted water and sanitation services raise infectious disease risk.',
+    category: 'Crisis',
+    region: 'Nepal',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/08/1168221',
+  },
 ]
 
 /** Newest first. */
