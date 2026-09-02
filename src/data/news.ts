@@ -662,6 +662,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/08/1168221',
   },
+  {
+    id: '2026-08-31-grand-canyon-flash-flood',
+    date: '2026-08-31',
+    title: 'Grand Canyon flash flood kills one and cuts the park\'s sole water pipeline',
+    summary:
+      'A flash flood driven by rain on the Kaibab Plateau swept the Bright Angel Canyon and Phantom Ranch area, killing at least one person and leaving around 15 missing. It also damaged the Transcanyon Waterline, the single pipe carrying both drinking water and fire suppression supply across the park, forcing restrictions and a ban on open fires.',
+    category: 'Crisis',
+    region: 'United States',
+    source: 'Phys.org',
+    url: 'https://phys.org/news/2026-08-grand-canyon-dead.html',
+  },
 ]
 
 /** Newest first. */
