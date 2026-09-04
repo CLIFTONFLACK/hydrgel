@@ -1,0 +1,363 @@
+{
+  "generated_at": "2026-09-04T09:47:29.236Z",
+  "window_days": 14,
+  "cutoff_date": "2026-08-21",
+  "article_char_limit": 6000,
+  "feeds": [
+    {
+      "slug": "who-don",
+      "name": "WHO Disease Outbreak News",
+      "url": "https://www.who.int/feeds/entity/csr/don/en/rss.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "slug": "who-news",
+      "name": "WHO news",
+      "url": "https://www.who.int/rss-feeds/news-english.xml",
+      "status": 200,
+      "item_count": 0,
+      "parsed_total": 25,
+      "error": null
+    },
+    {
+      "slug": "un-news",
+      "name": "UN News",
+      "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+      "status": 200,
+      "item_count": 8,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "reliefweb",
+      "name": "ReliefWeb updates",
+      "url": "https://reliefweb.int/updates/rss.xml",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "reliefweb-disasters",
+      "name": "ReliefWeb disasters",
+      "url": "https://reliefweb.int/disasters/rss.xml",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "unicef",
+      "name": "UNICEF press releases",
+      "url": "https://www.unicef.org/press-releases/rss.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "slug": "nature-water",
+      "name": "Nature Water",
+      "url": "https://www.nature.com/natwater.rss",
+      "status": 200,
+      "item_count": 4,
+      "parsed_total": 8,
+      "error": null
+    },
+    {
+      "slug": "epa-news",
+      "name": "US EPA news releases",
+      "url": "https://www.epa.gov/newsreleases/search/rss",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "phys-environment",
+      "name": "Phys.org environment",
+      "url": "https://phys.org/rss-feed/earth-news/environment-news/",
+      "status": 200,
+      "item_count": 12,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "eurekalert-earth",
+      "name": "EurekAlert earth science",
+      "url": "https://www.eurekalert.org/rss/earth_science.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    }
+  ],
+  "counts": {
+    "articles": 24,
+    "ok": 24,
+    "failed": 0
+  },
+  "items": [
+    {
+      "id": "ff393162a5e8",
+      "feed": "un-news",
+      "title": "Nepal floods leave 22,000 children without safe water: UNICEF",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168269",
+      "final_url": "https://news.un.org/en/story/2026/09/1168269",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/ff393162a5e8.json"
+    },
+    {
+      "id": "d3a549a3717f",
+      "feed": "un-news",
+      "title": "El Niño is surging. Months of extreme heat could follow",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168265",
+      "final_url": "https://news.un.org/en/story/2026/09/1168265",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/d3a549a3717f.json"
+    },
+    {
+      "id": "5e4c18fdb19e",
+      "feed": "un-news",
+      "title": "‘Fight for humanity’: Avoiding a climate catastrophe means acting now",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168240",
+      "final_url": "https://news.un.org/en/story/2026/09/1168240",
+      "published": "2026-09-02",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/5e4c18fdb19e.json"
+    },
+    {
+      "id": "ca8a9787b36b",
+      "feed": "un-news",
+      "title": "Nepal floods: Mounting death toll and concern for women and girls",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168234",
+      "final_url": "https://news.un.org/en/story/2026/09/1168234",
+      "published": "2026-09-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/ca8a9787b36b.json"
+    },
+    {
+      "id": "b3d936b2dd0d",
+      "feed": "un-news",
+      "title": "Nepal flooding deaths surpass 900 as needs climb",
+      "url": "https://news.un.org/feed/view/en/story/2026/08/1168233",
+      "final_url": "https://news.un.org/en/story/2026/08/1168233",
+      "published": "2026-08-31",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/b3d936b2dd0d.json"
+    },
+    {
+      "id": "0a5897ee802b",
+      "feed": "un-news",
+      "title": "‘The lake is our life’: Protecting a shared lifeline in Uganda",
+      "url": "https://news.un.org/feed/view/en/story/2026/08/1168228",
+      "final_url": "https://news.un.org/en/story/2026/08/1168228",
+      "published": "2026-08-30",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/0a5897ee802b.json"
+    },
+    {
+      "id": "ba69147c1358",
+      "feed": "un-news",
+      "title": "As the Himalayas melt, deadly floods become the new normal",
+      "url": "https://news.un.org/feed/view/en/story/2026/08/1168227",
+      "final_url": "https://news.un.org/en/story/2026/08/1168227",
+      "published": "2026-08-28",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/ba69147c1358.json"
+    },
+    {
+      "id": "29de51e0a473",
+      "feed": "un-news",
+      "title": "‘Immense impact’ of Nepal flood disaster highlighted as casualties mount",
+      "url": "https://news.un.org/feed/view/en/story/2026/08/1168221",
+      "final_url": "https://news.un.org/en/story/2026/08/1168221",
+      "published": "2026-08-28",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/29de51e0a473.json"
+    },
+    {
+      "id": "47e84058153a",
+      "feed": "nature-water",
+      "title": "Hybrid-capture-enabled longitudinal metagenomics allows strain-resolved human-associated virus surveillance in wastewater",
+      "url": "https://www.nature.com/articles/s44221-026-00693-y",
+      "final_url": "https://www.nature.com/articles/s44221-026-00693-y?error=cookies_not_supported&code=a3602a2d-3216-41a8-8fa1-76bc95fb0cf2",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/47e84058153a.json"
+    },
+    {
+      "id": "9874d70639fa",
+      "feed": "nature-water",
+      "title": "Plasmon-enhanced reductive defluorination of PFAS in water under ambient conditions",
+      "url": "https://www.nature.com/articles/s44221-026-00690-1",
+      "final_url": "https://www.nature.com/articles/s44221-026-00690-1?error=cookies_not_supported&code=3c4da747-3ea6-4c1d-8e4e-3b680f233759",
+      "published": "2026-09-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/9874d70639fa.json"
+    },
+    {
+      "id": "ac2bbad42e27",
+      "feed": "nature-water",
+      "title": "Coupling filter mating with nanopore selective sequencing expands capturable conjugative plasmid recovery in biological wastewater treatment systems",
+      "url": "https://www.nature.com/articles/s44221-026-00695-w",
+      "final_url": "https://www.nature.com/articles/s44221-026-00695-w?error=cookies_not_supported&code=ad23bd8e-c3ef-4702-91ed-6288be897382",
+      "published": "2026-09-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/ac2bbad42e27.json"
+    },
+    {
+      "id": "1730107351ea",
+      "feed": "nature-water",
+      "title": "Solar-powered resource separator for clean water production, electricity generation and critical resource recovery",
+      "url": "https://www.nature.com/articles/s44221-026-00700-2",
+      "final_url": "https://www.nature.com/articles/s44221-026-00700-2?error=cookies_not_supported&code=f7f625c0-aac3-4c6e-b1d0-c67d6c94c7d1",
+      "published": "2026-09-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/1730107351ea.json"
+    },
+    {
+      "id": "f648995a3a7a",
+      "feed": "phys-environment",
+      "title": "France recorded 'hottest summer ever': Environment minister",
+      "url": "https://phys.org/news/2026-09-france-hottest-summer-environment-minister.html",
+      "final_url": "https://phys.org/news/2026-09-france-hottest-summer-environment-minister.html",
+      "published": "2026-09-04",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/f648995a3a7a.json"
+    },
+    {
+      "id": "59e1649c1e72",
+      "feed": "phys-environment",
+      "title": "How El Nino is choking the Panama Canal",
+      "url": "https://phys.org/news/2026-09-el-nino-panama-canal.html",
+      "final_url": "https://phys.org/news/2026-09-el-nino-panama-canal.html",
+      "published": "2026-09-04",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/59e1649c1e72.json"
+    },
+    {
+      "id": "d1d06f7e3882",
+      "feed": "phys-environment",
+      "title": "Himalayan hazards are becoming more complex. Our warning systems need to catch up",
+      "url": "https://phys.org/news/2026-09-himalayan-hazards-complex.html",
+      "final_url": "https://phys.org/news/2026-09-himalayan-hazards-complex.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/d1d06f7e3882.json"
+    },
+    {
+      "id": "e9f456aca45f",
+      "feed": "phys-environment",
+      "title": "How underwater 'booms' could provide earlier warning of deadly volcanic tsunamis",
+      "url": "https://phys.org/news/2026-09-underwater-booms-earlier-deadly-volcanic.html",
+      "final_url": "https://phys.org/news/2026-09-underwater-booms-earlier-deadly-volcanic.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/e9f456aca45f.json"
+    },
+    {
+      "id": "b59fa5847553",
+      "feed": "phys-environment",
+      "title": "How cities can use rain gardens to help prevent flooding",
+      "url": "https://phys.org/news/2026-09-cities-gardens.html",
+      "final_url": "https://phys.org/news/2026-09-cities-gardens.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/b59fa5847553.json"
+    },
+    {
+      "id": "4c068111271e",
+      "feed": "phys-environment",
+      "title": "Scientists race to measure wildfire damage to UK soils",
+      "url": "https://phys.org/news/2026-09-scientists-wildfire-uk-soils.html",
+      "final_url": "https://phys.org/news/2026-09-scientists-wildfire-uk-soils.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4c068111271e.json"
+    },
+    {
+      "id": "437b6a4caa0e",
+      "feed": "phys-environment",
+      "title": "Salt may have helped turn Earth into a frozen world 700 million years ago",
+      "url": "https://phys.org/news/2026-08-salt-earth-frozen-world-million.html",
+      "final_url": "https://phys.org/news/2026-08-salt-earth-frozen-world-million.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/437b6a4caa0e.json"
+    },
+    {
+      "id": "1dc2eb76e2bf",
+      "feed": "phys-environment",
+      "title": "Heavy water's atmospheric fingerprints boost weather forecasts for up to five days",
+      "url": "https://phys.org/news/2026-09-heavy-atmospheric-fingerprints-boost-weather.html",
+      "final_url": "https://phys.org/news/2026-09-heavy-atmospheric-fingerprints-boost-weather.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/1dc2eb76e2bf.json"
+    },
+    {
+      "id": "16ef1124b58e",
+      "feed": "phys-environment",
+      "title": "Rare trio of Pacific hurricanes fueled by historic El Niño",
+      "url": "https://phys.org/news/2026-09-rare-trio-pacific-hurricanes-fueled.html",
+      "final_url": "https://phys.org/news/2026-09-rare-trio-pacific-hurricanes-fueled.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/16ef1124b58e.json"
+    },
+    {
+      "id": "2db37396e863",
+      "feed": "phys-environment",
+      "title": "Underwater meadows sustain millions in extreme poverty",
+      "url": "https://phys.org/news/2026-09-underwater-meadows-sustain-millions-extreme.html",
+      "final_url": "https://phys.org/news/2026-09-underwater-meadows-sustain-millions-extreme.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/2db37396e863.json"
+    },
+    {
+      "id": "4b0ccb3ee674",
+      "feed": "phys-environment",
+      "title": "Pacific islands to face food shortages due to global warming: Scientists",
+      "url": "https://phys.org/news/2026-09-pacific-islands-food-shortages-due.html",
+      "final_url": "https://phys.org/news/2026-09-pacific-islands-food-shortages-due.html",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4b0ccb3ee674.json"
+    },
+    {
+      "id": "4126d7a6d2f4",
+      "feed": "phys-environment",
+      "title": "Rare train of Pacific cyclones fueled by historic El Niño",
+      "url": "https://phys.org/news/2026-09-rare-pacific-cyclones-fueled-historic.html",
+      "final_url": "https://phys.org/news/2026-09-rare-pacific-cyclones-fueled-historic.html",
+      "published": "2026-09-02",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4126d7a6d2f4.json"
+    }
+  ]
+}
