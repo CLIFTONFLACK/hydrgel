@@ -673,6 +673,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-08-grand-canyon-dead.html',
   },
+  {
+    id: '2026-09-01-plasmon-catalysis-breaks-pfas',
+    date: '2026-09-01',
+    title: 'Plasmon catalysis breaks PFAS apart in water at room temperature',
+    summary:
+      'Nature Water reported UV-driven plasmonic catalysis that destroys PFOA and PFOS in water at room temperature, releasing fluoride at stoichiometric or near-stoichiometric levels. Quantum-sized palladium and platinum nanocatalysts on aminated mesoporous silica drove a stepwise reductive pathway in which short-chain oxidised by-products did not measurably accumulate under the conditions studied.',
+    category: 'Research',
+    region: 'Global',
+    source: 'Nature Water',
+    url: 'https://www.nature.com/articles/s44221-026-00690-1',
+  },
 ]
 
 /** Newest first. */
