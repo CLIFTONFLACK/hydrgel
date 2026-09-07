@@ -684,6 +684,17 @@ export const NEWS: NewsItem[] = [
     source: 'Nature Water',
     url: 'https://www.nature.com/articles/s44221-026-00690-1',
   },
+  {
+    id: '2026-09-03-wmo-forecasts-very-strong-el-nino',
+    date: '2026-09-03',
+    title: 'WMO forecasts a very strong El Niño persisting into 2027',
+    summary:
+      'The World Meteorological Organization put the likelihood of El Niño persisting through February 2027 at close to 100 per cent, the most unequivocal forecast it has issued for the pattern. Weekly Niño 3.4 readings reached 2.6 degrees above normal, and subsurface Pacific temperatures ran more than eight degrees warm in places.',
+    category: 'Climate',
+    region: 'Global',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/09/1168265',
+  },
 ]
 
 /** Newest first. */
