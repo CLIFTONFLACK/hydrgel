@@ -695,6 +695,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168265',
   },
+  {
+    id: '2026-09-03-nepal-floods-children-safe-water',
+    date: '2026-09-03',
+    title: 'UNICEF: 22,000 children in Nepal\'s flood districts need safe water',
+    summary:
+      'More than a week after the Bhotekoshi-Trishuli basin flooded, UNICEF reported at least 22,000 children urgently needing safe drinking water, sanitation and hygiene support. Water systems were damaged across the affected districts and sanitation facilities destroyed. Supplies for around 19,000 people — largely jerrycans, buckets and water treatment solution — reached Rasuwa and Nuwakot.',
+    category: 'Humanitarian',
+    region: 'Nepal',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/09/1168269',
+  },
 ]
 
 /** Newest first. */
