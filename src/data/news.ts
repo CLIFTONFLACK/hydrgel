@@ -706,6 +706,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168269',
   },
+  {
+    id: '2026-09-08-nepal-glacier-heat-before-collapse',
+    date: '2026-09-08',
+    title: 'Record heat preceded the Nepal glacier collapse, temperature analysis finds',
+    summary:
+      'Berkeley Earth chief scientist Robert Rohde reconstructed conditions at the 5,200-metre collapse site and estimated average temperatures around 5 degrees Celsius between 21 and 26 August, above anything in more than 55 years of records for those dates. Researchers caution that no direct link to the collapse has been established.',
+    category: 'Climate',
+    region: 'Nepal',
+    source: 'Phys.org',
+    url: 'https://phys.org/news/2026-09-nepal-glacier-exceptional-collapse-deadly.html',
+  },
 ]
 
 /** Newest first. */
