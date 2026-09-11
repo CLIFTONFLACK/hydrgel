@@ -1,0 +1,330 @@
+{
+  "generated_at": "2026-09-11T09:52:18.761Z",
+  "window_days": 14,
+  "cutoff_date": "2026-08-28",
+  "article_char_limit": 6000,
+  "feeds": [
+    {
+      "slug": "who-don",
+      "name": "WHO Disease Outbreak News",
+      "url": "https://www.who.int/feeds/entity/csr/don/en/rss.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "slug": "who-news",
+      "name": "WHO news",
+      "url": "https://www.who.int/rss-feeds/news-english.xml",
+      "status": 200,
+      "item_count": 0,
+      "parsed_total": 25,
+      "error": null
+    },
+    {
+      "slug": "un-news",
+      "name": "UN News",
+      "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+      "status": 200,
+      "item_count": 4,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "reliefweb",
+      "name": "ReliefWeb updates",
+      "url": "https://reliefweb.int/updates/rss.xml",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "reliefweb-disasters",
+      "name": "ReliefWeb disasters",
+      "url": "https://reliefweb.int/disasters/rss.xml",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "unicef",
+      "name": "UNICEF press releases",
+      "url": "https://www.unicef.org/press-releases/rss.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "slug": "nature-water",
+      "name": "Nature Water",
+      "url": "https://www.nature.com/natwater.rss",
+      "status": 200,
+      "item_count": 5,
+      "parsed_total": 8,
+      "error": null
+    },
+    {
+      "slug": "epa-news",
+      "name": "US EPA news releases",
+      "url": "https://www.epa.gov/newsreleases/search/rss",
+      "status": 202,
+      "item_count": 0,
+      "error": "HTTP 202"
+    },
+    {
+      "slug": "phys-environment",
+      "name": "Phys.org environment",
+      "url": "https://phys.org/rss-feed/earth-news/environment-news/",
+      "status": 200,
+      "item_count": 12,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "eurekalert-earth",
+      "name": "EurekAlert earth science",
+      "url": "https://www.eurekalert.org/rss/earth_science.xml",
+      "status": 404,
+      "item_count": 0,
+      "error": "HTTP 404"
+    }
+  ],
+  "counts": {
+    "articles": 21,
+    "ok": 21,
+    "failed": 0
+  },
+  "items": [
+    {
+      "id": "170a4de4aa06",
+      "feed": "un-news",
+      "title": "‘The water comes up to our knees’: Climate hazards shut millions of children out of school in 2025",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168306",
+      "final_url": "https://news.un.org/en/story/2026/09/1168306",
+      "published": "2026-09-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/170a4de4aa06.json"
+    },
+    {
+      "id": "341384487907",
+      "feed": "un-news",
+      "title": "Flood-ravaged Nepal calls for climate justice",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168305",
+      "final_url": "https://news.un.org/en/story/2026/09/1168305",
+      "published": "2026-09-09",
+      "http_status": 200,
+      "text_chars": 5943,
+      "file": "articles/341384487907.json"
+    },
+    {
+      "id": "b1b645b25e55",
+      "feed": "un-news",
+      "title": "New reservoir offers innovative solution to South Sudan cattle beef",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168266",
+      "final_url": "https://news.un.org/en/story/2026/09/1168266",
+      "published": "2026-09-06",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/b1b645b25e55.json"
+    },
+    {
+      "id": "4acba56dc624",
+      "feed": "un-news",
+      "title": "UN aims to raise nearly $50 million for Nepal flood response",
+      "url": "https://news.un.org/feed/view/en/story/2026/09/1168281",
+      "final_url": "https://news.un.org/en/story/2026/09/1168281",
+      "published": "2026-09-04",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4acba56dc624.json"
+    },
+    {
+      "id": "51a0dc3c1521",
+      "feed": "nature-water",
+      "title": "Advancing aquatic ecological risk assessment through AI-driven prediction of chemical exposure and toxicity in freshwater and marine fish",
+      "url": "https://www.nature.com/articles/s44221-026-00709-7",
+      "final_url": "https://www.nature.com/articles/s44221-026-00709-7?error=cookies_not_supported&code=cb613ed1-0969-4e40-ba28-95865c771d90",
+      "published": "2026-09-11",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/51a0dc3c1521.json"
+    },
+    {
+      "id": "f4599ace2ced",
+      "feed": "nature-water",
+      "title": "A global classification of hydrologic functional diversity in gauged and ungauged catchments",
+      "url": "https://www.nature.com/articles/s44221-026-00699-6",
+      "final_url": "https://www.nature.com/articles/s44221-026-00699-6?error=cookies_not_supported&code=dcbe728b-d1d5-49e5-8ba2-1ae735e28e21",
+      "published": "2026-09-11",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/f4599ace2ced.json"
+    },
+    {
+      "id": "1a13ebaba609",
+      "feed": "nature-water",
+      "title": "Localized potential wells enabling directional electron transport boost photocatalytic uranium extraction from natural seawater",
+      "url": "https://www.nature.com/articles/s44221-026-00685-y",
+      "final_url": "https://www.nature.com/articles/s44221-026-00685-y?error=cookies_not_supported&code=0d9c42da-f19a-4084-bb2b-d7a3a7b683ed",
+      "published": "2026-09-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/1a13ebaba609.json"
+    },
+    {
+      "id": "4bc9384139f5",
+      "feed": "nature-water",
+      "title": "Emerging contaminant stress promotes greenhouse gas production through microbial defence–energy trade-off in receiving rivers",
+      "url": "https://www.nature.com/articles/s44221-026-00704-y",
+      "final_url": "https://www.nature.com/articles/s44221-026-00704-y?error=cookies_not_supported&code=472f62d0-404c-476b-bd06-4743eadc772e",
+      "published": "2026-09-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4bc9384139f5.json"
+    },
+    {
+      "id": "47e84058153a",
+      "feed": "nature-water",
+      "title": "Hybrid-capture-enabled longitudinal metagenomics allows strain-resolved human-associated virus surveillance in wastewater",
+      "url": "https://www.nature.com/articles/s44221-026-00693-y",
+      "final_url": "https://www.nature.com/articles/s44221-026-00693-y?error=cookies_not_supported&code=2e152d17-25b0-4acf-9fff-292a19c7f835",
+      "published": "2026-09-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/47e84058153a.json"
+    },
+    {
+      "id": "6d4424259045",
+      "feed": "phys-environment",
+      "title": "Q&A: The overlooked networks of heat resilience within communities",
+      "url": "https://phys.org/news/2026-09-qa-overlooked-networks-resilience-communities.html",
+      "final_url": "https://phys.org/news/2026-09-qa-overlooked-networks-resilience-communities.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/6d4424259045.json"
+    },
+    {
+      "id": "163fd13bf1c9",
+      "feed": "phys-environment",
+      "title": "Himalayan glacial lakes are growing—and so is the downstream flood risk",
+      "url": "https://phys.org/news/2026-09-himalayan-glacial-lakes-downstream.html",
+      "final_url": "https://phys.org/news/2026-09-himalayan-glacial-lakes-downstream.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/163fd13bf1c9.json"
+    },
+    {
+      "id": "8e572b79cee1",
+      "feed": "phys-environment",
+      "title": "Water isotopes reveal early drought signals in Central Amazon rainfall",
+      "url": "https://phys.org/news/2026-09-isotopes-reveal-early-drought-central.html",
+      "final_url": "https://phys.org/news/2026-09-isotopes-reveal-early-drought-central.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/8e572b79cee1.json"
+    },
+    {
+      "id": "812e942afa20",
+      "feed": "phys-environment",
+      "title": "River erosion explains uneven crustal uplift across Basque-Cantabrian Range",
+      "url": "https://phys.org/news/2026-09-river-erosion-uneven-crustal-uplift.html",
+      "final_url": "https://phys.org/news/2026-09-river-erosion-uneven-crustal-uplift.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/812e942afa20.json"
+    },
+    {
+      "id": "8c6510876090",
+      "feed": "phys-environment",
+      "title": "How atmospheric events at the top of the world could have triggered two devastating California floods",
+      "url": "https://phys.org/news/2026-09-atmospheric-events-world-triggered-devastating.html",
+      "final_url": "https://phys.org/news/2026-09-atmospheric-events-world-triggered-devastating.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/8c6510876090.json"
+    },
+    {
+      "id": "474f337b5a02",
+      "feed": "phys-environment",
+      "title": "How two satellites are studying hurricanes during El Niño",
+      "url": "https://phys.org/news/2026-09-satellites-hurricanes-el-nio.html",
+      "final_url": "https://phys.org/news/2026-09-satellites-hurricanes-el-nio.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/474f337b5a02.json"
+    },
+    {
+      "id": "7b052f83f353",
+      "feed": "phys-environment",
+      "title": "Bulimba Creek tops Brisbane waterways for hazardous microplastics, risk analysis finds",
+      "url": "https://phys.org/news/2026-09-bulimba-creek-tops-brisbane-waterways.html",
+      "final_url": "https://phys.org/news/2026-09-bulimba-creek-tops-brisbane-waterways.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/7b052f83f353.json"
+    },
+    {
+      "id": "8ef322d6c7e8",
+      "feed": "phys-environment",
+      "title": "Unaccounted climate feedback loops may amplify warming by 20–30% this century, but cutting emissions will reduce risks",
+      "url": "https://phys.org/news/2026-09-unaccounted-climate-feedback-loops-amplify.html",
+      "final_url": "https://phys.org/news/2026-09-unaccounted-climate-feedback-loops-amplify.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/8ef322d6c7e8.json"
+    },
+    {
+      "id": "65d6a12722f8",
+      "feed": "phys-environment",
+      "title": "Can AI tame torrential rain by 2050? The next frontier of weather control and forecasting",
+      "url": "https://phys.org/news/2026-09-ai-torrential-frontier-weather.html",
+      "final_url": "https://phys.org/news/2026-09-ai-torrential-frontier-weather.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/65d6a12722f8.json"
+    },
+    {
+      "id": "b1b2e7eed2c5",
+      "feed": "phys-environment",
+      "title": "Eight PFAS compounds detected at low concentrations in Melbourne rain",
+      "url": "https://phys.org/news/2026-09-pfas-compounds-melbourne.html",
+      "final_url": "https://phys.org/news/2026-09-pfas-compounds-melbourne.html",
+      "published": "2026-09-10",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/b1b2e7eed2c5.json"
+    },
+    {
+      "id": "3d24f6f564df",
+      "feed": "phys-environment",
+      "title": "From drought to floods in North Africa: What could the super El Niño do next?",
+      "url": "https://phys.org/news/2026-09-drought-north-africa-super-el.html",
+      "final_url": "https://phys.org/news/2026-09-drought-north-africa-super-el.html",
+      "published": "2026-09-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/3d24f6f564df.json"
+    },
+    {
+      "id": "53b4d2bee02d",
+      "feed": "phys-environment",
+      "title": "Estuary water quality trends have $100M implications, researchers find",
+      "url": "https://phys.org/news/2026-09-estuary-quality-trends-100m-implications.html",
+      "final_url": "https://phys.org/news/2026-09-estuary-quality-trends-100m-implications.html",
+      "published": "2026-09-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/53b4d2bee02d.json"
+    }
+  ]
+}
