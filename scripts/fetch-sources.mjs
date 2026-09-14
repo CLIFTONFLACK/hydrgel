@@ -29,7 +29,15 @@ const OUT = path.resolve(process.argv[2] || '.sources-out')
 /** Only items published within this window are considered. */
 const WINDOW_DAYS = 14
 /** Per feed, after the relevance filter. Keeps one noisy feed from crowding out the rest. */
-const MAX_ITEMS_PER_FEED = 25
+const MAX_ITEMS_PER_FEED = 12
+/**
+ * Ceiling on articles fetched per run. With a general-news feed in the list the
+ * per-feed cap alone is not enough — the cost is one HTTP request per item, and
+ * the routine only ever publishes one story. Candidates are interleaved by feed
+ * before this bites, so the cap trims the tail of every feed rather than
+ * deleting whichever ones happen to sort last.
+ */
+const MAX_ARTICLES_TOTAL = 120
 /** Article text is truncated to this many characters. Enough to verify a claim. */
 const ARTICLE_CHARS = 6000
 const FETCH_TIMEOUT_MS = 20000
@@ -40,35 +48,87 @@ const CONCURRENCY = 4
  * feed that fails is recorded in index.json with its error and skipped, never
  * fatal. Check the `feeds` array in a run's index.json to see which are
  * actually resolving, and prune or replace the dead ones.
+ *
+ * Three kinds sit here on purpose:
+ *
+ *   primary    — the agencies and journals the newsroom prefers to cite.
+ *                Worth keeping even when they are flaky, because an item from
+ *                one of these beats the same story told second-hand.
+ *   trade      — water-sector press. Narrow beat, so almost everything they
+ *                publish clears the relevance filter.
+ *   general    — BBC, Yahoo, Google News. These exist to catch the story the
+ *                specialist feeds miss entirely: a contamination incident or a
+ *                municipal failure that is front-page news locally and never
+ *                reaches a UN situation report. They are noisy by nature and
+ *                the keyword filter does the work.
+ *
+ * A note on Google News: its RSS links are wrapper URLs that redirect via
+ * JavaScript, which `redirect: follow` cannot resolve. Expect those items to
+ * come back HTTP 200 with very little text. That is not a failure — the index
+ * records `text_chars`, and the routine is required to skip an item whose
+ * stored text is too thin to verify. Treat the feed as a tip sheet: if it
+ * surfaces something real, the story will also exist on a feed that fetches.
  */
 /** SOURCES_FEEDS overrides the list with the same JSON shape — used by the tests. */
 const FEEDS = process.env.SOURCES_FEEDS ? JSON.parse(process.env.SOURCES_FEEDS) : [
-  { slug: 'who-don', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/feeds/entity/csr/don/en/rss.xml' },
-  { slug: 'who-news', name: 'WHO news', url: 'https://www.who.int/rss-feeds/news-english.xml' },
-  { slug: 'un-news', name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
-  { slug: 'reliefweb', name: 'ReliefWeb updates', url: 'https://reliefweb.int/updates/rss.xml' },
-  { slug: 'reliefweb-disasters', name: 'ReliefWeb disasters', url: 'https://reliefweb.int/disasters/rss.xml' },
-  { slug: 'unicef', name: 'UNICEF press releases', url: 'https://www.unicef.org/press-releases/rss.xml' },
-  { slug: 'nature-water', name: 'Nature Water', url: 'https://www.nature.com/natwater.rss' },
-  { slug: 'epa-news', name: 'US EPA news releases', url: 'https://www.epa.gov/newsreleases/search/rss' },
-  { slug: 'phys-environment', name: 'Phys.org environment', url: 'https://phys.org/rss-feed/earth-news/environment-news/' },
-  { slug: 'eurekalert-earth', name: 'EurekAlert earth science', url: 'https://www.eurekalert.org/rss/earth_science.xml' },
+  // --- primary -------------------------------------------------------------
+  { slug: 'who-don', kind: 'primary', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/rss-feeds/disease-outbreak-news-english.xml' },
+  { slug: 'who-news', kind: 'primary', name: 'WHO news', url: 'https://www.who.int/rss-feeds/news-english.xml' },
+  { slug: 'un-news', kind: 'primary', name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
+  // ReliefWeb asks API and feed clients to name themselves with `appname`
+  // rather than to arrive anonymously; the bare URL answers 202 and no body.
+  { slug: 'reliefweb', kind: 'primary', name: 'ReliefWeb updates', url: 'https://reliefweb.int/updates/rss.xml?appname=hydrgel-newsroom' },
+  { slug: 'reliefweb-disasters', kind: 'primary', name: 'ReliefWeb disasters', url: 'https://reliefweb.int/disasters/rss.xml?appname=hydrgel-newsroom' },
+  { slug: 'unicef', kind: 'primary', name: 'UNICEF press releases', url: 'https://www.unicef.org/rss/press-releases.xml' },
+  { slug: 'nature-water', kind: 'primary', name: 'Nature Water', url: 'https://www.nature.com/natwater.rss' },
+  { slug: 'epa-news', kind: 'primary', name: 'US EPA news releases', url: 'https://www.epa.gov/newsreleases/search/rss' },
+
+  // --- science and trade ---------------------------------------------------
+  { slug: 'phys-environment', kind: 'trade', name: 'Phys.org environment', url: 'https://phys.org/rss-feed/earth-news/environment-news/' },
+  { slug: 'sciencedaily-water', kind: 'trade', name: 'ScienceDaily water', url: 'https://www.sciencedaily.com/rss/earth_climate/water.xml' },
+  { slug: 'eurekalert-earth', kind: 'trade', name: 'EurekAlert earth science', url: 'https://www.eurekalert.org/rss.xml' },
+  { slug: 'circle-of-blue', kind: 'trade', name: 'Circle of Blue', url: 'https://www.circleofblue.org/feed/' },
+  { slug: 'smart-water', kind: 'trade', name: 'Smart Water Magazine', url: 'https://smartwatermagazine.com/rss' },
+
+  // --- general news --------------------------------------------------------
+  { slug: 'bbc-science-env', kind: 'general', name: 'BBC science and environment', url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
+  { slug: 'bbc-world', kind: 'general', name: 'BBC world', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
+  { slug: 'guardian-water', kind: 'general', name: 'The Guardian water', url: 'https://www.theguardian.com/environment/water/rss' },
+  { slug: 'yahoo-world', kind: 'general', name: 'Yahoo News world', url: 'https://www.yahoo.com/news/rss/world' },
+  { slug: 'google-news-water', kind: 'general', name: 'Google News water', url: 'https://news.google.com/rss/search?q=%22drinking+water%22+OR+%22water+crisis%22+OR+cholera+OR+desalination+when:14d&hl=en-US&gl=US&ceid=US:en' },
 ]
 
 /**
  * An item must hit one of these to be fetched. The feeds above carry far more
  * than water — this is what keeps the snapshot small enough to force-push on
  * every run.
+ *
+ * A trailing `*` means prefix match, for stems that inflect in ways not worth
+ * enumerating (`desalinat*` covers desalination and desalinated). Everything
+ * else matches whole words only. That distinction is not cosmetic: a bare
+ * substring test put `wash` inside Washington, and with general-news feeds in
+ * the list that alone would have filled the snapshot with US politics.
  */
 const KEYWORDS = [
-  'water', 'drought', 'flood', 'cholera', 'sanitation', 'wash', 'hygiene',
-  'desalination', 'desalinat', 'aquifer', 'groundwater', 'reservoir',
-  'purification', 'purif', 'contaminat', 'pfas', 'arsenic', 'lead pipe',
-  'wastewater', 'sewage', 'waterborne', 'typhoid', 'dysentery', 'diarrhoea',
-  'diarrhea', 'glacier', 'snowpack', 'river', 'basin', 'rainfall', 'monsoon',
-  'cyclone', 'hurricane', 'typhoon', 'irrigation', 'scarcity', 'borehole',
-  'well water', 'treatment plant', 'utility', 'hydrolog',
+  'water', 'waters', 'drought*', 'flood*', 'cholera', 'sanitation', 'wash',
+  'hygiene', 'desalinat*', 'aquifer*', 'groundwater', 'reservoir*',
+  'purif*', 'contaminat*', 'pfas', 'arsenic', 'lead pipe*', 'lead service line*',
+  'wastewater', 'sewage', 'waterborne', 'typhoid', 'dysentery', 'diarrhoea*',
+  // `river` and `basin` stay whole words on purpose: Rivera and Basinger are
+  // common enough names to matter once a general-news feed is in the list.
+  'diarrhea*', 'glacier*', 'glacial', 'snowpack', 'river', 'rivers',
+  'riverbank*', 'riverbed*', 'basin', 'basins',
+  'rainfall', 'monsoon*', 'cyclone*', 'hurricane*', 'typhoon*', 'irrigation',
+  'scarcity', 'borehole*', 'well water', 'treatment plant*', 'utility',
+  'utilities', 'hydrolog*', 'boil water', 'standpipe*', 'latrine*',
 ]
+
+/** Compiled once. `\b` on the left always; on the right only for whole words. */
+const KEYWORD_RES = KEYWORDS.map((k) => {
+  const stem = k.endsWith('*')
+  const body = (stem ? k.slice(0, -1) : k).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`\\b${body}${stem ? '' : '\\b'}`, 'i')
+})
 
 // --- small helpers ---------------------------------------------------------
 
@@ -174,8 +234,8 @@ function parseFeed(xml) {
 }
 
 const isRelevant = (it) => {
-  const hay = `${it.title} ${it.summary}`.toLowerCase()
-  return KEYWORDS.some((k) => hay.includes(k))
+  const hay = `${it.title} ${it.summary}`
+  return KEYWORD_RES.some((re) => re.test(hay))
 }
 
 const withinWindow = (it, cutoff) => {
@@ -208,16 +268,33 @@ for (const feed of FEEDS) {
   const kept = all.filter((it) => withinWindow(it, cutoff)).filter(isRelevant).slice(0, MAX_ITEMS_PER_FEED)
 
   feedReports.push({ ...feed, status: res.status, item_count: kept.length, parsed_total: all.length, error: null })
-  for (const it of kept) candidates.push({ ...it, feed: feed.slug, feed_name: feed.name })
+  for (const it of kept) candidates.push({ ...it, feed: feed.slug, feed_name: feed.name, feed_kind: feed.kind })
   console.log(`  ${feed.slug}: ${kept.length} relevant of ${all.length} parsed`)
 }
 
-// One entry per URL — the same story often appears in several feeds.
+// One entry per URL — the same story often appears in several feeds. Feeds are
+// declared primary-first, so the first writer of a URL is the most citable one.
 const byUrl = new Map()
 for (const c of candidates) if (!byUrl.has(c.link)) byUrl.set(c.link, c)
-const unique = [...byUrl.values()]
 
-console.log(`\nFetching ${unique.length} unique articles...`)
+// Interleave by feed before applying the global cap, so a prolific general
+// feed cannot push a quiet primary one out of the snapshot entirely.
+const queues = new Map()
+for (const c of byUrl.values()) {
+  if (!queues.has(c.feed)) queues.set(c.feed, [])
+  queues.get(c.feed).push(c)
+}
+const interleaved = []
+for (let round = 0; interleaved.length < byUrl.size; round++) {
+  for (const q of queues.values()) if (q[round]) interleaved.push(q[round])
+}
+const unique = interleaved.slice(0, MAX_ARTICLES_TOTAL)
+const dropped = interleaved.length - unique.length
+
+console.log(
+  `\nFetching ${unique.length} unique articles` +
+    `${dropped > 0 ? ` (${dropped} over the ${MAX_ARTICLES_TOTAL} cap, dropped)` : ''}...`,
+)
 
 const articles = await pooled(unique, async (item) => {
   const res = await fetchText(item.link)
@@ -228,6 +305,7 @@ const articles = await pooled(unique, async (item) => {
     id,
     feed: item.feed,
     feed_name: item.feed_name,
+    feed_kind: item.feed_kind,
     title: item.title,
     url: item.link,
     final_url: res.finalUrl,
@@ -253,6 +331,8 @@ const index = {
   window_days: WINDOW_DAYS,
   cutoff_date: cutoff,
   article_char_limit: ARTICLE_CHARS,
+  max_articles_total: MAX_ARTICLES_TOTAL,
+  dropped_over_cap: dropped,
   feeds: feedReports,
   counts: {
     articles: articles.length,
@@ -264,6 +344,7 @@ const index = {
   items: articles.map((a) => ({
     id: a.id,
     feed: a.feed,
+    feed_kind: a.feed_kind,
     title: a.title,
     url: a.url,
     final_url: a.final_url,
