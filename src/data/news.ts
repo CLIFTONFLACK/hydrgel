@@ -717,6 +717,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-09-nepal-glacier-exceptional-collapse-deadly.html',
   },
+  {
+    id: '2026-09-10-himalayan-glacial-lakes-growing',
+    date: '2026-09-10',
+    title: 'Satellite survey finds Himalayan glacial lakes multiplying and expanding',
+    summary:
+      'A Landsat and Sentinel-2 study of the Alaknanda Basin in the northern Indian Himalayas identified 57 glacial lakes newly formed between 1994 and 2023, bringing the basin total to 131. The combined area of 24 established lakes grew by 67 percent over the same period, with one expanding by 261 percent.',
+    category: 'Research',
+    region: 'India',
+    source: 'Phys.org',
+    url: 'https://phys.org/news/2026-09-himalayan-glacial-lakes-downstream.html',
+  },
 ]
 
 /** Newest first. */
