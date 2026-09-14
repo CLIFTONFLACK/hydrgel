@@ -70,10 +70,14 @@ async function probe(url) {
       bytes: body.length,
       items,
       feed: looksLikeFeed,
+      // A publisher that has retired its RSS often still serves the same
+      // content as JSON. That is worth an adapter, but only if the shape is
+      // visible from here — so show the head of any 200 that is not a feed.
+      preview: !looksLikeFeed && res.status === 200 ? body.slice(0, 400) : '',
       error: null,
     }
   } catch (err) {
-    return { url, status: 0, final_url: url, content_type: '', bytes: 0, items: 0, feed: false, error: String(err?.message || err) }
+    return { url, status: 0, final_url: url, content_type: '', bytes: 0, items: 0, feed: false, preview: '', error: String(err?.message || err) }
   } finally {
     clearTimeout(timer)
   }
@@ -92,6 +96,7 @@ console.log('')
 for (const r of results) {
   console.log(`${verdict(r)}\n  ${r.url}`)
   if (r.final_url !== r.url) console.log(`  -> ${r.final_url}`)
+  if (r.preview) console.log(`  head: ${r.preview.replace(/\s+/g, ' ').slice(0, 320)}`)
 }
 
 const usable = results.filter((r) => r.feed && r.items > 0)
