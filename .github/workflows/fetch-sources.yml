@@ -22,6 +22,16 @@ on:
     # tolerates a stale snapshot and reports its age rather than failing.
     - cron: "30 5 * * 1,3,5"
   workflow_dispatch:
+    inputs:
+      probe_urls:
+        description: >-
+          Whitespace-separated candidate feed URLs to test instead of running
+          the fetch. Use when a feed goes dark: the sandbox the newsroom
+          routine runs in cannot reach any publisher, so candidates have to be
+          tested from here. Results land in the job summary; the snapshot is
+          left untouched.
+        required: false
+        type: string
 
 # Never let two runs force-push the branch at once.
 concurrency:
@@ -41,10 +51,26 @@ jobs:
         with:
           node-version: "20"
 
+      # Probe mode is a maintenance path: test candidate URLs and stop. It must
+      # not publish, or a probe run would overwrite a good snapshot with
+      # nothing.
+      - name: Probe candidate feeds
+        if: inputs.probe_urls != ''
+        # Via env and a file, never interpolated into the command line: a
+        # dispatch input pasted straight into `run:` is a shell injection.
+        env:
+          PROBE_URLS: ${{ inputs.probe_urls }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$PROBE_URLS" > "$RUNNER_TEMP/candidates.txt"
+          node scripts/probe-feeds.mjs --file "$RUNNER_TEMP/candidates.txt"
+
       - name: Fetch feeds and articles
+        if: inputs.probe_urls == ''
         run: node scripts/fetch-sources.mjs .sources-out
 
       - name: Publish snapshot to sources-cache
+        if: inputs.probe_urls == ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -61,6 +87,7 @@ jobs:
             sources-cache
 
       - name: Summary
+        if: inputs.probe_urls == ''
         run: |
           set -euo pipefail
           node -e '
