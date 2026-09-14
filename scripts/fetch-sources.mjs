@@ -69,33 +69,57 @@ const CONCURRENCY = 4
  * stored text is too thin to verify. Treat the feed as a tip sheet: if it
  * surfaces something real, the story will also exist on a feed that fetches.
  */
+/**
+ * Every URL below was probed from the runner (scripts/probe-feeds.mjs) rather
+ * than assumed. Retired outright, after every candidate path was tested:
+ *
+ *   UNICEF press releases     404 on /press-releases/rss.xml, /media/rss.xml,
+ *                             /feeds/rss — no RSS survives.
+ *   EurekAlert earth science  404 on /rss/earth_science.xml, /rss.xml,
+ *                             /feed/earth_science.
+ *   Smart Water Magazine      404 on /rss, /rss.xml, /feed.
+ *   ReliefWeb updates+disasters  202 with an empty body to a named client; the
+ *                             v1 API that replaced it answers 410 Gone.
+ *   US EPA news releases      202 on the documented feed, 404 elsewhere.
+ *   UN-Water                  403.
+ *
+ * Do not re-add these without probing first. Their absence is a measurement,
+ * not an oversight.
+ */
 /** SOURCES_FEEDS overrides the list with the same JSON shape — used by the tests. */
 const FEEDS = process.env.SOURCES_FEEDS ? JSON.parse(process.env.SOURCES_FEEDS) : [
   // --- primary -------------------------------------------------------------
-  { slug: 'who-don', kind: 'primary', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/rss-feeds/disease-outbreak-news-english.xml' },
+  // WHO retired the DON RSS feed but still serves the same items from the
+  // OData endpoint behind the DON page, so this reads that instead. The
+  // adapter only builds the item list; article text and the HTTP status still
+  // come from fetching the canonical who.int page, exactly as for a feed.
+  { slug: 'who-don', kind: 'primary', format: 'who-odata', name: 'WHO Disease Outbreak News', url: 'https://www.who.int/api/news/diseaseoutbreaknews?$select=Title,Summary,UrlName,PublicationDate&$orderby=PublicationDate%20desc&$top=25' },
   { slug: 'who-news', kind: 'primary', name: 'WHO news', url: 'https://www.who.int/rss-feeds/news-english.xml' },
   { slug: 'un-news', kind: 'primary', name: 'UN News', url: 'https://news.un.org/feed/subscribe/en/news/all/rss.xml' },
-  // ReliefWeb asks API and feed clients to name themselves with `appname`
-  // rather than to arrive anonymously; the bare URL answers 202 and no body.
-  { slug: 'reliefweb', kind: 'primary', name: 'ReliefWeb updates', url: 'https://reliefweb.int/updates/rss.xml?appname=hydrgel-newsroom' },
-  { slug: 'reliefweb-disasters', kind: 'primary', name: 'ReliefWeb disasters', url: 'https://reliefweb.int/disasters/rss.xml?appname=hydrgel-newsroom' },
-  { slug: 'unicef', kind: 'primary', name: 'UNICEF press releases', url: 'https://www.unicef.org/rss/press-releases.xml' },
   { slug: 'nature-water', kind: 'primary', name: 'Nature Water', url: 'https://www.nature.com/natwater.rss' },
-  { slug: 'epa-news', kind: 'primary', name: 'US EPA news releases', url: 'https://www.epa.gov/newsreleases/search/rss' },
 
   // --- science and trade ---------------------------------------------------
   { slug: 'phys-environment', kind: 'trade', name: 'Phys.org environment', url: 'https://phys.org/rss-feed/earth-news/environment-news/' },
   { slug: 'sciencedaily-water', kind: 'trade', name: 'ScienceDaily water', url: 'https://www.sciencedaily.com/rss/earth_climate/water.xml' },
-  { slug: 'eurekalert-earth', kind: 'trade', name: 'EurekAlert earth science', url: 'https://www.eurekalert.org/rss.xml' },
+  { slug: 'sciencedaily-drought', kind: 'trade', name: 'ScienceDaily drought', url: 'https://www.sciencedaily.com/rss/earth_climate/drought.xml' },
   { slug: 'circle-of-blue', kind: 'trade', name: 'Circle of Blue', url: 'https://www.circleofblue.org/feed/' },
-  { slug: 'smart-water', kind: 'trade', name: 'Smart Water Magazine', url: 'https://smartwatermagazine.com/rss' },
 
   // --- general news --------------------------------------------------------
   { slug: 'bbc-science-env', kind: 'general', name: 'BBC science and environment', url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
   { slug: 'bbc-world', kind: 'general', name: 'BBC world', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
   { slug: 'guardian-water', kind: 'general', name: 'The Guardian water', url: 'https://www.theguardian.com/environment/water/rss' },
-  { slug: 'yahoo-world', kind: 'general', name: 'Yahoo News world', url: 'https://www.yahoo.com/news/rss/world' },
-  { slug: 'google-news-water', kind: 'general', name: 'Google News water', url: 'https://news.google.com/rss/search?q=%22drinking+water%22+OR+%22water+crisis%22+OR+cholera+OR+desalination+when:14d&hl=en-US&gl=US&ceid=US:en' },
+  { slug: 'yahoo-news', kind: 'general', name: 'Yahoo News', url: 'https://news.yahoo.com/rss/' },
+  { slug: 'aljazeera', kind: 'general', name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml' },
+  { slug: 'npr-environment', kind: 'general', name: 'NPR environment', url: 'https://feeds.npr.org/1025/rss.xml' },
+
+  // --- tips (listed, never fetched) ----------------------------------------
+  // Google News earns its place on headlines alone: it was the only feed to
+  // surface the algae bloom that took most of Israel's desalination capacity
+  // offline. But its links are wrapper URLs that redirect via JavaScript and
+  // resolve to roughly eleven characters of text, so they can never be cited
+  // and are not worth an article fetch. Items land in `tips` for orientation;
+  // the story itself has to be found on a feed that fetches.
+  { slug: 'google-news-water', kind: 'tips', fetch: false, name: 'Google News water', url: 'https://news.google.com/rss/search?q=%22drinking+water%22+OR+%22water+crisis%22+OR+cholera+OR+desalination+when:14d&hl=en-US&gl=US&ceid=US:en' },
 ]
 
 /**
@@ -233,6 +257,44 @@ function parseFeed(xml) {
     .filter((it) => it.link && /^https?:\/\//i.test(it.link))
 }
 
+/**
+ * WHO's Disease Outbreak News, read from the OData endpoint that replaced the
+ * feed. Returns the same item shape as parseFeed, so everything downstream —
+ * relevance, window, dedupe, article fetch — is unchanged.
+ *
+ * `UrlName` is the DON reference (`2026-DON617`) and is the last segment of
+ * the public page, which is the URL the newsroom cites and the one the article
+ * stage fetches for its real HTTP status.
+ */
+const WHO_DON_BASE = 'https://www.who.int/emergencies/disease-outbreak-news/item/'
+
+function parseWhoOdata(body) {
+  let json
+  try {
+    json = JSON.parse(body)
+  } catch {
+    return []
+  }
+  const rows = Array.isArray(json?.value) ? json.value : []
+  return rows
+    .map((r) => {
+      const name = (r.UrlName || '').trim()
+      const raw = r.PublicationDate || null
+      const parsed = raw ? new Date(raw) : null
+      return {
+        title: tidy(r.Title || r.OverrideTitle || ''),
+        link: name ? WHO_DON_BASE + encodeURIComponent(name) : '',
+        published_raw: raw,
+        published: parsed && !Number.isNaN(parsed.valueOf()) ? parsed.toISOString().slice(0, 10) : null,
+        summary: tidy(r.Summary || '').slice(0, 800),
+      }
+    })
+    .filter((it) => it.link && it.title)
+}
+
+const parseSource = (feed, body) =>
+  feed.format === 'who-odata' ? parseWhoOdata(body) : parseFeed(body)
+
 const isRelevant = (it) => {
   const hay = `${it.title} ${it.summary}`
   return KEYWORD_RES.some((re) => re.test(hay))
@@ -255,6 +317,7 @@ fs.mkdirSync(path.join(OUT, 'articles'), { recursive: true })
 
 const feedReports = []
 const candidates = []
+const tips = []
 
 for (const feed of FEEDS) {
   const res = await fetchText(feed.url)
@@ -264,10 +327,17 @@ for (const feed of FEEDS) {
     continue
   }
 
-  const all = parseFeed(res.body)
+  const all = parseSource(feed, res.body)
   const kept = all.filter((it) => withinWindow(it, cutoff)).filter(isRelevant).slice(0, MAX_ITEMS_PER_FEED)
 
   feedReports.push({ ...feed, status: res.status, item_count: kept.length, parsed_total: all.length, error: null })
+
+  if (feed.fetch === false) {
+    for (const it of kept) tips.push({ feed: feed.slug, title: it.title, url: it.link, published: it.published })
+    console.log(`  ${feed.slug}: ${kept.length} tips of ${all.length} parsed (not fetched)`)
+    continue
+  }
+
   for (const it of kept) candidates.push({ ...it, feed: feed.slug, feed_name: feed.name, feed_kind: feed.kind })
   console.log(`  ${feed.slug}: ${kept.length} relevant of ${all.length} parsed`)
 }
@@ -334,6 +404,10 @@ const index = {
   max_articles_total: MAX_ARTICLES_TOTAL,
   dropped_over_cap: dropped,
   feeds: feedReports,
+  // Headlines only, from feeds whose links cannot be fetched. Use them to see
+  // what is happening; never cite one. A story worth publishing has to be
+  // found in `items`, where there is stored text to verify it against.
+  tips,
   counts: {
     articles: articles.length,
     ok: articles.filter((a) => a.http_status === 200).length,
