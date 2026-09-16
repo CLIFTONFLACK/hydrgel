@@ -728,6 +728,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-09-himalayan-glacial-lakes-downstream.html',
   },
+  {
+    id: '2026-09-08-no-constitutional-right-clean-water',
+    date: '2026-09-08',
+    title: 'US appeals court rules the constitution guarantees no right to clean water',
+    summary:
+      'The fifth circuit upheld the dismissal of a 2022 suit brought by Jackson, Mississippi residents over lead and other contaminants in their drinking water, holding that the federal constitution guarantees neither freedom from contaminated water nor accurate information from officials. It pointed residents toward tort claims and the ballot box instead.',
+    category: 'Policy',
+    region: 'United States',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/us-news/2026/sep/08/mississippi-clean-water-case-constitutional-right',
+  },
 ]
 
 /** Newest first. */
