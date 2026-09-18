@@ -739,6 +739,17 @@ export const NEWS: NewsItem[] = [
     source: 'The Guardian',
     url: 'https://www.theguardian.com/us-news/2026/sep/08/mississippi-clean-water-case-constitutional-right',
   },
+  {
+    id: '2026-09-10-puerto-rico-water-protests',
+    date: '2026-09-10',
+    title: 'Protests mount in Puerto Rico as drought and leaking aqueducts cut water service',
+    summary:
+      'Water levels in Puerto Rico\'s key dams fell this summer below the thresholds needed to supply about half a million residents, prompting the governor to declare a state of emergency. In San Juan, where service had already been intermittent for more than a year, a residents\' coalition has drawn thousands to protests demanding reliable supply.',
+    category: 'Crisis',
+    region: 'Puerto Rico',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/us-news/ng-interactive/2026/sep/10/puerto-rico-water-access',
+  },
 ]
 
 /** Newest first. */
