@@ -750,6 +750,17 @@ export const NEWS: NewsItem[] = [
     source: 'The Guardian',
     url: 'https://www.theguardian.com/us-news/ng-interactive/2026/sep/10/puerto-rico-water-access',
   },
+  {
+    id: '2026-09-17-wmo-global-water-resources-2025',
+    date: '2026-09-17',
+    title: 'WMO finds 2025 among the driest years for the world\'s rivers in 35 years',
+    summary:
+      'The World Meteorological Organization\'s State of Global Water Resources report recorded below-normal discharge across 36 percent of the world\'s river basin area in 2025, the seventh straight year in which normal-flow rivers were a clear minority. Nearly two-thirds of monitored groundwater wells sat outside their normal range.',
+    category: 'Climate',
+    region: 'Global',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/09/1168350',
+  },
 ]
 
 /** Newest first. */
