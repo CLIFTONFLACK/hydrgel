@@ -761,6 +761,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168350',
   },
+  {
+    id: '2026-09-18-mps-urge-end-to-thames-water-talks',
+    date: '2026-09-18',
+    title: 'MPs urge ministers to break off Thames Water talks with hedge fund creditors',
+    summary:
+      'A cross-party Commons committee told ministers to walk away from negotiations with the roughly 100 hedge funds and distressed-debt investors effectively running Thames Water, and to consider emergency legislation to stabilise the company. It carries £20bn of debt and supplies 16 million customers. The committee said Ofwat should withdraw from the talks too.',
+    category: 'Policy',
+    region: 'United Kingdom',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/environment/2026/sep/18/mps-urge-ministers-thames-water-talks-hedge-funds-special-administration-regime',
+  },
 ]
 
 /** Newest first. */
