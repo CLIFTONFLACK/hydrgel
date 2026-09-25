@@ -1,0 +1,18 @@
+{
+  "id": "96c0e45ddeee",
+  "feed": "npr-environment",
+  "feed_name": "NPR environment",
+  "feed_kind": "general",
+  "title": "A fisherman was looking for salmon and sea bass in the river. He found a whale",
+  "url": "https://www.npr.org/2026/09/20/nx-s1-5974867/a-fisherman-was-looking-for-salmon-and-sea-bass-in-the-river-he-found-a-whale",
+  "final_url": "https://www.npr.org/2026/09/20/nx-s1-5974867/a-fisherman-was-looking-for-salmon-and-sea-bass-in-the-river-he-found-a-whale",
+  "published": "2026-09-20",
+  "published_raw": "Sun, 20 Sep 2026 08:05:43 -0400",
+  "http_status": 402,
+  "fetch_error": null,
+  "fetched_at": "2026-09-25T10:20:30.739Z",
+  "summary": "A fisherman has the ultimate fishing tale: He spotted an adult humpback whale has in California's largest river. That's a rare sighting in those parts.",
+  "text_chars": 0,
+  "truncated": false,
+  "text": ""
+}

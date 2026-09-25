@@ -1,0 +1,18 @@
+{
+  "id": "e580170f3cdf",
+  "feed": "npr-environment",
+  "feed_name": "NPR environment",
+  "feed_kind": "general",
+  "title": "Category 5 Hurricane Polo is 'one of the strongest storms ever'",
+  "url": "https://www.npr.org/2026/09/23/nx-s1-5978589/hurricane-polo",
+  "final_url": "https://www.npr.org/2026/09/23/nx-s1-5978589/hurricane-polo",
+  "published": "2026-09-23",
+  "published_raw": "Wed, 23 Sep 2026 02:13:35 -0400",
+  "http_status": 402,
+  "fetch_error": null,
+  "fetched_at": "2026-09-25T10:20:30.739Z",
+  "summary": "Hurricane Polo has grown into one of the most powerful Pacific cyclones in decades, and it was expected to skirt Mexico's southwestern coast as a Category 5 storm.",
+  "text_chars": 0,
+  "truncated": false,
+  "text": ""
+}
