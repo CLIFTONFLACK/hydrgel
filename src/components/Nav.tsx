@@ -4,8 +4,14 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 import Container from './Container'
 import LearnMoreModal from './LearnMoreModal'
 
+interface NavItem {
+  to: string
+  label: string
+  hint: string
+}
+
 /** Team and Contact sit under About rather than competing with it top-level. */
-const ABOUT_GROUP = [
+const ABOUT_GROUP: NavItem[] = [
   { to: '/about', label: 'About HYDRGEL', hint: 'Mission, origin and company facts' },
   { to: '/team', label: 'Team', hint: 'Founders and NTU inventors' },
   { to: '/contact', label: 'Contact', hint: 'Deploy, invest or partner' },
@@ -16,50 +22,45 @@ const SOLUTION = { id: 'solution', label: 'Solution' }
 
 /**
  * The new version of the site lives under /new while it is reviewed. Inside
- * it, Home points at /new and the three audience pages replace "Solution",
- * which only exists on the current home page.
+ * it, Home points at /new and a Markets menu holding the three audience pages
+ * replaces "Solution", which only exists on the current home page.
  */
 const NEW_HOME = '/new'
-const FOCUS_LINKS = [
-  { to: '/new/consumer', label: 'Consumer' },
-  { to: '/new/corporate', label: 'Corporate' },
-  { to: '/new/humanitarian', label: 'Humanitarian' },
+const MARKETS_GROUP: NavItem[] = [
+  { to: '/new/consumer', label: 'Consumer', hint: 'Travel, outdoors and home kits' },
+  { to: '/new/corporate', label: 'Corporate', hint: 'Co-branded pouches for brands' },
+  { to: '/new/humanitarian', label: 'Humanitarian', hint: 'Relief, conflict and off-grid teams' },
 ]
 
 const linkBase = 'text-sm transition-colors'
 const linkIdle = 'text-gray-600 hover:text-gray-900'
 const linkActive = 'text-blue-600 font-semibold'
 
-export default function Nav() {
+/**
+ * A desktop dropdown. Disclosure rather than a hover-only menu, so it works by
+ * keyboard and on touch as well as with a pointer.
+ */
+function NavDropdown({ label, items }: { label: string; items: NavItem[] }) {
   const [open, setOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
-  const [learnMore, setLearnMore] = useState(false)
   const { pathname } = useLocation()
-  const navigate = useNavigate()
-  const isNew = pathname === NEW_HOME || pathname.startsWith(`${NEW_HOME}/`)
-  const home = isNew ? NEW_HOME : '/'
+  const ref = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
 
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const aboutTriggerRef = useRef<HTMLButtonElement>(null)
+  const isActive = items.some((i) => i.to === pathname)
 
-  const aboutIsActive = ABOUT_GROUP.some((i) => i.to === pathname)
+  // Any route change closes the dropdown.
+  useEffect(() => setOpen(false), [pathname])
 
-  // Any route change closes both the drawer and the dropdown.
+  // Dismiss on outside pointer or Escape.
   useEffect(() => {
-    setOpen(false)
-    setAboutOpen(false)
-  }, [pathname])
-
-  // Dismiss the dropdown on outside pointer or Escape.
-  useEffect(() => {
-    if (!aboutOpen) return
+    if (!open) return
     const onPointer = (e: PointerEvent) => {
-      if (!aboutRef.current?.contains(e.target as Node)) setAboutOpen(false)
+      if (!ref.current?.contains(e.target as Node)) setOpen(false)
     }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setAboutOpen(false)
-        aboutTriggerRef.current?.focus()
+        setOpen(false)
+        triggerRef.current?.focus()
       }
     }
     document.addEventListener('pointerdown', onPointer)
@@ -68,7 +69,112 @@ export default function Nav() {
       document.removeEventListener('pointerdown', onPointer)
       document.removeEventListener('keydown', onKey)
     }
-  }, [aboutOpen])
+  }, [open])
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      /*
+        Only let the pointer close this if the keyboard is not currently
+        inside it — otherwise an incidental mouse movement yanks the menu away
+        from someone tabbing through it.
+      */
+      onMouseLeave={() => {
+        if (!ref.current?.contains(document.activeElement)) setOpen(false)
+      }}
+      /*
+        Close when keyboard focus leaves the menu. With two dropdowns, tabbing
+        from one trigger to the other fires no pointer event, so without this
+        both stayed open and Escape returned focus to the wrong trigger.
+      */
+      onBlur={(e) => {
+        if (!ref.current?.contains(e.relatedTarget as Node | null)) setOpen(false)
+      }}
+    >
+      <button
+        ref={triggerRef}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={`${linkBase} inline-flex items-center gap-1 ${isActive ? linkActive : linkIdle}`}
+      >
+        {label}
+        <ChevronDown
+          className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-full pt-2 w-64">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-lg py-2 overflow-hidden">
+            {items.map((i) => (
+              <NavLink
+                key={i.to}
+                to={i.to}
+                className={({ isActive: active }) =>
+                  `block px-4 py-2.5 hover:bg-gray-50 transition-colors ${active ? 'bg-blue-50' : ''}`
+                }
+              >
+                <span
+                  className={`block text-sm font-medium ${
+                    pathname === i.to ? 'text-blue-600' : 'text-gray-900'
+                  }`}
+                >
+                  {i.label}
+                </span>
+                {/* gray-600, not gray-500: on the active item's blue-50 tint
+                    gray-500 falls to 4.44:1. */}
+                <span className="block text-xs text-gray-600 mt-0.5">{i.hint}</span>
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/** A mobile-drawer group, expanded inline — a nested collapse would just add a tap. */
+function MobileGroup({ label, items }: { label: string; items: NavItem[] }) {
+  return (
+    <>
+      <p className="pt-3 pb-1 text-xs uppercase tracking-wider text-gray-500 font-semibold">
+        {label}
+      </p>
+      {items.map((i) => (
+        <NavLink
+          key={i.to}
+          to={i.to}
+          className={({ isActive }) =>
+            `py-2.5 pl-3 border-l-2 ${
+              isActive
+                ? 'text-blue-600 font-semibold border-blue-600'
+                : 'text-gray-600 border-gray-200'
+            }`
+          }
+        >
+          {i.label}
+        </NavLink>
+      ))}
+    </>
+  )
+}
+
+export default function Nav() {
+  const [open, setOpen] = useState(false)
+  const [learnMore, setLearnMore] = useState(false)
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const isNew = pathname === NEW_HOME || pathname.startsWith(`${NEW_HOME}/`)
+  const home = isNew ? NEW_HOME : '/'
+
+  // Any route change closes the drawer.
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   const goToSolution = () => {
     setOpen(false)
@@ -113,66 +219,9 @@ export default function Nav() {
                 Home
               </NavLink>
 
-              {/* Disclosure rather than a hover-only menu, so it works by
-                  keyboard and on touch as well as with a pointer. */}
-              <div
-                ref={aboutRef}
-                className="relative"
-                onMouseEnter={() => setAboutOpen(true)}
-                /*
-                  Only let the pointer close this if the keyboard is not
-                  currently inside it — otherwise an incidental mouse movement
-                  yanks the menu away from someone tabbing through it.
-                */
-                onMouseLeave={() => {
-                  if (!aboutRef.current?.contains(document.activeElement)) setAboutOpen(false)
-                }}
-              >
-                <button
-                  ref={aboutTriggerRef}
-                  onClick={() => setAboutOpen((v) => !v)}
-                  aria-expanded={aboutOpen}
-                  aria-haspopup="true"
-                  className={`${linkBase} inline-flex items-center gap-1 ${
-                    aboutIsActive ? linkActive : linkIdle
-                  }`}
-                >
-                  About
-                  <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform ${aboutOpen ? 'rotate-180' : ''}`}
-                    aria-hidden="true"
-                  />
-                </button>
+              {isNew && <NavDropdown label="Markets" items={MARKETS_GROUP} />}
 
-                {aboutOpen && (
-                  <div className="absolute left-0 top-full pt-2 w-64">
-                    <div className="bg-white border border-gray-200 rounded-xl shadow-lg py-2 overflow-hidden">
-                      {ABOUT_GROUP.map((i) => (
-                        <NavLink
-                          key={i.to}
-                          to={i.to}
-                          className={({ isActive }) =>
-                            `block px-4 py-2.5 hover:bg-gray-50 transition-colors ${
-                              isActive ? 'bg-blue-50' : ''
-                            }`
-                          }
-                        >
-                          <span
-                            className={`block text-sm font-medium ${
-                              pathname === i.to ? 'text-blue-600' : 'text-gray-900'
-                            }`}
-                          >
-                            {i.label}
-                          </span>
-                          {/* gray-600, not gray-500: on the active item's
-                              blue-50 tint gray-500 falls to 4.44:1. */}
-                          <span className="block text-xs text-gray-600 mt-0.5">{i.hint}</span>
-                        </NavLink>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+              <NavDropdown label="About" items={ABOUT_GROUP} />
 
               <NavLink
                 to="/news"
@@ -181,17 +230,7 @@ export default function Nav() {
                 News
               </NavLink>
 
-              {isNew ? (
-                FOCUS_LINKS.map((l) => (
-                  <NavLink
-                    key={l.to}
-                    to={l.to}
-                    className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
-                  >
-                    {l.label}
-                  </NavLink>
-                ))
-              ) : (
+              {!isNew && (
                 <button onClick={goToSolution} className={`${linkBase} ${linkIdle}`}>
                   {SOLUTION.label}
                 </button>
@@ -237,26 +276,9 @@ export default function Nav() {
                   Home
                 </NavLink>
 
-                {/* The group is expanded inline on mobile — a nested collapse
-                    here would just add a tap for no benefit. */}
-                <p className="pt-3 pb-1 text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                  About
-                </p>
-                {ABOUT_GROUP.map((i) => (
-                  <NavLink
-                    key={i.to}
-                    to={i.to}
-                    className={({ isActive }) =>
-                      `py-2.5 pl-3 border-l-2 ${
-                        isActive
-                          ? 'text-blue-600 font-semibold border-blue-600'
-                          : 'text-gray-600 border-gray-200'
-                      }`
-                    }
-                  >
-                    {i.label}
-                  </NavLink>
-                ))}
+                {isNew && <MobileGroup label="Markets" items={MARKETS_GROUP} />}
+
+                <MobileGroup label="About" items={ABOUT_GROUP} />
 
                 <NavLink
                   to="/news"
@@ -267,19 +289,7 @@ export default function Nav() {
                   News
                 </NavLink>
 
-                {isNew ? (
-                  FOCUS_LINKS.map((l) => (
-                    <NavLink
-                      key={l.to}
-                      to={l.to}
-                      className={({ isActive }) =>
-                        `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
-                      }
-                    >
-                      {l.label}
-                    </NavLink>
-                  ))
-                ) : (
+                {!isNew && (
                   <button onClick={goToSolution} className="text-left py-2.5 text-gray-600">
                     {SOLUTION.label}
                   </button>
