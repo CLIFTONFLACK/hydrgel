@@ -772,6 +772,17 @@ export const NEWS: NewsItem[] = [
     source: 'The Guardian',
     url: 'https://www.theguardian.com/environment/2026/sep/18/mps-urge-ministers-thames-water-talks-hedge-funds-special-administration-regime',
   },
+  {
+    id: '2026-09-22-who-unicef-schools-drinking-water',
+    date: '2026-09-22',
+    title: 'WHO and UNICEF find 429 million children without drinking water at school',
+    summary:
+      'A WHO and UNICEF review of water, sanitation and hygiene in schools between 2015 and 2025 found basic drinking water coverage rose from 67 to 78 per cent, but 429 million school-age children still had no drinking water service at school in 2025. Reaching universal access by 2030 would need a fourfold acceleration.',
+    category: 'Research',
+    region: 'Global',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/09/1168393',
+  },
 ]
 
 /** Newest first. */
