@@ -3,6 +3,7 @@ import { ArrowRight, Mail } from 'lucide-react'
 import WaveDivider from '../../components/WaveDivider'
 import Section, { SectionHeading } from '../../components/Section'
 import { HowItWorks, Pillars } from '../../components/Focus'
+import RevealHero from '../../components/RevealHero'
 import { FOCUSES } from '../../data/focus'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 
@@ -19,45 +20,8 @@ export default function Home() {
   )
   return (
     <>
-      <main id="main" className="pt-16">
-        <section id="hero" className="bg-white py-20 md:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-            <div className="text-center md:text-left">
-              {/* Caps come from CSS so screen readers and search see normal text. */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight uppercase text-blue-500">
-                One patented pouch.
-                <br />
-                Clean water for all.
-              </h1>
-              <p className="mt-6 text-lg text-gray-600 md:max-w-measure mx-auto md:mx-0 leading-relaxed">
-                Fill it, wait 3 minutes, drink. A cryogel inside the pouch treats the water, with no
-                power, no pump and no cartridge. One platform, built for three very different users.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <a
-                  href="#focus"
-                  className="inline-flex items-center justify-center gap-2 font-display font-medium bg-blue-600 text-white px-7 py-3 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Find your HYDRGEL
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <a
-                  href="#why-hydrgel"
-                  className="inline-flex items-center justify-center font-display font-medium border border-gray-300 text-gray-700 px-7 py-3 rounded-md hover:border-gray-400 hover:text-gray-900 transition-colors"
-                >
-                  Why it is different
-                </a>
-              </div>
-            </div>
-            <img
-              src="/images/focus/pouch.webp"
-              alt="The HYDRGEL personal clean water pouch"
-              width={800}
-              height={800}
-              className="w-full max-w-md mx-auto rounded-2xl"
-            />
-          </div>
-        </section>
+      <main id="main">
+        <RevealHero />
 
         <Section id="focus" tone="sunken">
           <SectionHeading eyebrow="Our focus" title="Who HYDRGEL is for" />
