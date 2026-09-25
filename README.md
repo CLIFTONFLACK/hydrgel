@@ -22,6 +22,12 @@ npm run dev
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Type-check only |
 
+On a Windows checkout with `core.autocrlf=true`, `npm run build` fails at
+`scripts/validate-news.mjs` with "parsed zero news items" — `src/data/news.ts`
+gets checked out with CRLF line endings, and the script's item regex matches on
+a literal `\n` between fields, so it finds nothing. The Linux build on Vercel
+checks the file out with LF and is unaffected.
+
 ## Routes
 
 | Path | Page |
@@ -29,6 +35,15 @@ npm run dev
 | `/` | Home — product, HYDRLAB, use cases |
 | `/news` | Water security newsroom |
 | `/investors` | Investor information |
+| `/new` | New version under review: simplified home with three audience doors (Consumer, Corporate, Humanitarian) |
+| `/new/consumer` | New version — consumer focus page |
+| `/new/corporate` | New version — corporate focus page |
+| `/new/humanitarian` | New version — humanitarian focus page |
+
+The `/new/*` pages are not in `public/sitemap.xml` while under review. The nav
+switches to the new version's links (Home → `/new`, and Consumer/Corporate/
+Humanitarian replacing Solution) only while on a `/new/*` route; the live `/`
+home page is unchanged.
 
 `vercel.json` rewrites all paths to `index.html` so client-side routes survive a
 hard refresh.
@@ -41,6 +56,13 @@ hard refresh.
   Summaries are written for this site; no source text is reproduced.
 - **`src/data/investor.ts`** — investor-page content, drawn from HYDRGEL's own
   company presentation, executive summary and company summary.
+- **`src/data/focus.ts`** — content for the `/new` pages: the three pillars, the
+  three audience doors and the brand-imagery sets. Claims rule: only bacteria
+  removal is evidenced (the October 2020 lab reports behind `EFFICACY` in
+  `investor.ts`); other contaminants are described as "in development" or
+  "subject to testing", never claimed as proven. Brand imagery on the corporate
+  and consumer pages is concept work only — no brand shown is a partner — so
+  every page that uses it carries the `CONCEPT_NOTICE` no-endorsement text.
 
 ### Content rules
 

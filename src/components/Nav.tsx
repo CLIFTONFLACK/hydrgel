@@ -14,6 +14,18 @@ const ABOUT_GROUP = [
 /** The one home-page section still reachable from the nav. */
 const SOLUTION = { id: 'solution', label: 'Solution' }
 
+/**
+ * The new version of the site lives under /new while it is reviewed. Inside
+ * it, Home points at /new and the three audience pages replace "Solution",
+ * which only exists on the current home page.
+ */
+const NEW_HOME = '/new'
+const FOCUS_LINKS = [
+  { to: '/new/consumer', label: 'Consumer' },
+  { to: '/new/corporate', label: 'Corporate' },
+  { to: '/new/humanitarian', label: 'Humanitarian' },
+]
+
 const linkBase = 'text-sm transition-colors'
 const linkIdle = 'text-gray-600 hover:text-gray-900'
 const linkActive = 'text-blue-600 font-semibold'
@@ -24,6 +36,8 @@ export default function Nav() {
   const [learnMore, setLearnMore] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const isNew = pathname === NEW_HOME || pathname.startsWith(`${NEW_HOME}/`)
+  const home = isNew ? NEW_HOME : '/'
 
   const aboutRef = useRef<HTMLDivElement>(null)
   const aboutTriggerRef = useRef<HTMLButtonElement>(null)
@@ -80,7 +94,7 @@ export default function Nav() {
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur border-b border-gray-200 z-50">
         <Container>
           <div className="flex justify-between items-center h-16 gap-4">
-            <Link to="/" className="flex items-center flex-shrink-0" aria-label="HYDRGEL home">
+            <Link to={home} className="flex items-center flex-shrink-0" aria-label="HYDRGEL home">
               <img
                 src="/images/logo.png"
                 alt="HYDRGEL"
@@ -92,7 +106,7 @@ export default function Nav() {
 
             <div className="hidden lg:flex items-center gap-5">
               <NavLink
-                to="/"
+                to={home}
                 end
                 className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
               >
@@ -167,9 +181,21 @@ export default function Nav() {
                 News
               </NavLink>
 
-              <button onClick={goToSolution} className={`${linkBase} ${linkIdle}`}>
-                {SOLUTION.label}
-              </button>
+              {isNew ? (
+                FOCUS_LINKS.map((l) => (
+                  <NavLink
+                    key={l.to}
+                    to={l.to}
+                    className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
+                  >
+                    {l.label}
+                  </NavLink>
+                ))
+              ) : (
+                <button onClick={goToSolution} className={`${linkBase} ${linkIdle}`}>
+                  {SOLUTION.label}
+                </button>
+              )}
 
               <NavLink
                 to="/investors"
@@ -202,7 +228,7 @@ export default function Nav() {
             <Container className="py-3">
               <div className="flex flex-col">
                 <NavLink
-                  to="/"
+                  to={home}
                   end
                   className={({ isActive }) =>
                     `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
@@ -241,9 +267,23 @@ export default function Nav() {
                   News
                 </NavLink>
 
-                <button onClick={goToSolution} className="text-left py-2.5 text-gray-600">
-                  {SOLUTION.label}
-                </button>
+                {isNew ? (
+                  FOCUS_LINKS.map((l) => (
+                    <NavLink
+                      key={l.to}
+                      to={l.to}
+                      className={({ isActive }) =>
+                        `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
+                      }
+                    >
+                      {l.label}
+                    </NavLink>
+                  ))
+                ) : (
+                  <button onClick={goToSolution} className="text-left py-2.5 text-gray-600">
+                    {SOLUTION.label}
+                  </button>
+                )}
 
                 <NavLink
                   to="/investors"

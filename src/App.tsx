@@ -3,6 +3,10 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import NewHome from './pages/new/Home'
+import Consumer from './pages/new/Consumer'
+import Corporate from './pages/new/Corporate'
+import Humanitarian from './pages/new/Humanitarian'
 import News from './pages/News'
 import Investors from './pages/Investors'
 import About from './pages/About'
@@ -50,6 +54,11 @@ export default function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* New version under review: three-audience home and its pages. */}
+        <Route path="/new" element={<NewHome />} />
+        <Route path="/new/consumer" element={<Consumer />} />
+        <Route path="/new/corporate" element={<Corporate />} />
+        <Route path="/new/humanitarian" element={<Humanitarian />} />
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/news" element={<News />} />
