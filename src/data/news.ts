@@ -783,6 +783,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168393',
   },
+  {
+    id: '2026-09-22-lake-powell-record-low',
+    date: '2026-09-22',
+    title: 'Lake Powell falls to its lowest recorded level after a winter snow drought',
+    summary:
+      'Lake Powell, the second-largest reservoir in the United States, fell to the lowest level in its recorded history in late August and early September 2026 after the Upper Colorado Basin received unusually little snow. Lake Mead reached record lows in August. Federal managers had begun emergency measures in April to keep Powell above the elevation its hydropower generation requires.',
+    category: 'Crisis',
+    region: 'United States',
+    source: 'ScienceDaily / NASA Earth Observatory',
+    url: 'https://www.sciencedaily.com/releases/2026/09/260922005701.htm',
+  },
 ]
 
 /** Newest first. */
