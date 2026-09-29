@@ -2,13 +2,12 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check, Info } from 'lucide-react'
 import Section, { SectionHeading } from './Section'
-import ConceptPouch from './ConceptPouch'
 import {
+  BRAND_CONCEPT_NOTICE,
   CONCEPT_NOTICE,
   HOW_IT_WORKS,
   PILLARS,
   PROOF_POINTS,
-  type ConceptCard,
   type ImageCard,
 } from '../data/focus'
 import { EFFICACY, PARTNERS } from '../data/investor'
@@ -276,27 +275,12 @@ export function ImageGrid({ items, cols = 3 }: { items: ImageCard[]; cols?: 3 | 
   )
 }
 
-/** Unbranded partner concepts, drawn in place of renders that carried real brands. */
-export function ConceptGrid({ items }: { items: ConceptCard[] }) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-      {items.map((i) => (
-        <figure key={i.label} className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200">
-          <div className="aspect-[4/5] flex items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100">
-            <ConceptPouch shape={i.shape} face={i.face} shade={i.shade} alt={i.alt} />
-          </div>
-          <figcaption className="px-4 py-3 text-sm font-medium text-gray-700">{i.label}</figcaption>
-        </figure>
-      ))}
-    </div>
-  )
-}
-
-export function ConceptNote() {
+/** `brands` selects the no-endorsement wording, for sections showing another company's brand. */
+export function ConceptNote({ brands = false }: { brands?: boolean }) {
   return (
     <p className="mt-6 flex gap-2 text-xs text-gray-600 max-w-3xl">
       <Info className="h-4 w-4 flex-shrink-0 mt-px" aria-hidden="true" />
-      <span>{CONCEPT_NOTICE}</span>
+      <span>{brands ? BRAND_CONCEPT_NOTICE : CONCEPT_NOTICE}</span>
     </p>
   )
 }

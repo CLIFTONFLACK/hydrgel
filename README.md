@@ -64,15 +64,16 @@ hard refresh.
   `investor.ts`), and only as a proof of concept; other contaminants are
   described as "in development" or "subject to testing", never claimed as
   proven, and the water is never described as meeting WHO or UNHCR standards.
-  The same applies to `/investors`. The site shows no third-party brand: partner
-  concepts are unbranded SVG pouches drawn by `src/components/ConceptPouch.tsx`
-  and laid out by `ConceptGrid` in `src/components/Focus.tsx`. Pages that show
-  pouch concepts carry `CONCEPT_NOTICE`, and imagery of the pouch in the field
-  carries `ILLUSTRATIVE_NOTICE`.
+  The same applies to `/investors`. Brand imagery on the corporate page is
+  concept work only, and no brand shown is a partner. Every section that shows it
+  carries `BRAND_CONCEPT_NOTICE`, the no-endorsement text. Other pouch concept
+  imagery carries `CONCEPT_NOTICE`, and imagery of the pouch in the field carries
+  `ILLUSTRATIVE_NOTICE`. The brand renders are temporary and are due to be
+  recreated without real companies' marks.
 
 ### Content rules
 
-Three constraints are deliberate and should be preserved:
+Two constraints are deliberate and should be preserved:
 
 1. **No personal data.** Nothing from the ACRA business profile's officer or
    shareholder tables — names, residential addresses, NRIC or passport numbers,
@@ -82,9 +83,9 @@ Three constraints are deliberate and should be preserved:
 2. **No public raise terms.** The current round, grant status and use of funds
    stay in the deck, released on request via the form on `/investors`. The page
    carries a non-solicitation notice.
-3. **No third-party brands.** No other company's name, logo, livery or trade
-   dress appears on the site without the owner's written permission. A
-   disclaimer is not a substitute.
+
+No further real brands should be added to the site while the existing renders
+await replacement.
 
 Pilot partners are described by sector and region, because none has approved
 public attribution. A country is left out where it would identify the partner
