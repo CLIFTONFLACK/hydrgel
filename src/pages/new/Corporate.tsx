@@ -1,15 +1,15 @@
 import { Presentation, Leaf, Briefcase, HardHat } from 'lucide-react'
 import Section, { SectionHeading } from '../../components/Section'
 import {
+  ConceptGrid,
   ConceptNote,
   FocusCta,
   FocusHero,
-  ImageGrid,
   Pillars,
   PrimaryLink,
   SecondaryLink,
 } from '../../components/Focus'
-import { AIRLINES, CO_BRANDED, CUSTOM_SHAPES } from '../../data/focus'
+import { CO_BRANDED, CUSTOM_SHAPES, TRAVEL_FORMATS } from '../../data/focus'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 
 const USES = [
@@ -47,8 +47,8 @@ export default function Corporate() {
         eyebrow="Corporate"
         title="Your brand on clean water"
         lede="HYDRGEL pouches can carry your brand across the whole face, or be made in your shape. It is a reusable, patented product that people use every day, not a logo on a bottle they throw away."
-        image="/images/focus/corporate-expo.webp"
-        alt="Concept: branded HYDRGEL pouches handed out at a technology expo stand"
+        image="/images/focus/consumer-lineup.webp"
+        alt="Concept: six HYDRGEL pouches, each printed across the whole face in a different colour"
       >
         <PrimaryLink to="/contact">Discuss a partnership</PrimaryLink>
         <SecondaryLink to="#co-branded">See the concepts</SecondaryLink>
@@ -73,7 +73,7 @@ export default function Corporate() {
           title="The whole pouch in your colours"
           lede="Your identity owns the face of the pack. HYDRGEL sits as a small lockup in the corner."
         />
-        <ImageGrid items={CO_BRANDED} />
+        <ConceptGrid items={CO_BRANDED} />
         <ConceptNote />
       </Section>
 
@@ -83,7 +83,7 @@ export default function Corporate() {
           title="Or make the pouch your shape"
           lede="A flexible pouch does not have to be a rectangle. It can take the outline of a logo or a product."
         />
-        <ImageGrid items={CUSTOM_SHAPES} />
+        <ConceptGrid items={CUSTOM_SHAPES} />
         <ConceptNote />
       </Section>
 
@@ -93,29 +93,28 @@ export default function Corporate() {
           title="In your livery, on board and in store"
           lede="An amenity-kit item, an in-flight shop product or a duty-free line, finished in the airline’s own livery."
         />
-        <ImageGrid items={AIRLINES} />
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <img
-            src="/images/focus/consumer-inflight.webp"
-            alt="Concept: an in-flight shop magazine with a HYDRGEL pouch on the cover"
-            width={800}
-            height={447}
-            loading="lazy"
-            className="w-full rounded-2xl"
-          />
-          <img
-            src="/images/focus/corporate-congress.webp"
-            alt="Concept: co-branded HYDRGEL pouches at a medical congress stand"
+            src="/images/focus/consumer-dutyfree.webp"
+            alt="Concept: HYDRGEL pouches on a travel retail shelf"
             width={1600}
             height={893}
             loading="lazy"
             className="w-full rounded-2xl"
           />
+          <ul className="space-y-6">
+            {TRAVEL_FORMATS.map((f) => (
+              <li key={f.title}>
+                <h3 className="text-lg font-semibold text-gray-900">{f.title}</h3>
+                <p className="mt-1 text-gray-600">{f.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
         <ConceptNote />
       </Section>
 
-      <Pillars title="Why partner with HYDRGEL" />
+      <Pillars compact title="Why partner with HYDRGEL" />
 
       <FocusCta
         title="Put your name on clean water"

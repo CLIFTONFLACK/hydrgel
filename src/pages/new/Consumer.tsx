@@ -23,7 +23,7 @@ const USES = [
   {
     Icon: Mountain,
     title: 'Outdoors',
-    body: 'Hiking, camping and festivals. Clip it to a bag and treat water where you find it.',
+    body: 'Hiking, camping and festivals. Clip it to a bag and refill at the taps along the way.',
   },
   {
     Icon: House,
@@ -43,7 +43,7 @@ export default function Consumer() {
       <FocusHero
         eyebrow="Consumer"
         title="Clean water wherever you travel"
-        lede="One reusable pouch replaces a trail of plastic bottles. Fill it from a tap or stream, wait 3 minutes, and drink. No power, no pump and no cartridge to replace."
+        lede="One reusable pouch replaces a trail of plastic bottles. Fill it from a tap, wait 3 minutes, and drink. No power, no pump and no cartridge to replace."
         image="/images/focus/consumer-hero.webp"
         alt="Travellers in an airport carrying and drinking from HYDRGEL pouches"
       >
@@ -66,7 +66,7 @@ export default function Consumer() {
 
       <HowItWorks />
 
-      <Pillars title="What makes the pouch different" />
+      <Pillars compact title="What makes the pouch different" />
 
       <Section>
         <SectionHeading

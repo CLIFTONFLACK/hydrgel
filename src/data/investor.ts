@@ -20,7 +20,10 @@ export interface EfficacyRow {
   after: string
 }
 
-/** NTU test reports, October 2020. Validated against WHO and UNHCR standards. */
+/**
+ * Laboratory test reports, October 2020. Bacteria only, and a proof of
+ * concept: do not describe these as meeting WHO or UNHCR standards.
+ */
 export const EFFICACY: EfficacyRow[] = [
   { test: 'Total Coliform', before: '100 cfu/100 mL', after: '<1 cfu/100 mL' },
   { test: 'E. coli', before: '6.7 × 10⁵ cfu/mL', after: '<1 cfu/100 mL' },
@@ -74,8 +77,12 @@ export interface Partner {
 }
 
 /**
- * Partners are described by sector and geography only. These organisations
+ * Partners are described by sector and region only. These organisations
  * have expressed intent to pilot; none has approved public attribution.
+ *
+ * The description must not identify the partner by elimination. "National
+ * defence forces" of a named country is one organisation, so defence and
+ * relief are placed by region, not by country.
  */
 export const PARTNERS: Partner[] = [
   {
@@ -85,17 +92,17 @@ export const PARTNERS: Partner[] = [
   },
   {
     sector: 'Defence',
-    geography: 'Singapore',
-    body: 'National defence forces operating across multiple theatres, including special units deployed off-grid for days at a time.',
+    geography: 'Southeast Asia',
+    body: 'A defence organisation whose units deploy off-grid for days at a time.',
   },
   {
     sector: 'Commercial mining',
-    geography: 'Panama / Papua New Guinea',
+    geography: 'Central America / Pacific',
     body: 'Gold mining operations currently dependent on packaged and bottled water because surrounding lakes and rivers are contaminated.',
   },
   {
     sector: 'Humanitarian relief',
-    geography: 'Israel / Global',
+    geography: 'Global',
     body: 'An internationally established first-responder organisation running disaster relief missions worldwide.',
   },
 ]

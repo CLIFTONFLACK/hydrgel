@@ -2,8 +2,16 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check, Info } from 'lucide-react'
 import Section, { SectionHeading } from './Section'
-import { CONCEPT_NOTICE, HOW_IT_WORKS, PILLARS, type ImageCard } from '../data/focus'
-import { EFFICACY } from '../data/investor'
+import ConceptPouch from './ConceptPouch'
+import {
+  CONCEPT_NOTICE,
+  HOW_IT_WORKS,
+  PILLARS,
+  PROOF_POINTS,
+  type ConceptCard,
+  type ImageCard,
+} from '../data/focus'
+import { EFFICACY, PARTNERS } from '../data/investor'
 
 /** Hero shared by the three focus pages: copy on the left, image on the right. */
 export function FocusHero({
@@ -12,6 +20,7 @@ export function FocusHero({
   lede,
   image,
   alt,
+  imageNote,
   children,
 }: {
   eyebrow: string
@@ -19,6 +28,8 @@ export function FocusHero({
   lede: string
   image: string
   alt: string
+  /** Caption under the image, for imagery that could be read as a real deployment. */
+  imageNote?: string
   children?: ReactNode
 }) {
   return (
@@ -32,15 +43,53 @@ export function FocusHero({
           <p className="mt-6 text-lg text-gray-600 max-w-measure leading-relaxed">{lede}</p>
           {children && <div className="mt-8 flex flex-col sm:flex-row gap-3">{children}</div>}
         </div>
-        <img
-          src={image}
-          alt={alt}
-          width={1600}
-          height={893}
-          className="w-full rounded-2xl shadow-lg object-cover aspect-[16/10]"
-        />
+        <figure>
+          <img
+            src={image}
+            alt={alt}
+            width={1600}
+            height={893}
+            className="w-full rounded-2xl shadow-lg object-cover aspect-[16/10]"
+          />
+          {imageNote && <figcaption className="mt-3 text-xs text-gray-600">{imageNote}</figcaption>}
+        </figure>
       </div>
     </section>
+  )
+}
+
+/** The checkable facts, in one row directly under the home hero. */
+export function ProofStrip() {
+  return (
+    <section aria-label="Key facts" className="bg-slate-950 text-white border-t border-white/10">
+      <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
+        {PROOF_POINTS.map((p) => (
+          // Reversed so the value reads first while the term stays first in
+          // the markup; justify-end keeps every value on the top line.
+          <div key={p.label} className="flex flex-col-reverse justify-end">
+            <dt className="mt-1 text-sm text-slate-300 leading-snug">{p.label}</dt>
+            <dd className="font-display text-lg md:text-xl font-bold text-cyan-300 tabular-nums">
+              {p.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}
+
+/** Pilot partners, by sector and geography only. */
+export function PilotGrid() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {PARTNERS.map((p) => (
+        <div key={p.sector} className="bg-white rounded-2xl border border-gray-200 p-6">
+          <p className="text-xs font-semibold uppercase tracking-wider text-green-700">{p.geography}</p>
+          <h3 className="mt-1 text-lg font-semibold text-gray-900">{p.sector}</h3>
+          <p className="mt-2 text-sm text-gray-600 leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -70,16 +119,51 @@ export function SecondaryLink({ to, children }: { to: string; children: ReactNod
   )
 }
 
-/** Uniqueness, patent, purification diversity. */
+/**
+ * Uniqueness, patent, purification diversity.
+ *
+ * The full cards live on the home page only. The market pages use `compact`,
+ * which names the three points and links to the full version, so the same
+ * three paragraphs are not repeated word for word on every page.
+ */
 export function Pillars({
   id = 'why-hydrgel',
   tone = 'sunken',
   title = 'Why HYDRGEL is different',
+  compact = false,
 }: {
   id?: string
   tone?: 'white' | 'sunken'
   title?: string
+  compact?: boolean
 }) {
+  if (compact) {
+    return (
+      <Section id={id} tone={tone} space="tight">
+        <SectionHeading eyebrow="The technology" title={title} />
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PILLARS.map(({ id: key, Icon, eyebrow, title: heading }) => (
+            <li key={key} className="flex items-start gap-4">
+              <span className="h-11 w-11 flex-shrink-0 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                <Icon className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-green-700">{eyebrow}</p>
+                <p className="mt-1 font-semibold text-gray-900">{heading}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/new#why-hydrgel"
+          className="mt-8 inline-flex items-center gap-2 font-display font-medium text-blue-600 hover:text-blue-700 transition-colors"
+        >
+          The technology in full
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </Section>
+    )
+  }
   return (
     <Section id={id} tone={tone}>
       <SectionHeading eyebrow="The technology" title={title} />
@@ -185,6 +269,22 @@ export function ImageGrid({ items, cols = 3 }: { items: ImageCard[]; cols?: 3 | 
             loading="lazy"
             className="w-full aspect-[4/5] object-cover"
           />
+          <figcaption className="px-4 py-3 text-sm font-medium text-gray-700">{i.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )
+}
+
+/** Unbranded partner concepts, drawn in place of renders that carried real brands. */
+export function ConceptGrid({ items }: { items: ConceptCard[] }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+      {items.map((i) => (
+        <figure key={i.label} className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200">
+          <div className="aspect-[4/5] flex items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100">
+            <ConceptPouch shape={i.shape} face={i.face} shade={i.shade} alt={i.alt} />
+          </div>
           <figcaption className="px-4 py-3 text-sm font-medium text-gray-700">{i.label}</figcaption>
         </figure>
       ))}

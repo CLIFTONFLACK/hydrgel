@@ -9,15 +9,24 @@
  * appear only as development targets, "subject to testing". Do not name
  * diseases, and do not describe the water as meeting WHO or UNHCR standards.
  *
- * Brand imagery on the corporate and consumer pages is concept work from the consumer
- * strategy deck. None of those brands is a partner, so every page that shows
- * them carries `CONCEPT_NOTICE`.
+ * NO THIRD-PARTY BRANDS. The site shows no other company's name, logo, livery
+ * or trade dress, on a pouch or in a scene. The earlier concept renders did,
+ * and were removed: a disclaimer does not cure putting someone else's mark on
+ * our product. Partner concepts are drawn unbranded (`ConceptPouch`) until a
+ * partner gives written permission to be shown.
+ *
+ * The pouch is still in development, so product imagery is concept work and
+ * every section that shows it carries `CONCEPT_NOTICE`.
  */
 
 import { Sparkles, ScrollText, FlaskConical, type LucideIcon } from 'lucide-react'
 
 export const CONCEPT_NOTICE =
-  'Concept visuals, created to show how HYDRGEL pouches can carry a partner’s brand. Brands shown are trademarks of their owners. No partnership, sponsorship or endorsement is implied.'
+  'Concept visuals. The pouch is in development, and the designs shown illustrate what is planned rather than a product on sale.'
+
+/** Shown with imagery that depicts the pouch in use in the field. */
+export const ILLUSTRATIVE_NOTICE =
+  'Illustrative image. The pouch is in its pilot phase and has not yet been deployed in the field.'
 
 export interface Pillar {
   id: 'unique' | 'patent' | 'diversity'
@@ -61,7 +70,7 @@ export const PILLARS: Pillar[] = [
 ]
 
 export const HOW_IT_WORKS = [
-  { step: '1', title: 'Fill', body: 'Fill the pouch from a tap, stream or container. A stretch-fit connector fits most taps.' },
+  { step: '1', title: 'Fill', body: 'Fill the pouch from a tap or container. A stretch-fit connector fits most taps.' },
   { step: '2', title: 'Treat', body: 'Wait 3 minutes while the hydrogel sachet treats the water inside the pouch.' },
   { step: '3', title: 'Drink', body: 'Drink straight from the spout. Refill and use the pouch again.' },
 ]
@@ -90,8 +99,8 @@ export const FOCUSES: Focus[] = [
     label: 'Corporate',
     title: 'Your brand on clean water',
     body: 'Co-branded and custom-shaped pouches for events, airlines, field teams and staff travel.',
-    image: '/images/focus/corporate-expo.webp',
-    alt: 'Concept: branded HYDRGEL pouches handed out at a technology expo stand',
+    image: '/images/focus/consumer-lineup.webp',
+    alt: 'Concept: six HYDRGEL pouches, each printed across the whole face in a different colour',
   },
   {
     to: '/new/humanitarian',
@@ -118,20 +127,41 @@ export const REGIONAL_EDITIONS: ImageCard[] = [
   { src: '/images/focus/region-australia.webp', label: 'Australia', alt: 'Concept HYDRGEL pouch in an Australia edition design' },
 ]
 
-export const CO_BRANDED: ImageCard[] = [
-  { src: '/images/focus/pack-intel.webp', label: 'Technology', alt: 'Concept co-branded pouch in Intel colours' },
-  { src: '/images/focus/pack-gsk.webp', label: 'Pharma and travel health', alt: 'Concept co-branded pouch in GSK colours' },
-  { src: '/images/focus/pack-nescafe.webp', label: 'Food and beverage', alt: 'Concept co-branded pouch in Nescafé colours' },
+export type PouchShape = 'pouch' | 'round' | 'shield' | 'hexagon'
+
+export interface ConceptCard {
+  label: string
+  shape: PouchShape
+  /** Face colour, and the darker shade used for the band and the shading. */
+  face: string
+  shade: string
+  alt: string
+}
+
+/** Unbranded colourways. The partner's identity is a placeholder, never a real mark. */
+export const CO_BRANDED: ConceptCard[] = [
+  { label: 'Technology', shape: 'pouch', face: '#1d4ed8', shade: '#1e3a8a', alt: 'Concept pouch printed across the whole face in deep blue, with a placeholder where a partner logo would sit' },
+  { label: 'Pharma and travel health', shape: 'pouch', face: '#0f766e', shade: '#134e4a', alt: 'Concept pouch printed across the whole face in teal, with a placeholder where a partner logo would sit' },
+  { label: 'Food and beverage', shape: 'pouch', face: '#b45309', shade: '#78350f', alt: 'Concept pouch printed across the whole face in amber, with a placeholder where a partner logo would sit' },
 ]
 
-export const CUSTOM_SHAPES: ImageCard[] = [
-  { src: '/images/focus/shape-nike.webp', label: 'Sportswear', alt: 'Concept pouch shaped as a sportswear logo' },
-  { src: '/images/focus/shape-mercedes.webp', label: 'Automotive', alt: 'Concept pouch shaped as an automotive badge' },
-  { src: '/images/focus/shape-dominos.webp', label: 'Quick-service food', alt: 'Concept pouch shaped as a food brand tile' },
+export const CUSTOM_SHAPES: ConceptCard[] = [
+  { label: 'Round', shape: 'round', face: '#334155', shade: '#0f172a', alt: 'Concept pouch cut to a round outline' },
+  { label: 'Shield', shape: 'shield', face: '#be123c', shade: '#881337', alt: 'Concept pouch cut to a shield outline' },
+  { label: 'Hexagon', shape: 'hexagon', face: '#6d28d9', shade: '#4c1d95', alt: 'Concept pouch cut to a hexagon outline' },
 ]
 
-export const AIRLINES: ImageCard[] = [
-  { src: '/images/focus/pack-ba.webp', label: 'Full-service carrier', alt: 'Concept airline-livery pouch in British Airways colours' },
-  { src: '/images/focus/pack-etihad.webp', label: 'Gulf carrier', alt: 'Concept airline-livery pouch in Etihad colours' },
-  { src: '/images/focus/pack-easyjet.webp', label: 'Low-cost carrier', alt: 'Concept airline-livery pouch in easyJet colours' },
+export const TRAVEL_FORMATS = [
+  { title: 'Amenity kit', body: 'A pouch in the carrier’s colours, handed out on board in place of a plastic bottle.' },
+  { title: 'In-flight shop', body: 'A product passengers buy on board and keep using at the other end of the journey.' },
+  { title: 'Duty-free line', body: 'A travel-retail range on the shelf in departures, with an edition for each destination.' },
+]
+
+/** What an investor can check, in one row under the home hero. */
+export const PROOF_POINTS = [
+  { value: 'US 10,939,677 B2', label: 'Patent granted, March 2021' },
+  { value: 'Exclusive', label: 'Worldwide licence, signed November 2024' },
+  { value: '<1 cfu', label: 'Bacteria after treatment, in lab tests' },
+  { value: '4 sectors', label: 'Pilot partners with intent expressed' },
+  { value: '$0.20 / litre', label: 'Modelled cost, against $1.50 bottled' },
 ]

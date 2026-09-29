@@ -1,7 +1,7 @@
 const STEPS = [
-  { n: '1', title: 'Pour', body: '330 ml of contaminated water — about the size of a soft drink can.' },
-  { n: '2', title: 'Wait', body: 'Three minutes. The silver-based cryogel absorbs and purifies.' },
-  { n: '3', title: 'Drink', body: 'Safe, clean, tasteless water. Reusable up to 100 times.' },
+  { n: '1', title: 'Pour', body: '330 ml of water — about the size of a soft drink can.' },
+  { n: '2', title: 'Wait', body: 'Three minutes, while the silver-based cryogel treats the water.' },
+  { n: '3', title: 'Drink', body: 'Drink straight from the pouch, then refill it. The pouch is designed for repeated use.' },
 ]
 
 export default function ProcessDiagram() {

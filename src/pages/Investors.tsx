@@ -10,7 +10,6 @@ import {
   Mail,
   ArrowRight,
 } from 'lucide-react'
-import WaveDivider from '../components/WaveDivider'
 import { SectionHeading } from '../components/Section'
 import CostChart from '../components/CostChart'
 import ProcessDiagram from '../components/ProcessDiagram'
@@ -130,10 +129,10 @@ export default function Investors() {
                 </p>
                 <ul className="space-y-3 text-gray-700">
                   {[
-                    '330 ml purified in approximately 3 minutes',
-                    'Reusable up to 100 times — around 50 litres per person',
+                    '330 ml treated in approximately 3 minutes',
+                    'Designed for repeated use; the reuse figure is being validated in the pilot',
                     'No power, no replacement filters, no maintenance',
-                    'Formulation adapts to local contamination profiles',
+                    'Formulation can be tuned to local water, subject to testing',
                   ].map((point) => (
                     <li key={point} className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-blue-500 flex-shrink-0 mt-0.5" />
@@ -150,7 +149,11 @@ export default function Investors() {
         {/* ------------------------------------------------------- proof */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading eyebrow="Proof" title="Validated against WHO and UNHCR standards" />
+            <SectionHeading
+              eyebrow="Proof"
+              title="Laboratory proof of concept: bacteria"
+              lede="Bacteria is what has been tested so far. Other contaminants are development targets, subject to testing."
+            />
             <div className="overflow-x-auto">
               <table className="w-full min-w-[32rem] bg-white rounded-2xl overflow-hidden shadow-sm">
                 <thead>
@@ -172,7 +175,8 @@ export default function Investors() {
               </table>
             </div>
             <p className="mt-4 text-sm text-gray-500">
-              Source: NTU test reports, October 2020. Successful proof of concept.
+              Source: laboratory test reports, October 2020. Proof of concept, not a certification
+              against any drinking-water standard.
             </p>
           </div>
         </section>
@@ -246,7 +250,7 @@ export default function Investors() {
               The pilot delivers three outcomes that de-risk commercial launch: final design and
               ergonomic prototypes, field validation data from pilot partners, and conversion of
               those partners into paying customers. Partners below have expressed intent to
-              participate and are described by sector and geography.
+              participate and are described by sector and region.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {PARTNERS.map((p) => (
@@ -368,8 +372,6 @@ export default function Investors() {
           </div>
         </section>
       </main>
-
-      <WaveDivider />
     </>
   )
 }

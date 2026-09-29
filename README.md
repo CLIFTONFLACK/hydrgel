@@ -35,7 +35,7 @@ checks the file out with LF and is unaffected.
 | `/` | Home — product, HYDRLAB, use cases |
 | `/news` | Water security newsroom |
 | `/investors` | Investor information |
-| `/new` | New version under review: simplified home with three audience doors (Consumer, Corporate, Humanitarian) |
+| `/new` | New version under review: home with three audience doors (Consumer, Corporate, Humanitarian), a proof strip, the lab evidence table, the pilot programme and an investor section |
 | `/new/consumer` | New version — consumer focus page |
 | `/new/corporate` | New version — corporate focus page |
 | `/new/humanitarian` | New version — humanitarian focus page |
@@ -43,7 +43,9 @@ checks the file out with LF and is unaffected.
 The `/new/*` pages are not in `public/sitemap.xml` while under review. The nav
 switches to the new version's links (Home → `/new`, and Consumer/Corporate/
 Humanitarian replacing Solution) only while on a `/new/*` route; the live `/`
-home page is unchanged.
+home page is unchanged. On those routes the nav button reads "Investor brief"
+and links to `/investors`, replacing "Learn more" and the separate Investors
+link, and the footer Home link stays inside `/new`.
 
 `vercel.json` rewrites all paths to `index.html` so client-side routes survive a
 hard refresh.
@@ -57,16 +59,20 @@ hard refresh.
 - **`src/data/investor.ts`** — investor-page content, drawn from HYDRGEL's own
   company presentation, executive summary and company summary.
 - **`src/data/focus.ts`** — content for the `/new` pages: the three pillars, the
-  three audience doors and the brand-imagery sets. Claims rule: only bacteria
+  three audience doors and the concept imagery sets. Claims rule: only bacteria
   removal is evidenced (the October 2020 lab reports behind `EFFICACY` in
-  `investor.ts`); other contaminants are described as "in development" or
-  "subject to testing", never claimed as proven. Brand imagery on the corporate
-  and consumer pages is concept work only — no brand shown is a partner — so
-  every page that uses it carries the `CONCEPT_NOTICE` no-endorsement text.
+  `investor.ts`), and only as a proof of concept; other contaminants are
+  described as "in development" or "subject to testing", never claimed as
+  proven, and the water is never described as meeting WHO or UNHCR standards.
+  The same applies to `/investors`. The site shows no third-party brand: partner
+  concepts are unbranded SVG pouches drawn by `src/components/ConceptPouch.tsx`
+  and laid out by `ConceptGrid` in `src/components/Focus.tsx`. Pages that show
+  pouch concepts carry `CONCEPT_NOTICE`, and imagery of the pouch in the field
+  carries `ILLUSTRATIVE_NOTICE`.
 
 ### Content rules
 
-Two constraints are deliberate and should be preserved:
+Three constraints are deliberate and should be preserved:
 
 1. **No personal data.** Nothing from the ACRA business profile's officer or
    shareholder tables — names, residential addresses, NRIC or passport numbers,
@@ -76,9 +82,13 @@ Two constraints are deliberate and should be preserved:
 2. **No public raise terms.** The current round, grant status and use of funds
    stay in the deck, released on request via the form on `/investors`. The page
    carries a non-solicitation notice.
+3. **No third-party brands.** No other company's name, logo, livery or trade
+   dress appears on the site without the owner's written permission. A
+   disclaimer is not a substitute.
 
-Pilot partners are described by sector and geography only, because none has
-approved public attribution.
+Pilot partners are described by sector and region, because none has approved
+public attribution. A country is left out where it would identify the partner
+(see the comment above `PARTNERS` in `src/data/investor.ts`).
 
 ## Newsroom automation
 

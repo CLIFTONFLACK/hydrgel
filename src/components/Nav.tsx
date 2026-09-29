@@ -236,19 +236,35 @@ export default function Nav() {
                 </button>
               )}
 
-              <NavLink
-                to="/investors"
-                className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
-              >
-                Investors
-              </NavLink>
+              {/*
+                In the new version the button is the investor brief, so the
+                plain Investors link beside it would be the same destination
+                twice.
+              */}
+              {isNew ? (
+                <Link
+                  to="/investors"
+                  className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Investor brief
+                </Link>
+              ) : (
+                <>
+                  <NavLink
+                    to="/investors"
+                    className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
+                  >
+                    Investors
+                  </NavLink>
 
-              <button
-                onClick={() => setLearnMore(true)}
-                className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-              >
-                Learn more
-              </button>
+                  <button
+                    onClick={() => setLearnMore(true)}
+                    className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Learn more
+                  </button>
+                </>
+              )}
             </div>
 
             <button
@@ -295,24 +311,35 @@ export default function Nav() {
                   </button>
                 )}
 
-                <NavLink
-                  to="/investors"
-                  className={({ isActive }) =>
-                    `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
-                  }
-                >
-                  Investors
-                </NavLink>
+                {isNew ? (
+                  <Link
+                    to="/investors"
+                    className="mt-3 text-center font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Investor brief
+                  </Link>
+                ) : (
+                  <>
+                    <NavLink
+                      to="/investors"
+                      className={({ isActive }) =>
+                        `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
+                      }
+                    >
+                      Investors
+                    </NavLink>
 
-                <button
-                  onClick={() => {
-                    setOpen(false)
-                    setLearnMore(true)
-                  }}
-                  className="mt-3 font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Learn more
-                </button>
+                    <button
+                      onClick={() => {
+                        setOpen(false)
+                        setLearnMore(true)
+                      }}
+                      className="mt-3 font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                    >
+                      Learn more
+                    </button>
+                  </>
+                )}
               </div>
             </Container>
           </div>

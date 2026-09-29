@@ -7,10 +7,11 @@ import {
   FocusHero,
   HowItWorks,
   Pillars,
+  PilotGrid,
   PrimaryLink,
   SecondaryLink,
 } from '../../components/Focus'
-import { PARTNERS } from '../../data/investor'
+import { ILLUSTRATIVE_NOTICE } from '../../data/focus'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 
 /*
@@ -18,7 +19,8 @@ import { useDocumentMeta } from '../../hooks/useDocumentMeta'
   when it was simplified to three audience doors.
 */
 const STATS = [
-  { value: '2.8bn', label: 'without access to clean water' },
+  // Same figure as /investors. The two pages used to disagree (2.8bn here).
+  { value: '2bn+', label: 'without reliable access to safe drinking water' },
   { value: '480k', label: 'deaths a year from unsafe water' },
   { value: '-7%', label: 'of GDP lost to poor water supply' },
   { value: '7×', label: 'cheaper per litre than bottled water' },
@@ -52,7 +54,8 @@ export default function Humanitarian() {
         title="Drinkable water at the point of need"
         lede="Clean drinking water is a right, not a luxury. HYDRGEL pouches treat local water where people are, instead of shipping bottled water to them."
         image="/images/boy.jpg"
-        alt="Child holding a HYDRGEL water pouch"
+        alt="Illustration of a child holding a HYDRGEL water pouch"
+        imageNote={ILLUSTRATIVE_NOTICE}
       >
         <PrimaryLink to="/contact">Enquire about deployment</PrimaryLink>
         <SecondaryLink to="#hydrlab">About HYDRLAB</SecondaryLink>
@@ -116,23 +119,15 @@ export default function Humanitarian() {
 
       <HowItWorks />
 
-      <Pillars />
+      <Pillars compact />
 
       <Section>
         <SectionHeading
           eyebrow="Pilot programme"
           title="Who we are piloting with"
-          lede="These organisations have expressed intent to pilot. They are described by sector and geography because none has yet approved public attribution."
+          lede="These organisations have expressed intent to pilot. They are described by sector and region because none has yet approved public attribution."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PARTNERS.map((p) => (
-            <div key={p.sector} className="rounded-2xl border border-gray-200 p-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-green-700">{p.geography}</p>
-              <h3 className="mt-1 text-lg font-semibold text-gray-900">{p.sector}</h3>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{p.body}</p>
-            </div>
-          ))}
-        </div>
+        <PilotGrid />
         <div className="mt-12">
           <EfficacyTable />
         </div>
