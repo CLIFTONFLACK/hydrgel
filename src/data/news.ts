@@ -794,6 +794,17 @@ export const NEWS: NewsItem[] = [
     source: 'ScienceDaily / NASA Earth Observatory',
     url: 'https://www.sciencedaily.com/releases/2026/09/260922005701.htm',
   },
+  {
+    id: '2026-09-26-bangkok-declares-flood-disaster',
+    date: '2026-09-26',
+    title: 'Bangkok declares a flood disaster across all 50 districts as its canals fill',
+    summary:
+      'Bangkok declared a flood disaster across all 50 of its districts on 26 September after almost 48 hours of rain left canals full and roads submerged. Around 980 people moved into temporary shelters and 36 bedridden residents were taken to hospital. The city\'s pumping stations were already running at full capacity.',
+    category: 'Crisis',
+    region: 'Thailand',
+    source: 'Phys.org',
+    url: 'https://phys.org/news/2026-09-canals-full-roads-submerged-bangkok.html',
+  },
 ]
 
 /** Newest first. */
