@@ -805,6 +805,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-09-canals-full-roads-submerged-bangkok.html',
   },
+  {
+    id: '2026-09-29-yemen-escalation-cholera-risk',
+    date: '2026-09-29',
+    title: 'Yemen escalation raises cholera risk as WHO supply lines run dry',
+    summary:
+      'Renewed fighting in southwest Yemen has uprooted more than 180,000 people, and WHO warns that unsafe water and poor sanitation at crowded displacement sites are raising the risk of a wider cholera outbreak. Several lifesaving supply lines at the agency\'s warehouse in Aden are already at zero stock.',
+    category: 'Humanitarian',
+    region: 'Yemen',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/09/1168480',
+  },
 ]
 
 /** Newest first. */
