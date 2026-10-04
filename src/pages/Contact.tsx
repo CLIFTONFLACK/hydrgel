@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowRight, Facebook, Linkedin, Youtube } from 'lucide-react'
+import XIcon from '../components/XIcon'
 import Section, { SectionHeading } from '../components/Section'
 import BeliefBanner from '../components/BeliefBanner'
 import ContactFormModal from '../components/ContactFormModal'
@@ -8,7 +9,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SOCIALS = [
   { href: 'https://www.linkedin.com/company/hydrgel', label: 'LinkedIn', Icon: Linkedin },
-  { href: 'https://x.com/hydrgel', label: 'X', Icon: Twitter },
+  { href: 'https://x.com/hydrgel', label: 'X', Icon: XIcon },
   { href: 'https://youtube.com/@HYDRGEL', label: 'YouTube', Icon: Youtube },
   { href: 'https://www.facebook.com/profile.php?id=61561245953864', label: 'Facebook', Icon: Facebook },
 ]

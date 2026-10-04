@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { Facebook, Twitter, Linkedin, Youtube, Phone, Mail, MapPin } from 'lucide-react'
+import { Facebook, Linkedin, Youtube, Phone, Mail, MapPin } from 'lucide-react'
+import XIcon from './XIcon'
 
 const SOCIALS = [
   { href: 'https://www.facebook.com/profile.php?id=61561245953864', label: 'Facebook', Icon: Facebook, hover: 'hover:text-blue-600' },
-  { href: 'https://x.com/hydrgel', label: 'X', Icon: Twitter, hover: 'hover:text-gray-900' },
+  { href: 'https://x.com/hydrgel', label: 'X', Icon: XIcon, hover: 'hover:text-gray-900' },
   { href: 'https://www.linkedin.com/company/hydrgel', label: 'LinkedIn', Icon: Linkedin, hover: 'hover:text-blue-700' },
   { href: 'https://youtube.com/@HYDRGEL', label: 'YouTube', Icon: Youtube, hover: 'hover:text-red-600' },
 ]
