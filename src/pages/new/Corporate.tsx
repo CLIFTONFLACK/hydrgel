@@ -35,6 +35,13 @@ const USES = [
   },
 ]
 
+// Each fact restates the hero lede; none is a new claim.
+const HERO_FACTS = [
+  { value: 'Whole face', label: 'Your brand across the full pouch' },
+  { value: 'Your shape', label: 'Custom-shaped pouches' },
+  { value: 'Reusable', label: 'Used every day, not thrown away' },
+]
+
 export default function Corporate() {
   useDocumentMeta(
     'Corporate | Co-branded HYDRGEL water pouches',
@@ -50,9 +57,16 @@ export default function Corporate() {
         image="/images/focus/corporate-expo.webp"
         alt="Concept: pouches printed with a placeholder brand handed out at a technology expo stand"
         imageNote={CONCEPT_NOTICE}
+        tone="dark"
+        accent="brand"
+        facts={HERO_FACTS}
       >
-        <PrimaryLink to="/contact">Discuss a partnership</PrimaryLink>
-        <SecondaryLink to="#co-branded">See the concepts</SecondaryLink>
+        <PrimaryLink to="/contact" onDark>
+          Discuss a partnership
+        </PrimaryLink>
+        <SecondaryLink to="#co-branded" onDark>
+          See the concepts
+        </SecondaryLink>
       </FocusHero>
 
       <Section tone="sunken">

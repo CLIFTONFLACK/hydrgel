@@ -28,6 +28,8 @@ type FocusHeroProps = {
   accent?: string
   /** Dark only: short checkable facts along the bottom edge. */
   facts?: HeroFact[]
+  /** Dark only: how far down the photo to centre the crop, in percent. 0 keeps the top edge. Default 50 on phones, 40 from lg. */
+  focalY?: number
   children?: ReactNode
 }
 
@@ -75,9 +77,12 @@ function DarkFocusHero({
   imageNote,
   accent,
   facts,
+  focalY,
   children,
 }: FocusHeroProps) {
   const at = accent ? title.indexOf(accent) : -1
+  // A custom property, because the crop's x position differs by breakpoint and its y position does not.
+  const focal = focalY === undefined ? undefined : ({ '--fy': `${focalY}%` } as CSSProperties)
   return (
     <section className="relative isolate overflow-hidden bg-slate-950 text-white lg:flex lg:flex-col lg:min-h-[min(78vh,760px)]">
       <div className="relative mt-16 aspect-video lg:mt-0 lg:aspect-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-[64%] lg:-z-10">
@@ -86,7 +91,8 @@ function DarkFocusHero({
           alt={alt}
           width={1600}
           height={893}
-          className="h-full w-full object-cover lg:object-[100%_40%]"
+          style={focal}
+          className="h-full w-full object-cover [object-position:50%_var(--fy,50%)] lg:[object-position:100%_var(--fy,40%)]"
         />
         {/* -left-px: the photo's left edge lands on a fractional pixel and shows as a seam otherwise. */}
         <div

@@ -78,9 +78,16 @@ export default function Humanitarian() {
         image="/images/boy.jpg"
         alt="Illustration of a child holding a HYDRGEL water pouch"
         imageNote={ILLUSTRATIVE_NOTICE}
+        tone="dark"
+        accent="point of need"
+        focalY={12}
       >
-        <PrimaryLink to="/contact">Enquire about deployment</PrimaryLink>
-        <SecondaryLink to="#hydrlab">About HYDRLAB</SecondaryLink>
+        <PrimaryLink to="/contact" onDark>
+          Enquire about deployment
+        </PrimaryLink>
+        <SecondaryLink to="#hydrlab" onDark>
+          About HYDRLAB
+        </SecondaryLink>
       </FocusHero>
 
       <Section tone="sunken" space="tight">
