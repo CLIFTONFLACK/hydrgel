@@ -106,6 +106,10 @@ export default function Footer() {
             <p className="text-sm text-gray-500">
               Built and Operated by HYDRGEL Water Solutions
             </p>
+            <p className="text-sm text-gray-500">
+              {/* Plain anchor, not <Link>: the notice is a static file, not a router route. */}
+              <a href="/cookies.html" className="underline underline-offset-2 hover:text-gray-900">Cookies and analytics</a>
+            </p>
           </div>
         </div>
       </div>
