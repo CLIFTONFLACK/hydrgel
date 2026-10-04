@@ -9,7 +9,7 @@ import {
   PrimaryLink,
   SecondaryLink,
 } from '../../components/Focus'
-import { AIRLINES, BRAND_CONCEPT_NOTICE, CO_BRANDED, CUSTOM_SHAPES } from '../../data/focus'
+import { AIRLINES, CONCEPT_NOTICE, CO_BRANDED, CUSTOM_SHAPES } from '../../data/focus'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 
 const USES = [
@@ -48,8 +48,8 @@ export default function Corporate() {
         title="Your brand on clean water"
         lede="HYDRGEL pouches can carry your brand across the whole face, or be made in your shape. It is a reusable, patented product that people use every day, not a logo on a bottle they throw away."
         image="/images/focus/corporate-expo.webp"
-        alt="Concept: branded HYDRGEL pouches handed out at a technology expo stand"
-        imageNote={BRAND_CONCEPT_NOTICE}
+        alt="Concept: pouches printed with a placeholder brand handed out at a technology expo stand"
+        imageNote={CONCEPT_NOTICE}
       >
         <PrimaryLink to="/contact">Discuss a partnership</PrimaryLink>
         <SecondaryLink to="#co-branded">See the concepts</SecondaryLink>
@@ -75,7 +75,7 @@ export default function Corporate() {
           lede="Your identity owns the face of the pack. HYDRGEL sits as a small lockup in the corner."
         />
         <ImageGrid items={CO_BRANDED} />
-        <ConceptNote brands />
+        <ConceptNote />
       </Section>
 
       <Section tone="sunken">
@@ -85,7 +85,7 @@ export default function Corporate() {
           lede="A flexible pouch does not have to be a rectangle. It can take the outline of a logo or a product."
         />
         <ImageGrid items={CUSTOM_SHAPES} />
-        <ConceptNote brands />
+        <ConceptNote />
       </Section>
 
       <Section>
@@ -98,22 +98,22 @@ export default function Corporate() {
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           <img
             src="/images/focus/consumer-inflight.webp"
-            alt="Concept: an in-flight shop magazine with a HYDRGEL pouch on the cover"
-            width={800}
-            height={447}
+            alt="Concept: an in-flight shop magazine with a placeholder airline pouch on the cover"
+            width={1376}
+            height={768}
             loading="lazy"
             className="w-full rounded-2xl"
           />
           <img
             src="/images/focus/corporate-congress.webp"
-            alt="Concept: co-branded HYDRGEL pouches at a medical congress stand"
-            width={1600}
-            height={893}
+            alt="Concept: pouches printed with a placeholder brand at a medical congress stand"
+            width={1376}
+            height={768}
             loading="lazy"
             className="w-full rounded-2xl"
           />
         </div>
-        <ConceptNote brands />
+        <ConceptNote />
       </Section>
 
       <Pillars compact title="Why partner with HYDRGEL" />

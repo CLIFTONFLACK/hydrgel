@@ -9,27 +9,20 @@
  * appear only as development targets, "subject to testing". Do not name
  * diseases, and do not describe the water as meeting WHO or UNHCR standards.
  *
- * Brand imagery on the corporate page, and on the corporate door of the home
- * page, is concept work from the consumer strategy deck. None of those brands
- * is a partner, so every section that shows them carries
- * `BRAND_CONCEPT_NOTICE`, the corporate hero included.
+ * NO THIRD-PARTY BRANDS. Partner imagery on the corporate page shows a
+ * "YOUR BRAND" or "YOUR AIRLINE" placeholder, never a real company's name,
+ * logo, livery or trade dress. The first set of renders did carry real brands
+ * and was replaced on 2026-10-04. Do not add a real brand without the owner's
+ * written permission; a disclaimer is not a substitute.
  *
- * TEMPORARY: those renders are due to be recreated without real companies'
- * marks. Until then they stay, by Clifton's decision (2026-09-29). Do not add
- * further real brands in the meantime.
- *
- * The pouch is still in development, so the other product imagery is concept
- * work too and carries `CONCEPT_NOTICE`.
+ * The pouch is still in development, so all product imagery is concept work
+ * and carries `CONCEPT_NOTICE`.
  */
 
 import { Sparkles, ScrollText, FlaskConical, type LucideIcon } from 'lucide-react'
 
 export const CONCEPT_NOTICE =
   'Concept visuals. The pouch is in development, and the designs shown illustrate what is planned rather than a product on sale.'
-
-/** For sections that show another company's brand. */
-export const BRAND_CONCEPT_NOTICE =
-  'Concept visuals, created to show how HYDRGEL pouches can carry a partner’s brand. Brands shown are trademarks of their owners. No partnership, sponsorship or endorsement is implied.'
 
 /** Shown with imagery that depicts the pouch in use in the field. */
 export const ILLUSTRATIVE_NOTICE =
@@ -107,7 +100,7 @@ export const FOCUSES: Focus[] = [
     title: 'Your brand on clean water',
     body: 'Co-branded and custom-shaped pouches for events, airlines, field teams and staff travel.',
     image: '/images/focus/corporate-expo.webp',
-    alt: 'Concept: branded HYDRGEL pouches handed out at a technology expo stand',
+    alt: 'Concept: pouches printed with a placeholder brand handed out at a technology expo stand',
   },
   {
     to: '/humanitarian',
@@ -135,21 +128,21 @@ export const REGIONAL_EDITIONS: ImageCard[] = [
 ]
 
 export const CO_BRANDED: ImageCard[] = [
-  { src: '/images/focus/pack-intel.webp', label: 'Technology', alt: 'Concept co-branded pouch in Intel colours' },
-  { src: '/images/focus/pack-gsk.webp', label: 'Pharma and travel health', alt: 'Concept co-branded pouch in GSK colours' },
-  { src: '/images/focus/pack-nescafe.webp', label: 'Food and beverage', alt: 'Concept co-branded pouch in Nescafé colours' },
+  { src: '/images/focus/pack-technology.webp', label: 'Technology', alt: 'Concept blue pouch printed with the placeholder "Your brand"' },
+  { src: '/images/focus/pack-pharma.webp', label: 'Pharma and travel health', alt: 'Concept orange pouch printed with the placeholder "Your brand"' },
+  { src: '/images/focus/pack-food.webp', label: 'Food and beverage', alt: 'Concept red pouch with a coffee-bean pattern, printed with the placeholder "Your brand"' },
 ]
 
 export const CUSTOM_SHAPES: ImageCard[] = [
-  { src: '/images/focus/shape-nike.webp', label: 'Sportswear', alt: 'Concept pouch shaped as a sportswear logo' },
-  { src: '/images/focus/shape-mercedes.webp', label: 'Automotive', alt: 'Concept pouch shaped as an automotive badge' },
-  { src: '/images/focus/shape-dominos.webp', label: 'Quick-service food', alt: 'Concept pouch shaped as a food brand tile' },
+  { src: '/images/focus/shape-trainer.webp', label: 'Sportswear', alt: 'Concept black pouch cut to the outline of a running shoe' },
+  { src: '/images/focus/shape-car.webp', label: 'Automotive', alt: 'Concept silver pouch with the outline of a car' },
+  { src: '/images/focus/shape-pizza.webp', label: 'Quick-service food', alt: 'Concept pouch cut to the shape of a pizza slice' },
 ]
 
 export const AIRLINES: ImageCard[] = [
-  { src: '/images/focus/pack-ba.webp', label: 'Full-service carrier', alt: 'Concept airline-livery pouch in British Airways colours' },
-  { src: '/images/focus/pack-etihad.webp', label: 'Gulf carrier', alt: 'Concept airline-livery pouch in Etihad colours' },
-  { src: '/images/focus/pack-easyjet.webp', label: 'Low-cost carrier', alt: 'Concept airline-livery pouch in easyJet colours' },
+  { src: '/images/focus/pack-airline-navy.webp', label: 'Full-service carrier', alt: 'Concept white and navy pouch printed with the placeholder "Your airline"' },
+  { src: '/images/focus/pack-airline-sand.webp', label: 'Premium carrier', alt: 'Concept sand and gold pouch printed with the placeholder "Your airline"' },
+  { src: '/images/focus/pack-airline-teal.webp', label: 'Low-cost carrier', alt: 'Concept teal pouch printed with the placeholder "Your airline"' },
 ]
 
 /** What an investor can check, in one row under the home hero. */

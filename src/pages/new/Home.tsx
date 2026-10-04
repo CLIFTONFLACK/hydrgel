@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Circle, Mail } from 'lucide-react'
 import Section, { SectionHeading } from '../../components/Section'
 import {
-  ConceptNote,
   EfficacyTable,
   HowItWorks,
   Pillars,
@@ -67,8 +66,6 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        {/* The corporate door shows another company's brand. */}
-        <ConceptNote brands />
       </Section>
 
       <Pillars tone="white" />

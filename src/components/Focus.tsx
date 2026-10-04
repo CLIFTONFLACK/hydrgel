@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Check, Info } from 'lucide-react'
 import Section, { SectionHeading } from './Section'
 import {
-  BRAND_CONCEPT_NOTICE,
   CONCEPT_NOTICE,
   HOW_IT_WORKS,
   PILLARS,
@@ -275,12 +274,11 @@ export function ImageGrid({ items, cols = 3 }: { items: ImageCard[]; cols?: 3 | 
   )
 }
 
-/** `brands` selects the no-endorsement wording, for sections showing another company's brand. */
-export function ConceptNote({ brands = false }: { brands?: boolean }) {
+export function ConceptNote() {
   return (
     <p className="mt-6 flex gap-2 text-xs text-gray-600 max-w-3xl">
       <Info className="h-4 w-4 flex-shrink-0 mt-px" aria-hidden="true" />
-      <span>{brands ? BRAND_CONCEPT_NOTICE : CONCEPT_NOTICE}</span>
+      <span>{CONCEPT_NOTICE}</span>
     </p>
   )
 }
