@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
-import WaveDivider from '../components/WaveDivider'
+import BeliefBanner from '../components/BeliefBanner'
 import ContactFormModal from '../components/ContactFormModal'
 import { CONTACT_ROUTES, type ContactRoute } from '../data/contactRoutes'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
@@ -152,7 +152,7 @@ export default function Contact() {
         </Section>
       </main>
 
-      <WaveDivider />
+      <BeliefBanner />
 
       {openRoute && (
         <ContactFormModal route={openRoute} onClose={() => setOpenRoute(null)} />

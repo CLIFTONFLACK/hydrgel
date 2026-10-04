@@ -9,7 +9,7 @@ import {
   type Category,
   type NewsItem,
 } from '../data/news'
-import WaveDivider from '../components/WaveDivider'
+import BeliefBanner from '../components/BeliefBanner'
 import NewsModal from '../components/NewsModal'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
@@ -202,7 +202,7 @@ export default function News() {
         </section>
       </main>
 
-      <WaveDivider />
+      <BeliefBanner />
 
       {open && <NewsModal item={open} onClose={() => setOpen(null)} />}
     </>

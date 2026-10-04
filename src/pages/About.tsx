@@ -3,7 +3,7 @@ import { Droplets, Container as ContainerIcon, ArrowRight, CheckCircle } from 'l
 import Section, { SectionHeading } from '../components/Section'
 import Container from '../components/Container'
 import ProcessDiagram from '../components/ProcessDiagram'
-import WaveDivider from '../components/WaveDivider'
+import BeliefBanner from '../components/BeliefBanner'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { CORPORATE } from '../data/investor'
 
@@ -199,7 +199,7 @@ export default function About() {
         </section>
       </main>
 
-      <WaveDivider />
+      <BeliefBanner />
     </>
   )
 }

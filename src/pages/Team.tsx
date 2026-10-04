@@ -3,7 +3,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
 import Container from '../components/Container'
 import Avatar from '../components/Avatar'
-import WaveDivider from '../components/WaveDivider'
+import BeliefBanner from '../components/BeliefBanner'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { FOUNDERS, INVENTORS, INSTITUTIONS, type Person } from '../data/team'
 
@@ -152,7 +152,7 @@ export default function Team() {
         </section>
       </main>
 
-      <WaveDivider />
+      <BeliefBanner />
     </>
   )
 }
