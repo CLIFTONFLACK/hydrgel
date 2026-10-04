@@ -62,8 +62,8 @@ export default function Investors() {
           tone="dark"
           compact
           eyebrow="Investor information"
-          title="Ending the world's thirst"
-          accent="thirst"
+          title="Investing in water security"
+          accent="water security"
           lede="A patented, globally scalable water purification platform, licensed exclusively from Nanyang Technological University and built for the point of need — no power, no filters, no ongoing maintenance."
           image="/images/pack.jpg"
           alt="HYDRGEL personal water purification pouches packed in a box"
