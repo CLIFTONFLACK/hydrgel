@@ -10,6 +10,7 @@ import {
   type NewsItem,
 } from '../data/news'
 import BeliefBanner from '../components/BeliefBanner'
+import PageBand from '../components/PageBand'
 import NewsModal from '../components/NewsModal'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
@@ -46,22 +47,13 @@ export default function News() {
 
   return (
     <>
-      <main id="main" className="pt-16">
-        <section className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-500 tracking-tight uppercase">
-              Water security newsroom
-            </h1>
-            <h2 className="text-xl md:text-2xl text-green-700 mt-4">
-              The conversation HYDRGEL is built for
-            </h2>
-            <p className="mt-6 text-gray-600 max-w-3xl">
-              A running record of the crises, research, regulation and investment shaping global
-              water security. Every item links to its primary source. Dates reflect when the event
-              occurred, or when the linked source was published.
-            </p>
-          </div>
-        </section>
+      <main id="main">
+        <PageBand
+          title="Water security newsroom"
+          accent="security"
+          subtitle="The conversation HYDRGEL is built for"
+          lede="A running record of the crises, research, regulation and investment shaping global water security. Every item links to its primary source. Dates reflect when the event occurred, or when the linked source was published."
+        />
 
         {/*
           Sticky, so it must stay shallow — this was three stacked rows plus

@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, ArrowRight, Facebook, Linkedin, Youtube } from 'lu
 import XIcon from '../components/XIcon'
 import Section, { SectionHeading } from '../components/Section'
 import BeliefBanner from '../components/BeliefBanner'
+import PageBand from '../components/PageBand'
 import ContactFormModal from '../components/ContactFormModal'
 import { CONTACT_ROUTES, type ContactRoute } from '../data/contactRoutes'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
@@ -25,17 +26,13 @@ export default function Contact() {
 
   return (
     <>
-      <main id="main" className="pt-16">
-        <Section space="loose">
-          <p className="text-sm font-semibold uppercase tracking-wider text-green-700">Contact</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mt-3 tracking-tight text-balance uppercase">
-            Start the right conversation
-          </h1>
-          <p className="mt-6 text-lg text-gray-600 max-w-2xl leading-relaxed">
-            Pick the route that matches what you need. Each one asks for the details we would
-            otherwise have to come back for, so the first reply can be a useful one.
-          </p>
-        </Section>
+      <main id="main">
+        <PageBand
+          eyebrow="Contact"
+          title="Start the right conversation"
+          accent="right"
+          lede="Pick the route that matches what you need. Each one asks for the details we would otherwise have to come back for, so the first reply can be a useful one."
+        />
 
         <Section tone="sunken">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

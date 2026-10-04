@@ -30,10 +30,25 @@ type FocusHeroProps = {
   facts?: HeroFact[]
   /** Dark only: how far down the photo to centre the crop, in percent. 0 keeps the top edge. Default 50 on phones, 40 from lg. */
   focalY?: number
+  /** Dark only: a shorter hero for pages that carry more content below it. */
+  compact?: boolean
   children?: ReactNode
 }
 
-/** Hero shared by the three focus pages: copy on the left, image on the right. */
+/** A title with one phrase picked out in cyan; the plain title if `accent` is absent or not in it. */
+export function AccentTitle({ title, accent }: { title: string; accent?: string }) {
+  const at = accent ? title.indexOf(accent) : -1
+  if (!accent || at < 0) return <>{title}</>
+  return (
+    <>
+      {title.slice(0, at)}
+      <span className="text-cyan-300">{accent}</span>
+      {title.slice(at + accent.length)}
+    </>
+  )
+}
+
+/** Hero shared by the focus and company pages: copy on the left, image on the right. */
 export function FocusHero(props: FocusHeroProps) {
   if (props.tone === 'dark') return <DarkFocusHero {...props} />
   const { eyebrow, title, lede, image, alt, imageNote, children } = props
@@ -78,13 +93,17 @@ function DarkFocusHero({
   accent,
   facts,
   focalY,
+  compact,
   children,
 }: FocusHeroProps) {
-  const at = accent ? title.indexOf(accent) : -1
   // A custom property, because the crop's x position differs by breakpoint and its y position does not.
   const focal = focalY === undefined ? undefined : ({ '--fy': `${focalY}%` } as CSSProperties)
   return (
-    <section className="relative isolate overflow-hidden bg-slate-950 text-white lg:flex lg:flex-col lg:min-h-[min(78vh,760px)]">
+    <section
+      className={`relative isolate overflow-hidden bg-slate-950 text-white lg:flex lg:flex-col ${
+        compact ? 'lg:min-h-[min(62vh,600px)]' : 'lg:min-h-[min(78vh,760px)]'
+      }`}
+    >
       <div className="relative mt-16 aspect-video lg:mt-0 lg:aspect-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-[64%] lg:-z-10">
         <img
           src={image}
@@ -111,15 +130,7 @@ function DarkFocusHero({
         <div className="max-w-xl motion-safe:animate-rise">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{eyebrow}</p>
           <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight uppercase text-balance">
-            {accent && at >= 0 ? (
-              <>
-                {title.slice(0, at)}
-                <span className="text-cyan-300">{accent}</span>
-                {title.slice(at + accent.length)}
-              </>
-            ) : (
-              title
-            )}
+            <AccentTitle title={title} accent={accent} />
           </h1>
           <p className="mt-6 text-lg text-slate-200 leading-relaxed max-w-measure">{lede}</p>
           {children && <div className="mt-8 flex flex-col sm:flex-row gap-3">{children}</div>}
@@ -182,17 +193,26 @@ export function PilotGrid() {
 type HeroLinkProps = { to: string; onDark?: boolean; children: ReactNode }
 
 export function PrimaryLink({ to, onDark, children }: HeroLinkProps) {
-  return (
-    <Link
-      to={to}
-      className={`inline-flex items-center justify-center gap-2 font-display px-7 py-3 rounded-md transition-colors ${
-        onDark
-          ? 'font-semibold whitespace-nowrap bg-white text-slate-950 hover:bg-cyan-100'
-          : 'font-medium bg-blue-600 text-white hover:bg-blue-700'
-      }`}
-    >
+  const cls = `inline-flex items-center justify-center gap-2 font-display px-7 py-3 rounded-md transition-colors ${
+    onDark
+      ? 'font-semibold whitespace-nowrap bg-white text-slate-950 hover:bg-cyan-100'
+      : 'font-medium bg-blue-600 text-white hover:bg-blue-700'
+  }`
+  const body = (
+    <>
       {children}
       <ArrowRight className="h-4 w-4" aria-hidden="true" />
+    </>
+  )
+  // A same-page anchor stays a plain <a>, so the browser scrolls on every click. A router
+  // Link to the same hash changes nothing the second time, and the button looks dead.
+  return to.startsWith('#') ? (
+    <a href={to} className={cls}>
+      {body}
+    </a>
+  ) : (
+    <Link to={to} className={cls}>
+      {body}
     </Link>
   )
 }

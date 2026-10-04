@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Droplets, Container as ContainerIcon, ArrowRight, CheckCircle } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
+import { FocusHero } from '../components/Focus'
 import Container from '../components/Container'
 import ProcessDiagram from '../components/ProcessDiagram'
 import BeliefBanner from '../components/BeliefBanner'
@@ -41,33 +42,17 @@ export default function About() {
 
   return (
     <>
-      <main id="main" className="pt-16">
-        <Section space="loose">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
-                About HYDRGEL
-              </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mt-3 tracking-tight text-balance uppercase">
-                Ending the world&rsquo;s thirst
-              </h1>
-              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-                HYDRGEL is at the forefront of addressing global water insecurity with pioneering
-                cryogel technology. Our mission is to provide safe, drinkable water to the billions
-                of people who face water challenges — in everyday life and in crisis.
-              </p>
-            </div>
-            <div>
-              <img
-                src="/images/boy.jpg"
-                alt="A child drinking from a HYDRGEL water purification pouch"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-lg w-full"
-              />
-            </div>
-          </div>
-        </Section>
+      <main id="main">
+        <FocusHero
+          tone="dark"
+          compact
+          eyebrow="About HYDRGEL"
+          title="Ending the world’s thirst"
+          accent="thirst"
+          lede="HYDRGEL is at the forefront of addressing global water insecurity with pioneering cryogel technology. Our mission is to provide safe, drinkable water to the billions of people who face water challenges — in everyday life and in crisis."
+          image="/images/focus/hero-reveal.webp"
+          alt="A HYDRGEL pouch standing in a pool of clear water"
+        />
 
         <Section tone="sunken">
           <SectionHeading

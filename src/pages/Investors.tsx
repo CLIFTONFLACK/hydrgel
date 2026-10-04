@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import { SectionHeading } from '../components/Section'
+import { FocusHero, PrimaryLink, SecondaryLink } from '../components/Focus'
 import CostChart from '../components/CostChart'
 import ProcessDiagram from '../components/ProcessDiagram'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
@@ -40,6 +41,13 @@ const DRIVERS = [
   },
 ]
 
+// Each fact restates the hero lede; none is a new claim.
+const HERO_FACTS = [
+  { value: 'Patented', label: 'Water purification platform' },
+  { value: 'Exclusive licence', label: 'From Nanyang Technological University' },
+  { value: 'No maintenance', label: 'No power and no filters' },
+]
+
 export default function Investors() {
   useDocumentMeta(
     'Investors | HYDRGEL',
@@ -48,50 +56,26 @@ export default function Investors() {
   )
   return (
     <>
-      <main id="main" className="pt-16">
+      <main id="main">
         {/* ---------------------------------------------------------- hero */}
-        <section className="relative bg-white py-20 md:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center md:text-left">
-              <div className="order-2 md:order-1">
-                <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
-                  Investor information
-                </p>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-500 mt-3 leading-[1.05] tracking-tight uppercase">
-                  Ending the
-                  <br />
-                  world's thirst
-                </h1>
-                <p className="mt-6 text-gray-600">
-                  A patented, globally scalable water purification platform, licensed exclusively
-                  from Nanyang Technological University and built for the point of need — no power,
-                  no filters, no ongoing maintenance.
-                </p>
-                <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                  <a
-                    href="#request-deck"
-                    className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 font-medium"
-                  >
-                    Request the investor deck
-                  </a>
-                  <Link
-                    to="/news"
-                    className="border border-blue-600 text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 font-medium"
-                  >
-                    Why now
-                  </Link>
-                </div>
-              </div>
-              <div className="relative order-1 md:order-2">
-                <img
-                  src="/images/pack.jpg"
-                  alt="HYDRGEL personal water purification pouches"
-                  className="rounded-lg shadow-lg w-full max-w-md mx-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <FocusHero
+          tone="dark"
+          compact
+          eyebrow="Investor information"
+          title="Ending the world's thirst"
+          accent="thirst"
+          lede="A patented, globally scalable water purification platform, licensed exclusively from Nanyang Technological University and built for the point of need — no power, no filters, no ongoing maintenance."
+          image="/images/pack.jpg"
+          alt="HYDRGEL personal water purification pouches packed in a box"
+          facts={HERO_FACTS}
+        >
+          <PrimaryLink to="#request-deck" onDark>
+            Request the investor deck
+          </PrimaryLink>
+          <SecondaryLink to="/news" onDark>
+            Why now
+          </SecondaryLink>
+        </FocusHero>
 
         {/* ------------------------------------------------------ the need */}
         <section className="bg-gray-50 py-16 md:py-24">

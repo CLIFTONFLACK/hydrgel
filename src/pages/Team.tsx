@@ -3,6 +3,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
 import Container from '../components/Container'
 import Avatar from '../components/Avatar'
+import PageBand from '../components/PageBand'
 import BeliefBanner from '../components/BeliefBanner'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { FOUNDERS, INVENTORS, INSTITUTIONS, type Person } from '../data/team'
@@ -60,18 +61,13 @@ export default function Team() {
 
   return (
     <>
-      <main id="main" className="pt-16">
-        <Section space="loose">
-          <p className="text-sm font-semibold uppercase tracking-wider text-green-700">Team</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mt-3 tracking-tight text-balance uppercase">
-            Operators and inventors
-          </h1>
-          <p className="mt-6 text-lg text-gray-600 max-w-2xl leading-relaxed">
-            HYDRGEL pairs the scientists who created the cryogel purification platform at Nanyang
-            Technological University with founders who have taken technology from laboratory to
-            market before.
-          </p>
-        </Section>
+      <main id="main">
+        <PageBand
+          eyebrow="Team"
+          title="Operators and inventors"
+          accent="inventors"
+          lede="HYDRGEL pairs the scientists who created the cryogel purification platform at Nanyang Technological University with founders who have taken technology from laboratory to market before."
+        />
 
         <Section tone="sunken">
           <SectionHeading
