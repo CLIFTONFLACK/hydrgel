@@ -43,17 +43,12 @@ export default function Home() {
               to={f.to}
               className="group bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-lg hover:border-blue-300 transition-shadow duration-200"
             >
-              <div className="relative">
-                <img
-                  src={f.image}
-                  alt={f.alt}
-                  loading="lazy"
-                  className="w-full aspect-[16/10] object-cover"
-                />
-                <span className="absolute left-3 top-3 rounded-full bg-slate-950/75 px-2.5 py-1 text-xs font-medium text-white">
-                  Concept image
-                </span>
-              </div>
+              <img
+                src={f.image}
+                alt={f.alt}
+                loading="lazy"
+                className="w-full aspect-[16/10] object-cover"
+              />
               <div className="p-6 flex flex-col flex-1">
                 <p className="text-xs font-semibold uppercase tracking-wider text-green-700">{f.label}</p>
                 <h3 className="mt-1 text-xl font-semibold text-gray-900">{f.title}</h3>

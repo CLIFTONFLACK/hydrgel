@@ -144,11 +144,10 @@ export const AIRLINES: ImageCard[] = [
   { src: '/images/focus/pack-airline-teal.webp', label: 'Low-cost carrier', alt: 'Concept teal pouch printed with the placeholder "Your airline"' },
 ]
 
-/** What an investor can check, in one row under the home hero. */
+/** The four key facts, in one row under the home hero. */
 export const PROOF_POINTS = [
-  { value: 'US 10,939,677 B2', label: 'Patent granted, March 2021' },
-  { value: 'Exclusive', label: 'Worldwide licence, signed November 2024' },
+  { value: 'Patented', label: 'US 10,939,677 B2, granted March 2021' },
   { value: '<1 cfu', label: 'Bacteria after treatment, in lab tests' },
-  { value: '4 sectors', label: 'Pilot partners with intent expressed' },
-  { value: '$0.20 / litre', label: 'Modelled cost, against $1.50 bottled' },
+  { value: '3 minutes', label: 'From fill to clean water' },
+  { value: 'No power', label: 'And no maintenance' },
 ]

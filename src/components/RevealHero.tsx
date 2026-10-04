@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, ScrollText, Timer, Zap } from 'lucide-react'
-
-const PROOF = [
-  { Icon: ScrollText, label: 'Granted US patent' },
-  { Icon: Timer, label: 'Clean water in 3 minutes' },
-  { Icon: Zap, label: 'No power, no pump' },
-]
+import { ArrowRight } from 'lucide-react'
 
 /**
  * Full-bleed home hero: a 5-second unveiling of the pouch, with the
@@ -93,16 +87,16 @@ export default function RevealHero() {
             Introducing HYDRGEL
           </p>
           {/* Caps come from CSS so screen readers and search see normal text. */}
-          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight uppercase text-balance">
+          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight uppercase text-balance">
             Clean water, <span className="text-cyan-300">anywhere.</span>
             <br />
             In three minutes.
           </h1>
-          <p className="mt-6 text-lg text-slate-200 leading-relaxed max-w-measure">
+          <p className="mt-8 text-lg text-slate-200 leading-relaxed max-w-measure">
             A patented cryogel inside a reusable pouch treats the water while it sits. No power,
             no pump and no cartridge. One platform for travellers, for brands and for relief.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
             <a
               href="#focus"
               className="inline-flex items-center justify-center gap-2 font-display font-semibold bg-white text-slate-950 px-7 py-3 rounded-md hover:bg-cyan-100 transition-colors"
@@ -117,14 +111,7 @@ export default function RevealHero() {
               Why it is different
             </a>
           </div>
-          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-200">
-            {PROOF.map(({ Icon, label }) => (
-              <li key={label} className="flex items-center gap-2">
-                <Icon className="h-4 w-4 text-cyan-300" aria-hidden="true" />
-                {label}
-              </li>
-            ))}
-          </ul>
+          {/* The key facts sit in the strip directly under the hero, not here. */}
         </div>
       </div>
     </section>

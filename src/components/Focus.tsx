@@ -61,7 +61,7 @@ export function FocusHero({
 export function ProofStrip() {
   return (
     <section aria-label="Key facts" className="bg-slate-950 text-white border-t border-white/10">
-      <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
+      <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
         {PROOF_POINTS.map((p) => (
           // Reversed so the value reads first while the term stays first in
           // the markup; justify-end keeps every value on the top line.
