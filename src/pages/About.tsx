@@ -12,7 +12,7 @@ const OFFERINGS = [
     Icon: Droplets,
     phase: 'Phase one',
     title: 'HYDRGEL pouches',
-    body: 'A pre-manufactured, lightweight pouch using cryogel technology to purify water in about three minutes. Reusable up to 100 times, delivering roughly 50 litres of drinking water per person.',
+    body: 'A pre-manufactured, lightweight pouch using cryogel technology to treat water in about three minutes. Designed for repeated use.',
     image: '/images/pack.jpg',
     alt: 'HYDRGEL personal water purification pouches',
   },

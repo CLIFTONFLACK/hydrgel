@@ -942,7 +942,7 @@ const C = {
     l2: 'the point of need',
     sub1: 'Clean drinking water',
     sub2: 'is a right, not a luxury',
-    body: 'HYDRGEL Personal Water Purification Pouches give instant access to safe, clean and tasteless water to those who need it most.',
+    body: 'HYDRGEL Personal Water Purification Pouches give access to clean drinking water to those who need it most.',
     a: 'How it works',
     b: 'Talk to the team',
     alt: 'Child with Hydrgel water pouch'
@@ -951,7 +951,7 @@ const C = {
   stats: [
     { v: '-7%',   l: 'of GDP lost to poor water supply' },
     { v: '480k',  l: 'deaths a year from unsafe water' },
-    { v: '2.8bn', l: 'without access to clean water' },
+    { v: '2bn+', l: 'without reliable access to safe drinking water' },
     { v: '7×', l: 'cheaper per litre than bottled water' }
   ],
   statsLink: 'Follow the reporting behind these numbers',
@@ -989,7 +989,7 @@ const C = {
     body: 'Imagine a world where every 20 seconds a life is lost by something as basic a right as access to safe drinking water... both recreationally and crucially, in times of crisis.',
     cards: [
       { i: 'alert', t: '$600bn cost of disaster', b: 'Water related disasters continue to break annual records as climate change takes effect globally.' },
-      { i: 'users', t: '2.8bn need water security', b: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.' },
+      { i: 'users', t: '2bn+ need water security', b: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.' },
       { i: 'shield', t: 'Unprecedented conflicts', b: 'Unprecedented numbers of conflict have left millions searching for safe drinkable water just to survive.' }
     ]
   },
@@ -1012,7 +1012,7 @@ const C = {
       { k: 'linkedin', l: 'LinkedIn', h: 'https://www.linkedin.com/company/hydrgel' },
       { k: 'youtube', l: 'YouTube', h: 'https://youtube.com/@HYDRGEL' }
     ],
-    phone: '+44 (0)574.734 8570',
+    phone: '+44 (0) 754 725 8570',
     email: 'INFO@HYDRGEL.COM',
     addr: '21 Science Park Rd, #01-8,<br>Singapore 117628',
     copy: 'Copyright 2026 HYDRGEL PTE. LTD. All rights reserved',
@@ -1243,7 +1243,7 @@ function footer(s) {
       '<div><h4>Social media</h4><div class="socials">' + f.socials.map(o =>
         '<a href="' + o.h + '" target="_blank" rel="noopener noreferrer" aria-label="' + o.l + '">' + ic(o.k, 'fill') + '</a>').join('') + '</div></div>' +
       '<div><h4>Contact us</h4><ul class="contact">' +
-        '<li>' + ic('phone', 'fill') + '<a href="tel:+445747348570">' + f.phone + '</a></li>' +
+        '<li>' + ic('phone', 'fill') + '<a href="tel:+447547258570">' + f.phone + '</a></li>' +
         '<li>' + ic('mail') + '<a href="mailto:info@hydrgel.com">' + f.email + '</a></li>' +
         '<li>' + ic('pin') + '<span>' + f.addr + '</span></li>' +
       '</ul></div>' +
@@ -1259,7 +1259,7 @@ function build(s) {
 
   const marquee = s.id === 'max'
     ? '<div class="marquee"><span>' +
-      ('Clean drinking water is a right, not a luxury &nbsp;&#9679;&nbsp; 2.8bn without access &nbsp;&#9679;&nbsp; 480k deaths a year &nbsp;&#9679;&nbsp; 330 ml in 3 minutes &nbsp;&#9679;&nbsp; ').repeat(4) +
+      ('Clean drinking water is a right, not a luxury &nbsp;&#9679;&nbsp; 2bn+ without safe water &nbsp;&#9679;&nbsp; 480k deaths a year &nbsp;&#9679;&nbsp; 330 ml in 3 minutes &nbsp;&#9679;&nbsp; ').repeat(4) +
       '</span></div>'
     : '';
 

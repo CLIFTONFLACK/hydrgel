@@ -13,7 +13,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 const STATS = [
   { value: '-7%', label: 'of GDP lost to poor water supply' },
   { value: '480k', label: 'deaths a year from unsafe water' },
-  { value: '2.8bn', label: 'without access to clean water' },
+  { value: '2bn+', label: 'without reliable access to safe drinking water' },
   { value: '7×', label: 'cheaper per litre than bottled water' },
 ]
 
@@ -40,7 +40,7 @@ const REVOLUTION_CARDS = [
     Icon: Users,
     iconColor: 'text-pink-500',
     bg: 'bg-pink-50',
-    title: '2.8bn need water security',
+    title: '2bn+ need water security',
     body: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.',
   },
   {
@@ -84,8 +84,8 @@ export default function Home() {
                   is a right, not a luxury
                 </h2>
                 <p className="mt-6 text-gray-600 md:max-w-measure mx-auto md:mx-0">
-                  HYDRGEL Personal Water Purification Pouches give instant access to safe, clean and
-                  tasteless water to those who need it most.
+                  HYDRGEL Personal Water Purification Pouches give access to clean drinking water
+                  to those who need it most.
                 </p>
                 {/* The hero previously offered no action at all. */}
                 <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">

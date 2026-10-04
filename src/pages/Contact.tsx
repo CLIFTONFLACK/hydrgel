@@ -99,8 +99,8 @@ export default function Contact() {
                     <span className="block text-xs uppercase tracking-wider text-gray-500">
                       Telephone
                     </span>
-                    <a href="tel:+445747348570" className="hover:text-blue-600 transition-colors">
-                      +44 (0)574.734 8570
+                    <a href="tel:+447547258570" className="hover:text-blue-600 transition-colors">
+                      +44 (0) 754 725 8570
                     </a>
                   </span>
                 </li>

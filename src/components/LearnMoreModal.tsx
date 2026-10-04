@@ -6,7 +6,7 @@ const OFFERINGS = [
   {
     Icon: Droplets,
     title: 'HYDRGEL pouches',
-    body: 'A lightweight, reusable pouch that purifies 330 ml of contaminated water in about three minutes. No power, no replacement filters, no maintenance. Reusable up to 100 times.',
+    body: 'A lightweight, reusable pouch that treats 330 ml of water in about three minutes. No power, no replacement filters, no maintenance. Designed for repeated use.',
     image: '/images/pack.jpg',
     alt: 'HYDRGEL personal water purification pouches',
   },
