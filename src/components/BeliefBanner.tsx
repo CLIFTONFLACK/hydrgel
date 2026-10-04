@@ -9,29 +9,35 @@
  */
 export default function BeliefBanner() {
   return (
-    <section aria-label="What we believe" className="w-full bg-white pb-12 md:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative isolate overflow-hidden rounded-2xl bg-slate-950 h-56 md:h-72">
-          <img
-            src="/images/belief-banner.webp"
-            alt=""
-            width={2432}
-            height={576}
-            loading="lazy"
-            className="absolute inset-0 -z-10 h-full w-full object-cover object-right"
-          />
-          {/* On a phone the crop puts the pouch behind the line, so the left is darkened. */}
-          <div
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent md:from-slate-950/60 md:via-transparent"
-            aria-hidden="true"
-          />
-          <div className="flex h-full items-center px-6 sm:px-10 md:px-14">
-            <p className="max-w-[16rem] sm:max-w-md md:max-w-xl font-display text-xl sm:text-2xl md:text-4xl font-bold leading-tight tracking-tight text-white text-balance">
-              We believe access to clean drinking water is a{' '}
-              <span className="text-cyan-300">fundamental right.</span>
-            </p>
-          </div>
-        </div>
+    /*
+      Full bleed: the band runs edge to edge and the line keeps to the page
+      column. The picture is pinned to the right at the band's full height and
+      its natural width, so the pouch is never cropped top or bottom. A narrow
+      screen cuts into the empty left of the picture; a very wide one shows the
+      band's own colour beyond it, which is matched to the picture's left edge.
+    */
+    <section
+      aria-label="What we believe"
+      className="relative isolate w-full overflow-hidden bg-[#000107] h-56 md:h-72"
+    >
+      <img
+        src="/images/belief-banner.webp"
+        alt=""
+        width={2432}
+        height={576}
+        loading="lazy"
+        className="absolute right-0 top-0 -z-10 h-full w-auto max-w-none"
+      />
+      {/* On a phone the crop puts the pouch behind the line, so the left is darkened. */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#000107] via-[#000107]/80 to-transparent md:hidden"
+        aria-hidden="true"
+      />
+      <div className="max-w-7xl mx-auto flex h-full items-center px-4 sm:px-6 lg:px-8">
+        <p className="max-w-[16rem] sm:max-w-md md:max-w-xl font-display text-xl sm:text-2xl md:text-4xl font-bold leading-tight tracking-tight text-white text-balance">
+          We believe access to clean drinking water is a{' '}
+          <span className="text-cyan-300">fundamental right.</span>
+        </p>
       </div>
     </section>
   )
