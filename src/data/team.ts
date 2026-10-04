@@ -1,9 +1,13 @@
 /**
  * Team content, drawn from HYDRGEL's own company presentation (v13.1).
  *
- * `photo` is intentionally unset. Drop real portraits into
- * `public/images/team/` and set the path here; until then the Avatar
- * component renders initials. No likeness is generated for a real person.
+ * `photo` points at a real portrait in `public/images/team/`, added only with
+ * that person's agreement. The four here come from the same presentation
+ * (slides 4 and 5), each matched to the name printed beside it, and Clifton
+ * confirmed on 2026-10-04 that publishing them is approved. They are small in
+ * the source (about 120 to 150 px), so replace them when larger originals are
+ * to hand. Without a `photo` the Avatar component renders initials. No
+ * likeness is generated for a real person.
  *
  * `profileUrl` is likewise unset — add verified links only.
  */
@@ -23,6 +27,7 @@ export const FOUNDERS: Person[] = [
     name: 'Clifton Flack',
     role: 'Co-Founder & CEO',
     affiliation: 'HYDRGEL PTE. LTD.',
+    photo: '/images/team/clifton-flack.jpg',
     bullets: [
       'Founder and CEO of CiiTECH (UK/Israel), raising $3m and growing the business past £10M+ revenue in consumer wellness brands.',
       'COO of SLA Pharma, driving commercialisation of clinically proven gastrointestinal treatments.',
@@ -35,6 +40,7 @@ export const FOUNDERS: Person[] = [
     name: 'Ruzbeh Masani',
     role: 'Co-Founder & CTO',
     affiliation: 'HYDRGEL PTE. LTD.',
+    photo: '/images/team/ruzbeh-masani.jpg',
     bullets: [
       'Led development of novel process technologies at Nestlé, securing patent WO/2018/189275 and delivering US$13M/year in savings.',
       'Managed US$2M annual R&D budgets with stakeholders across Europe, the Middle East and Latin America.',
@@ -50,6 +56,7 @@ export const INVENTORS: Person[] = [
     name: 'Professor Hu Xiao',
     role: 'Inventor',
     affiliation: 'Nanyang Technological University',
+    photo: '/images/team/hu-xiao.jpg',
     bullets: [
       'Professor at the NTU School of Science and Engineering.',
       'Director of the Nanyang Environment and Water Research Institute (NEWRI).',
@@ -60,6 +67,7 @@ export const INVENTORS: Person[] = [
     name: 'Dr. Liang Yen Nan',
     role: 'Inventor',
     affiliation: 'Nanyang Technological University',
+    photo: '/images/team/liang-yen-nan.jpg',
     bullets: [
       'Senior Research Fellow at NEWRI, ECMC.',
       'Ph.D. in Materials Science from Nanyang Technological University.',

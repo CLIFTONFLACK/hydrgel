@@ -66,7 +66,16 @@ export default function Consumer() {
 
       <HowItWorks />
 
-      <Pillars compact title="What makes the pouch different" />
+      <Pillars
+        compact
+        title="What makes the pouch different"
+        image={{
+          src: '/images/focus/pouch-vs-kit.webp',
+          alt: 'Concept: on one side a hand pump, a UV pen with batteries, spare cartridges and plastic bottles; on the other a single HYDRGEL pouch and its sachet',
+          width: 1264,
+          height: 848,
+        }}
+      />
 
       <Section>
         <SectionHeading

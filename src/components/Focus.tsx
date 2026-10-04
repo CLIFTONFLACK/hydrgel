@@ -129,17 +129,19 @@ export function Pillars({
   tone = 'sunken',
   title = 'Why HYDRGEL is different',
   compact = false,
+  image,
 }: {
   id?: string
   tone?: 'white' | 'sunken'
   title?: string
   compact?: boolean
+  /** Compact only: a picture beside the three points, which then stack. */
+  image?: { src: string; alt: string; width: number; height: number }
 }) {
   if (compact) {
-    return (
-      <Section id={id} tone={tone} space="tight">
-        <SectionHeading eyebrow="The technology" title={title} />
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    const points = (
+      <>
+        <ul className={`grid grid-cols-1 gap-6 ${image ? '' : 'md:grid-cols-3'}`}>
           {PILLARS.map(({ id: key, Icon, eyebrow, title: heading }) => (
             <li key={key} className="flex items-start gap-4">
               <span className="h-11 w-11 flex-shrink-0 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
@@ -159,6 +161,29 @@ export function Pillars({
           The technology in full
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
+      </>
+    )
+    return (
+      <Section id={id} tone={tone} space="tight">
+        <SectionHeading eyebrow="The technology" title={title} />
+        {image ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>{points}</div>
+            <figure>
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="lazy"
+                className="w-full rounded-2xl border border-gray-200"
+              />
+              <figcaption className="mt-3 text-xs text-gray-600">{CONCEPT_NOTICE}</figcaption>
+            </figure>
+          </div>
+        ) : (
+          points
+        )}
       </Section>
     )
   }
