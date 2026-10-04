@@ -12,16 +12,9 @@ import {
 import { EFFICACY, PARTNERS } from '../data/investor'
 import { useInView } from '../hooks/useInView'
 
-/** Hero shared by the three focus pages: copy on the left, image on the right. */
-export function FocusHero({
-  eyebrow,
-  title,
-  lede,
-  image,
-  alt,
-  imageNote,
-  children,
-}: {
+type HeroFact = { value: string; label: string }
+
+type FocusHeroProps = {
   eyebrow: string
   title: string
   lede: string
@@ -29,8 +22,19 @@ export function FocusHero({
   alt: string
   /** Caption under the image, for imagery that could be read as a real deployment. */
   imageNote?: string
+  /** `dark` is the full-bleed version that matches the home hero. */
+  tone?: 'light' | 'dark'
+  /** Dark only: the part of `title` to pick out in cyan. Ignored if the title does not contain it. */
+  accent?: string
+  /** Dark only: short checkable facts along the bottom edge. */
+  facts?: HeroFact[]
   children?: ReactNode
-}) {
+}
+
+/** Hero shared by the three focus pages: copy on the left, image on the right. */
+export function FocusHero(props: FocusHeroProps) {
+  if (props.tone === 'dark') return <DarkFocusHero {...props} />
+  const { eyebrow, title, lede, image, alt, imageNote, children } = props
   return (
     <section className="bg-white pt-28 pb-16 md:pt-32 md:pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -53,6 +57,82 @@ export function FocusHero({
           {imageNote && <figcaption className="mt-3 text-xs text-gray-600">{imageNote}</figcaption>}
         </figure>
       </div>
+    </section>
+  )
+}
+
+/**
+ * Phones and tablets: the photo is a 16:9 band under the nav with the copy
+ * below it, as on the home hero, so the text never covers a face. From lg up
+ * the photo fills the right two-thirds and fades into the navy behind the copy.
+ */
+function DarkFocusHero({
+  eyebrow,
+  title,
+  lede,
+  image,
+  alt,
+  imageNote,
+  accent,
+  facts,
+  children,
+}: FocusHeroProps) {
+  const at = accent ? title.indexOf(accent) : -1
+  return (
+    <section className="relative isolate overflow-hidden bg-slate-950 text-white lg:flex lg:flex-col lg:min-h-[min(78vh,760px)]">
+      <div className="relative mt-16 aspect-video lg:mt-0 lg:aspect-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-[64%] lg:-z-10">
+        <img
+          src={image}
+          alt={alt}
+          width={1600}
+          height={893}
+          className="h-full w-full object-cover lg:object-[100%_40%]"
+        />
+        {/* -left-px: the photo's left edge lands on a fractional pixel and shows as a seam otherwise. */}
+        <div
+          className="absolute inset-0 lg:-left-px bg-gradient-to-t from-slate-950 via-transparent to-transparent lg:bg-[linear-gradient(90deg,#020617_6%,rgba(2,6,23,0.88)_25%,rgba(2,6,23,0.2)_53%,transparent)]"
+          aria-hidden="true"
+        />
+        {imageNote && (
+          // From lg the bottom edge sits behind the facts strip, so the note moves up under the nav.
+          <p className="absolute bottom-3 right-3 lg:bottom-auto lg:top-20 max-w-[90%] rounded bg-slate-950/70 px-2 py-1 text-xs text-slate-200">
+            {imageNote}
+          </p>
+        )}
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:flex-1 lg:flex lg:items-center lg:pt-32 lg:pb-16">
+        <div className="max-w-xl motion-safe:animate-rise">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{eyebrow}</p>
+          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight uppercase text-balance">
+            {accent && at >= 0 ? (
+              <>
+                {title.slice(0, at)}
+                <span className="text-cyan-300">{accent}</span>
+                {title.slice(at + accent.length)}
+              </>
+            ) : (
+              title
+            )}
+          </h1>
+          <p className="mt-6 text-lg text-slate-200 leading-relaxed max-w-measure">{lede}</p>
+          {children && <div className="mt-8 flex flex-col sm:flex-row gap-3">{children}</div>}
+        </div>
+      </div>
+
+      {facts && facts.length > 0 && (
+        <div className="border-t border-white/15 bg-slate-950/60 backdrop-blur-sm">
+          <dl className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-5">
+            {facts.map((f) => (
+              // Same reversal as ProofStrip: value reads first, term stays first in the markup.
+              <div key={f.label} className="flex flex-col-reverse justify-end">
+                <dt className="mt-1 text-sm text-slate-300 leading-snug">{f.label}</dt>
+                <dd className="font-display text-lg md:text-xl font-bold text-cyan-300">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
     </section>
   )
 }
@@ -92,11 +172,18 @@ export function PilotGrid() {
   )
 }
 
-export function PrimaryLink({ to, children }: { to: string; children: ReactNode }) {
+/** `onDark` restyles the link for a dark hero, matching the home hero's buttons. */
+type HeroLinkProps = { to: string; onDark?: boolean; children: ReactNode }
+
+export function PrimaryLink({ to, onDark, children }: HeroLinkProps) {
   return (
     <Link
       to={to}
-      className="inline-flex items-center justify-center gap-2 font-display font-medium bg-blue-600 text-white px-7 py-3 rounded-md hover:bg-blue-700 transition-colors"
+      className={`inline-flex items-center justify-center gap-2 font-display px-7 py-3 rounded-md transition-colors ${
+        onDark
+          ? 'font-semibold whitespace-nowrap bg-white text-slate-950 hover:bg-cyan-100'
+          : 'font-medium bg-blue-600 text-white hover:bg-blue-700'
+      }`}
     >
       {children}
       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -104,9 +191,12 @@ export function PrimaryLink({ to, children }: { to: string; children: ReactNode 
   )
 }
 
-export function SecondaryLink({ to, children }: { to: string; children: ReactNode }) {
-  const cls =
-    'inline-flex items-center justify-center font-display font-medium border border-gray-300 text-gray-700 px-7 py-3 rounded-md hover:border-gray-400 hover:text-gray-900 transition-colors'
+export function SecondaryLink({ to, onDark, children }: HeroLinkProps) {
+  const cls = `inline-flex items-center justify-center font-display font-medium border px-7 py-3 rounded-md transition-colors ${
+    onDark
+      ? 'whitespace-nowrap border-white/40 text-white hover:bg-white/10'
+      : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900'
+  }`
   return to.startsWith('#') ? (
     <a href={to} className={cls}>
       {children}

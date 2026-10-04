@@ -32,6 +32,13 @@ const USES = [
   },
 ]
 
+// Each fact restates the hero lede; none is a new claim.
+const HERO_FACTS = [
+  { value: '3 minutes', label: 'Fill from a tap, wait, drink' },
+  { value: 'No power', label: 'No pump and nothing to charge' },
+  { value: 'No cartridge', label: 'One reusable pouch, nothing to replace' },
+]
+
 export default function Consumer() {
   useDocumentMeta(
     'Consumer | HYDRGEL personal water purification pouch',
@@ -46,9 +53,17 @@ export default function Consumer() {
         lede="One reusable pouch replaces a trail of plastic bottles. Fill it from a tap, wait 3 minutes, and drink. No power, no pump and no cartridge to replace."
         image="/images/focus/consumer-hero.webp"
         alt="Travellers in an airport carrying and drinking from HYDRGEL pouches"
+        imageNote="Concept visual. The pouch is in development."
+        tone="dark"
+        accent="wherever"
+        facts={HERO_FACTS}
       >
-        <PrimaryLink to="/contact">Register interest</PrimaryLink>
-        <SecondaryLink to="#how-it-works">How it works</SecondaryLink>
+        <PrimaryLink to="/contact" onDark>
+          Register interest
+        </PrimaryLink>
+        <SecondaryLink to="#how-it-works" onDark>
+          How it works
+        </SecondaryLink>
       </FocusHero>
 
       <Section tone="sunken">
