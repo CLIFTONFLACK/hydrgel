@@ -5,7 +5,6 @@ import {
   EfficacyTable,
   HowItWorks,
   Pillars,
-  PilotGrid,
   ProofStrip,
 } from '../../components/Focus'
 import RevealHero from '../../components/RevealHero'
@@ -19,8 +18,9 @@ import { useDocumentMeta } from '../../hooks/useDocumentMeta'
   reader who needs them lands.
 
   Below the doors the page makes the investment case in the order an investor
-  checks it: what is protected, what is proven, who is piloting, where the
-  company is. Raise terms stay off the page; they are in the deck, on request.
+  checks it: what is protected, what is proven, where the company is. The
+  pilot partners are on /investors and /humanitarian, not here. Raise terms
+  stay off the page; they are in the deck, on request.
 */
 export default function Home() {
   useDocumentMeta(
@@ -79,15 +79,6 @@ export default function Home() {
           lede="We publish only what has been tested. Today that is bacteria. Other contaminants are development targets, and are described that way."
         />
         <EfficacyTable />
-      </Section>
-
-      <Section id="pilots" tone="sunken">
-        <SectionHeading
-          eyebrow="Pilot programme"
-          title="Four sectors, four proving grounds"
-          lede="These organisations have expressed intent to pilot. They are described by sector and region because none has yet approved public attribution."
-        />
-        <PilotGrid />
       </Section>
 
       <section id="investors" className="bg-slate-950 text-white py-16 md:py-24">

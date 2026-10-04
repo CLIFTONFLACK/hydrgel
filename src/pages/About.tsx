@@ -141,30 +141,8 @@ export default function About() {
           </div>
         </Section>
 
+        {/* White, not sunken: it now follows the sunken "How it works" section. */}
         <Section>
-          <SectionHeading
-            eyebrow="Where we are"
-            title="Pilot programme"
-            lede="We are launching our pilot programme with partners across humanitarian, defence, commercial and rural development operations."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              ['Design', 'Final product design and ergonomic prototyping.'],
-              ['Validation', 'Reporting and validating in-field use with pilot partners.'],
-              ['Conversion', 'Proof of concept converting pilot partners into customers.'],
-            ].map(([k, v], i) => (
-              <div key={k} className="border-l-2 border-blue-200 pl-5">
-                <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                  Outcome {i + 1}
-                </p>
-                <h3 className="text-lg font-semibold text-green-700 mt-1">{k}</h3>
-                <p className="text-sm text-gray-600 mt-1 leading-relaxed">{v}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section tone="sunken">
           <SectionHeading eyebrow="Corporate" title="Company facts" />
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {CORPORATE.map((f) => (

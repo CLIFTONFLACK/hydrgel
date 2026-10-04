@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Check, Info } from 'lucide-react'
+import { ArrowRight, Info } from 'lucide-react'
 import Section, { SectionHeading } from './Section'
 import {
   CONCEPT_NOTICE,
@@ -10,6 +10,7 @@ import {
   type ImageCard,
 } from '../data/focus'
 import { EFFICACY, PARTNERS } from '../data/investor'
+import { useInView } from '../hooks/useInView'
 
 /** Hero shared by the three focus pages: copy on the left, image on the right. */
 export function FocusHero({
@@ -120,9 +121,9 @@ export function SecondaryLink({ to, children }: { to: string; children: ReactNod
 /**
  * Uniqueness, patent, purification diversity.
  *
- * The full cards live on the home page only. The market pages use `compact`,
- * which names the three points and links to the full version, so the same
- * three paragraphs are not repeated word for word on every page.
+ * The home page shows them as animated slogans. The market pages use
+ * `compact`, which states the three points plainly and links back to the home
+ * section.
  */
 export function Pillars({
   id = 'why-hydrgel',
@@ -158,7 +159,7 @@ export function Pillars({
           to="/#why-hydrgel"
           className="mt-8 inline-flex items-center gap-2 font-display font-medium text-blue-600 hover:text-blue-700 transition-colors"
         >
-          The technology in full
+          Why HYDRGEL is different
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </>
@@ -188,29 +189,57 @@ export function Pillars({
     )
   }
   return (
-    <Section id={id} tone={tone}>
+    <Section id={id} tone={tone} space="tight">
       <SectionHeading eyebrow="The technology" title={title} />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {PILLARS.map(({ id: key, Icon, eyebrow, title: heading, body, points }) => (
-          <article key={key} className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 flex flex-col">
-            <div className="h-11 w-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-              <Icon className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-green-700">{eyebrow}</p>
-            <h3 className="mt-1 text-xl font-semibold text-gray-900">{heading}</h3>
-            <p className="mt-3 text-gray-600 leading-relaxed">{body}</p>
-            <ul className="mt-5 space-y-2 text-sm text-gray-700">
-              {points.map((p) => (
-                <li key={p} className="flex gap-2">
-                  <Check className="h-4 w-4 mt-0.5 text-green-700 flex-shrink-0" aria-hidden="true" />
-                  <span>{p}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+      <SloganRow />
     </Section>
+  )
+}
+
+/**
+ * The three points as slogans, revealed in turn the first time the row scrolls
+ * into view: each rises and fades in, then a short accent rule draws under it.
+ *
+ * The slogans start hidden and wait for the observer, so every way of not
+ * scrolling to them has to be covered: `useInView` starts true where there is
+ * no observer, print forces them visible, and for visitors who ask for reduced
+ * motion the stagger is dropped here and index.css collapses the transitions.
+ */
+function SloganRow() {
+  const { ref, inView } = useInView<HTMLUListElement>()
+  // The stagger is a custom property rather than an inline transition-delay,
+  // so the reduced-motion class can override it.
+  const delay = (ms: number) => ({ '--reveal-delay': `${ms}ms` }) as CSSProperties
+  const timing =
+    'transition-all duration-700 ease-out [transition-delay:var(--reveal-delay)] motion-reduce:[transition-delay:0ms]'
+  return (
+    <ul ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+      {PILLARS.map(({ id: key, Icon, eyebrow, slogan, line }, i) => (
+        <li
+          key={key}
+          style={delay(i * 140)}
+          className={`${timing} print:opacity-100 print:translate-y-0 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-white">
+            <Icon className="h-6 w-6" aria-hidden="true" />
+          </span>
+          <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-green-700">{eyebrow}</p>
+          <h3 className="mt-1 text-2xl lg:text-3xl font-bold leading-tight tracking-tight text-gray-900 text-balance">
+            {slogan}
+          </h3>
+          <span
+            aria-hidden="true"
+            style={delay(i * 140 + 350)}
+            className={`mt-4 block h-1 rounded-full bg-cyan-400 ${timing} print:w-14 ${
+              inView ? 'w-14' : 'w-0'
+            }`}
+          />
+          <p className="mt-4 text-gray-600">{line}</p>
+        </li>
+      ))}
+    </ul>
   )
 }
 

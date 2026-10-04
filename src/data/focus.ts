@@ -32,9 +32,12 @@ export interface Pillar {
   id: 'unique' | 'patent' | 'diversity'
   Icon: LucideIcon
   eyebrow: string
+  /** Plain statement of the point, used by the compact strip on the market pages. */
   title: string
-  body: string
-  points: string[]
+  /** The point as a slogan, for the animated section on the home page. */
+  slogan: string
+  /** One supporting line under the slogan. Keep the claims rule: bacteria is the only proven result. */
+  line: string
 }
 
 /** The three reasons HYDRGEL is different. Shown on home and every focus page. */
@@ -44,28 +47,24 @@ export const PILLARS: Pillar[] = [
     Icon: Sparkles,
     eyebrow: 'Uniqueness',
     title: 'Nothing to pump, plug in or replace',
-    body: 'The purification happens inside the pouch. A cryogel, a sponge-like hydrogel formed at freezing temperatures, treats the water while it sits. There is no hand pump, no battery and no cartridge to swap.',
-    points: ['Fill, wait 3 minutes, drink', 'No power needed', 'Lightweight and reusable'],
+    slogan: 'Fill. Wait. Drink.',
+    line: 'No pump, no power, no cartridge.',
   },
   {
     id: 'patent',
     Icon: ScrollText,
     eyebrow: 'Patent',
     title: 'Protected by a granted US patent',
-    body: 'US 10,939,677 B2, granted in March 2021, covers the cryogel materials, the way they are made and their use for disinfection. HYDRGEL holds an exclusive worldwide licence to commercialise it.',
-    points: ['Granted, not pending', 'Materials, method and use', 'Exclusive worldwide licence'],
+    slogan: 'Patented. Exclusively ours.',
+    line: 'A granted US patent and a worldwide licence.',
   },
   {
     id: 'diversity',
     Icon: FlaskConical,
     eyebrow: 'Purification diversity',
     title: 'One platform, many formulations',
-    body: 'The cryogel’s structure can be tuned, so the formulation inside the pouch can be adapted to the water it will meet, region by region and mission by mission.',
-    points: [
-      'Proven: bacteria, including E. coli, reduced to <1 cfu in lab tests',
-      'In development: formulations for other local contaminants, subject to testing',
-      'Same pouch, different medium inside',
-    ],
+    slogan: 'One pouch. Tuned to the water.',
+    line: 'Proven on bacteria. More formulations in development.',
   },
 ]
 

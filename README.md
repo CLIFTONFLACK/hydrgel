@@ -32,7 +32,7 @@ checks the file out with LF and is unaffected.
 
 | Path | Page |
 | --- | --- |
-| `/` | Home — three audience doors (Consumer, Corporate, Humanitarian), a proof strip, the lab evidence table, the pilot programme and an investor section |
+| `/` | Home — three audience doors (Consumer, Corporate, Humanitarian), a proof strip, the lab evidence table and an investor section |
 | `/consumer` | Consumer audience page |
 | `/corporate` | Corporate audience page |
 | `/humanitarian` | Humanitarian audience page |
@@ -64,10 +64,19 @@ hard refresh.
   `investor.ts`), and only as a proof of concept; other contaminants are
   described as "in development" or "subject to testing", never claimed as
   proven, and the water is never described as meeting WHO or UNHCR standards.
-  The same applies to `/investors`. The site shows no third-party brand. Partner
+  The same applies to `/investors`. The "Why HYDRGEL is different" section on
+  the home page shows each pillar as a short slogan that animates in once, the
+  first time it scrolls into view (`useInView` in `src/hooks/useInView.ts`,
+  `SloganRow` in `src/components/Focus.tsx`). The slogan and supporting line for
+  each pillar are the `slogan` and `line` fields of `PILLARS`, and the claims
+  rule applies to them. Motion is collapsed for visitors who ask for reduced
+  motion, by a global rule in `src/index.css`. The site shows no third-party brand. Partner
   imagery on `/corporate` uses a "YOUR BRAND" or "YOUR AIRLINE" placeholder. All
   pouch concept imagery carries `CONCEPT_NOTICE`, and imagery of the pouch in the
   field carries `ILLUSTRATIVE_NOTICE`.
+- **Site icon** — the water drop alone, in `public/favicon.ico`,
+  `public/favicon-32.png`, `public/favicon-192.png` and
+  `public/apple-touch-icon.png`, all linked from `index.html`.
 - **Humanitarian statistics** — each public statistic on `/humanitarian` is
   worded as its source words it and listed in the `SOURCES` array in
   `src/pages/new/Humanitarian.tsx` (WHO/UNICEF JMP 2025, WHO drinking-water fact
