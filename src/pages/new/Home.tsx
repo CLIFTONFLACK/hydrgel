@@ -27,7 +27,7 @@ export default function Home() {
   useDocumentMeta(
     'HYDRGEL - Patented water purification pouch | Consumer, corporate, humanitarian',
     'HYDRGEL is a patented, reusable water purification pouch. Fill, wait 3 minutes, drink. For travellers, for brands and for humanitarian relief.',
-    '/new',
+    '/',
   )
   return (
     <main id="main">

@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Container from './Container'
-import LearnMoreModal from './LearnMoreModal'
 
 interface NavItem {
   to: string
@@ -17,19 +16,11 @@ const ABOUT_GROUP: NavItem[] = [
   { to: '/contact', label: 'Contact', hint: 'Deploy, invest or partner' },
 ]
 
-/** The one home-page section still reachable from the nav. */
-const SOLUTION = { id: 'solution', label: 'Solution' }
-
-/**
- * The new version of the site lives under /new while it is reviewed. Inside
- * it, Home points at /new and a Markets menu holding the three audience pages
- * replaces "Solution", which only exists on the current home page.
- */
-const NEW_HOME = '/new'
+/** The three audience pages the home page routes to. */
 const MARKETS_GROUP: NavItem[] = [
-  { to: '/new/consumer', label: 'Consumer', hint: 'Travel, outdoors and home kits' },
-  { to: '/new/corporate', label: 'Corporate', hint: 'Co-branded pouches for brands' },
-  { to: '/new/humanitarian', label: 'Humanitarian', hint: 'Relief, conflict and off-grid teams' },
+  { to: '/consumer', label: 'Consumer', hint: 'Travel, outdoors and home kits' },
+  { to: '/corporate', label: 'Corporate', hint: 'Co-branded pouches for brands' },
+  { to: '/humanitarian', label: 'Humanitarian', hint: 'Relief, conflict and off-grid teams' },
 ]
 
 const linkBase = 'text-sm transition-colors'
@@ -165,28 +156,12 @@ function MobileGroup({ label, items }: { label: string; items: NavItem[] }) {
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  const [learnMore, setLearnMore] = useState(false)
   const { pathname } = useLocation()
-  const navigate = useNavigate()
-  const isNew = pathname === NEW_HOME || pathname.startsWith(`${NEW_HOME}/`)
-  const home = isNew ? NEW_HOME : '/'
 
   // Any route change closes the drawer.
   useEffect(() => {
     setOpen(false)
   }, [pathname])
-
-  const goToSolution = () => {
-    setOpen(false)
-    if (pathname === '/') {
-      document.getElementById(SOLUTION.id)?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate(`/#${SOLUTION.id}`)
-      requestAnimationFrame(() =>
-        document.getElementById(SOLUTION.id)?.scrollIntoView({ behavior: 'smooth' }),
-      )
-    }
-  }
 
   return (
     <>
@@ -200,7 +175,7 @@ export default function Nav() {
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur border-b border-gray-200 z-50">
         <Container>
           <div className="flex justify-between items-center h-16 gap-4">
-            <Link to={home} className="flex items-center flex-shrink-0" aria-label="HYDRGEL home">
+            <Link to="/" className="flex items-center flex-shrink-0" aria-label="HYDRGEL home">
               <img
                 src="/images/logo.png"
                 alt="HYDRGEL"
@@ -212,14 +187,14 @@ export default function Nav() {
 
             <div className="hidden lg:flex items-center gap-5">
               <NavLink
-                to={home}
+                to="/"
                 end
                 className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
               >
                 Home
               </NavLink>
 
-              {isNew && <NavDropdown label="Markets" items={MARKETS_GROUP} />}
+              <NavDropdown label="Markets" items={MARKETS_GROUP} />
 
               <NavDropdown label="About" items={ABOUT_GROUP} />
 
@@ -230,41 +205,13 @@ export default function Nav() {
                 News
               </NavLink>
 
-              {!isNew && (
-                <button onClick={goToSolution} className={`${linkBase} ${linkIdle}`}>
-                  {SOLUTION.label}
-                </button>
-              )}
-
-              {/*
-                In the new version the button is the investor brief, so the
-                plain Investors link beside it would be the same destination
-                twice.
-              */}
-              {isNew ? (
-                <Link
-                  to="/investors"
-                  className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Investor brief
-                </Link>
-              ) : (
-                <>
-                  <NavLink
-                    to="/investors"
-                    className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
-                  >
-                    Investors
-                  </NavLink>
-
-                  <button
-                    onClick={() => setLearnMore(true)}
-                    className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Learn more
-                  </button>
-                </>
-              )}
+              {/* The button is the investor brief, so no separate Investors link. */}
+              <Link
+                to="/investors"
+                className="font-display font-medium text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Investor brief
+              </Link>
             </div>
 
             <button
@@ -283,7 +230,7 @@ export default function Nav() {
             <Container className="py-3">
               <div className="flex flex-col">
                 <NavLink
-                  to={home}
+                  to="/"
                   end
                   className={({ isActive }) =>
                     `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
@@ -292,7 +239,7 @@ export default function Nav() {
                   Home
                 </NavLink>
 
-                {isNew && <MobileGroup label="Markets" items={MARKETS_GROUP} />}
+                <MobileGroup label="Markets" items={MARKETS_GROUP} />
 
                 <MobileGroup label="About" items={ABOUT_GROUP} />
 
@@ -305,48 +252,17 @@ export default function Nav() {
                   News
                 </NavLink>
 
-                {!isNew && (
-                  <button onClick={goToSolution} className="text-left py-2.5 text-gray-600">
-                    {SOLUTION.label}
-                  </button>
-                )}
-
-                {isNew ? (
-                  <Link
-                    to="/investors"
-                    className="mt-3 text-center font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Investor brief
-                  </Link>
-                ) : (
-                  <>
-                    <NavLink
-                      to="/investors"
-                      className={({ isActive }) =>
-                        `py-2.5 ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-600'}`
-                      }
-                    >
-                      Investors
-                    </NavLink>
-
-                    <button
-                      onClick={() => {
-                        setOpen(false)
-                        setLearnMore(true)
-                      }}
-                      className="mt-3 font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
-                    >
-                      Learn more
-                    </button>
-                  </>
-                )}
+                <Link
+                  to="/investors"
+                  className="mt-3 text-center font-display font-medium bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Investor brief
+                </Link>
               </div>
             </Container>
           </div>
         )}
       </nav>
-
-      {learnMore && <LearnMoreModal onClose={() => setLearnMore(false)} />}
     </>
   )
 }

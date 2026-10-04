@@ -18,12 +18,34 @@ import { useDocumentMeta } from '../../hooks/useDocumentMeta'
   The stats, responder points and HYDRLAB copy moved here from the home page
   when it was simplified to three audience doors.
 */
+/*
+  Every public figure here is worded as its source words it and is listed in
+  SOURCES below. The earlier versions ("480k deaths", "-7% of GDP lost to poor
+  water supply") matched no source: the 7% was a sanitation figure for the
+  worst-hit countries, not a loss from water supply. Check the source before
+  changing a number or its label.
+*/
 const STATS = [
-  // Same figure as /investors. The two pages used to disagree (2.8bn here).
-  { value: '2bn+', label: 'without reliable access to safe drinking water' },
-  { value: '480k', label: 'deaths a year from unsafe water' },
-  { value: '-7%', label: 'of GDP lost to poor water supply' },
-  { value: '7×', label: 'cheaper per litre than bottled water' },
+  // Same figure as /investors.
+  { value: '2.1bn', label: 'people without safely managed drinking water' },
+  { value: '505k', label: 'diarrhoeal deaths a year from unsafe drinking water' },
+  { value: 'Up to 6%', label: 'of GDP at risk by 2050 in the most water-stressed regions' },
+  { value: '7×', label: 'cheaper per litre than bottled water, on our own modelling' },
+]
+
+const SOURCES = [
+  {
+    label: 'WHO/UNICEF Joint Monitoring Programme, 2025 (data for 2024)',
+    href: 'https://www.unicef.org/press-releases/fast-facts-1-4-people-globally-still-lack-access-safe-drinking-water-who-unicef',
+  },
+  {
+    label: 'WHO, Drinking-water fact sheet, 2023 (data for 2019)',
+    href: 'https://www.who.int/news-room/fact-sheets/detail/drinking-water',
+  },
+  {
+    label: 'World Bank, High and Dry, 2016',
+    href: 'https://www.worldbank.org/en/topic/water/publication/high-and-dry-climate-change-water-and-the-economy',
+  },
 ]
 
 const RESPONDER_POINTS = [
@@ -45,7 +67,7 @@ export default function Humanitarian() {
   useDocumentMeta(
     'Humanitarian | HYDRGEL water at the point of need',
     'HYDRGEL pouches and the HYDRLAB mobile facility bring drinkable water to disaster relief, conflict zones and off-grid teams.',
-    '/new/humanitarian',
+    '/humanitarian',
   )
   return (
     <main id="main">
@@ -72,10 +94,26 @@ export default function Humanitarian() {
             </div>
           ))}
         </div>
-        <p className="mt-10 text-center text-sm text-gray-600">
-          <Link to="/news" className="text-blue-600 hover:text-blue-700 underline underline-offset-4">
-            Follow the reporting behind these numbers
+        <p className="mt-10 text-center text-xs text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Sources:{' '}
+          {SOURCES.map((s, i) => (
+            <span key={s.href}>
+              {i > 0 && '; '}
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 underline underline-offset-2"
+              >
+                {s.label}
+              </a>
+            </span>
+          ))}
+          . The cost comparison is HYDRGEL’s own model, not an audited figure.{' '}
+          <Link to="/news" className="text-blue-600 hover:text-blue-700 underline underline-offset-2">
+            Follow the reporting in our newsroom
           </Link>
+          .
         </p>
       </Section>
 

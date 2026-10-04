@@ -39,7 +39,7 @@ export default function Corporate() {
   useDocumentMeta(
     'Corporate | Co-branded HYDRGEL water pouches',
     'Co-branded and custom-shaped HYDRGEL water purification pouches for events, airlines, staff travel and field teams. Patented cryogel technology.',
-    '/new/corporate',
+    '/corporate',
   )
   return (
     <main id="main">

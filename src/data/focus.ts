@@ -1,5 +1,5 @@
 /**
- * Content for the three audience pages (/new/consumer, /new/corporate, /new/humanitarian)
+ * Content for the three audience pages (/consumer, /corporate, /humanitarian)
  * and the home page that routes to them.
  *
  * CLAIMS DISCIPLINE — read before editing copy here.
@@ -83,7 +83,7 @@ export const HOW_IT_WORKS = [
 ]
 
 export interface Focus {
-  to: '/new/consumer' | '/new/corporate' | '/new/humanitarian'
+  to: '/consumer' | '/corporate' | '/humanitarian'
   label: string
   title: string
   body: string
@@ -94,7 +94,7 @@ export interface Focus {
 /** The three doors on the home page. */
 export const FOCUSES: Focus[] = [
   {
-    to: '/new/consumer',
+    to: '/consumer',
     label: 'Consumer',
     title: 'Clean water wherever you travel',
     body: 'A pouch for travellers, hikers and home emergency kits. Refill from the tap and drink in 3 minutes.',
@@ -102,7 +102,7 @@ export const FOCUSES: Focus[] = [
     alt: 'Travellers in an airport carrying and drinking from HYDRGEL pouches',
   },
   {
-    to: '/new/corporate',
+    to: '/corporate',
     label: 'Corporate',
     title: 'Your brand on clean water',
     body: 'Co-branded and custom-shaped pouches for events, airlines, field teams and staff travel.',
@@ -110,7 +110,7 @@ export const FOCUSES: Focus[] = [
     alt: 'Concept: branded HYDRGEL pouches handed out at a technology expo stand',
   },
   {
-    to: '/new/humanitarian',
+    to: '/humanitarian',
     label: 'Humanitarian',
     title: 'Water at the point of need',
     body: 'Pouches and the HYDRLAB mobile facility for disaster relief, conflict zones and off-grid teams.',

@@ -8,7 +8,7 @@ const PROOF = [
 ]
 
 /**
- * Full-bleed home hero for /new: a 5-second unveiling of the pouch, with the
+ * Full-bleed home hero: a 5-second unveiling of the pouch, with the
  * headline over the dark left side of the frame.
  *
  * The clip plays once and holds on its last frame rather than looping. It is

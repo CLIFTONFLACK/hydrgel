@@ -99,7 +99,7 @@ export default function Investors() {
             <SectionHeading eyebrow="The opportunity" title="A market defined by failure of supply" />
             <p className="text-lg text-gray-600 max-w-2xl mb-12 leading-relaxed">
               Water insecurity is among the world's fastest-accelerating humanitarian and economic
-              threats. Over two billion people lack reliable access to safe drinking water, and
+              threats. Some 2.1 billion people lack safely managed drinking water (WHO/UNICEF, 2025), and
               disasters, pollution and climate stress continue to multiply. Existing solutions
               cannot adapt to what is actually in the water in front of them.
             </p>
@@ -219,7 +219,7 @@ export default function Investors() {
         {/* -------------------------------------------------- positioning */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading eyebrow="Positioning" title="Lowest cost per litre, highest adaptability" />
+            <SectionHeading eyebrow="Positioning" title="Lower cost per litre than bottled water, and adaptable" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <CostChart />
               <div>
@@ -234,8 +234,10 @@ export default function Investors() {
                   conditions, while shipping grams instead of litres.
                 </p>
                 <p className="mt-6 text-sm text-gray-500">
-                  Indicative cost comparison from HYDRGEL's company presentation. Figures are
-                  modelled, not audited.
+                  Indicative comparison from HYDRGEL's company presentation, against bottled water
+                  only and not against other purification products. The HYDRGEL figure is a
+                  planning estimate and the bottled figure a typical single-serve retail price.
+                  Neither is audited, and the unit economics are being established in the pilot.
                 </p>
               </div>
             </div>

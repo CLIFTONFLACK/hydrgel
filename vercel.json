@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/new", "destination": "/", "permanent": false },
+    { "source": "/new/consumer", "destination": "/consumer", "permanent": false },
+    { "source": "/new/corporate", "destination": "/corporate", "permanent": false },
+    { "source": "/new/humanitarian", "destination": "/humanitarian", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/mockups", "destination": "/mockups/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }

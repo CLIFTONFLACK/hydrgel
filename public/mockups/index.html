@@ -925,7 +925,7 @@ a{color:inherit}
     <div class="stage" id="stage"></div>
     <div class="stage-foot">
       <span id="footL"></span>
-      <span>content source &nbsp;·&nbsp; site/src/pages/Home.tsx, Nav.tsx, Footer.tsx</span>
+      <span>content source &nbsp;·&nbsp; the previous home page, Nav.tsx, Footer.tsx</span>
     </div>
   </div>
 </div>
@@ -949,14 +949,14 @@ const C = {
   },
   statsHead: 'The world is suffering more than ever from water disasters',
   stats: [
-    { v: '-7%',   l: 'of GDP lost to poor water supply' },
-    { v: '480k',  l: 'deaths a year from unsafe water' },
-    { v: '2bn+', l: 'without reliable access to safe drinking water' },
+    { v: 'Up to 6%', l: 'of GDP at risk by 2050 in the most water-stressed regions' },
+    { v: '505k',  l: 'diarrhoeal deaths a year from unsafe drinking water' },
+    { v: '2.1bn', l: 'people without safely managed drinking water' },
     { v: '7×', l: 'cheaper per litre than bottled water' }
   ],
   statsLink: 'Follow the reporting behind these numbers',
   video: {
-    // The live site embeds this player inline; src copied verbatim from Home.tsx.
+    // The live site embeds this player inline; src copied verbatim from the previous home page (since retired).
     src: 'https://www.youtube.com/embed/tMlrEF1KXxU?si=OclrBgzWnjhz625X',
     href: 'https://www.youtube.com/watch?v=tMlrEF1KXxU',
     t: 'HYDRGEL — the film',
@@ -988,8 +988,8 @@ const C = {
     h2: 'water accessibility revolution.',
     body: 'Imagine a world where every 20 seconds a life is lost by something as basic a right as access to safe drinking water... both recreationally and crucially, in times of crisis.',
     cards: [
-      { i: 'alert', t: '$600bn cost of disaster', b: 'Water related disasters continue to break annual records as climate change takes effect globally.' },
-      { i: 'users', t: '2bn+ need water security', b: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.' },
+      { i: 'alert', t: '$3.6tn lost since 1970', b: 'Water related disasters continue to break annual records as climate change takes effect globally.' },
+      { i: 'users', t: '2.1bn need water security', b: 'Global natural disasters put millions of children at risk of disease from contaminated drinking water.' },
       { i: 'shield', t: 'Unprecedented conflicts', b: 'Unprecedented numbers of conflict have left millions searching for safe drinkable water just to survive.' }
     ]
   },
@@ -1259,7 +1259,7 @@ function build(s) {
 
   const marquee = s.id === 'max'
     ? '<div class="marquee"><span>' +
-      ('Clean drinking water is a right, not a luxury &nbsp;&#9679;&nbsp; 2bn+ without safe water &nbsp;&#9679;&nbsp; 480k deaths a year &nbsp;&#9679;&nbsp; 330 ml in 3 minutes &nbsp;&#9679;&nbsp; ').repeat(4) +
+      ('Clean drinking water is a right, not a luxury &nbsp;&#9679;&nbsp; 2.1bn without safely managed water &nbsp;&#9679;&nbsp; 505k deaths a year &nbsp;&#9679;&nbsp; 330 ml in 3 minutes &nbsp;&#9679;&nbsp; ').repeat(4) +
       '</span></div>'
     : '';
 

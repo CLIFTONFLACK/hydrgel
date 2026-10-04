@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Facebook, Twitter, Linkedin, Youtube, Phone, Mail, MapPin } from 'lucide-react'
 
 const SOCIALS = [
@@ -9,30 +9,12 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
-  const { pathname } = useLocation()
-  const navigate = useNavigate()
-  // Mirrors the nav: inside the new version, Home stays in it and Solution,
-  // which is a section of the current home page only, is not offered.
-  const isNew = pathname === '/new' || pathname.startsWith('/new/')
-  const home = isNew ? '/new' : '/'
-
-  const goToSection = (id: string) => {
-    if (pathname === '/') {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate(`/#${id}`)
-      requestAnimationFrame(() =>
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }),
-      )
-    }
-  }
-
   return (
     <footer className="bg-white border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <Link to={home} className="flex items-center cursor-pointer" aria-label="HYDRGEL home">
+            <Link to="/" className="flex items-center cursor-pointer" aria-label="HYDRGEL home">
               <img src="/images/logo.png" alt="HYDRGEL" width={120} height={32} className="h-8 w-auto" />
             </Link>
             <p className="mt-4 text-sm text-gray-600">
@@ -47,7 +29,16 @@ export default function Footer() {
             {/* Mirrors the nav: Team and Contact sit under About. */}
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link to={home} className="text-gray-600 hover:text-gray-900">Home</Link>
+                <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
+              </li>
+              <li>
+                <Link to="/consumer" className="text-gray-600 hover:text-gray-900">Consumer</Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-gray-600 hover:text-gray-900">Corporate</Link>
+              </li>
+              <li>
+                <Link to="/humanitarian" className="text-gray-600 hover:text-gray-900">Humanitarian</Link>
               </li>
               <li>
                 <Link to="/about" className="text-gray-600 hover:text-gray-900">About Us</Link>
@@ -63,13 +54,6 @@ export default function Footer() {
               <li>
                 <Link to="/news" className="text-gray-600 hover:text-gray-900">News</Link>
               </li>
-              {!isNew && (
-                <li>
-                  <button onClick={() => goToSection('solution')} className="text-gray-600 hover:text-gray-900">
-                    Solution
-                  </button>
-                </li>
-              )}
               <li>
                 <Link to="/investors" className="text-gray-600 hover:text-gray-900">Investors</Link>
               </li>

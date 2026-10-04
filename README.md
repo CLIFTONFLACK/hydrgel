@@ -32,20 +32,19 @@ checks the file out with LF and is unaffected.
 
 | Path | Page |
 | --- | --- |
-| `/` | Home — product, HYDRLAB, use cases |
+| `/` | Home — three audience doors (Consumer, Corporate, Humanitarian), a proof strip, the lab evidence table, the pilot programme and an investor section |
+| `/consumer` | Consumer audience page |
+| `/corporate` | Corporate audience page |
+| `/humanitarian` | Humanitarian audience page |
 | `/news` | Water security newsroom |
 | `/investors` | Investor information |
-| `/new` | New version under review: home with three audience doors (Consumer, Corporate, Humanitarian), a proof strip, the lab evidence table, the pilot programme and an investor section |
-| `/new/consumer` | New version — consumer focus page |
-| `/new/corporate` | New version — corporate focus page |
-| `/new/humanitarian` | New version — humanitarian focus page |
+| `/new`, `/new/consumer`, `/new/corporate`, `/new/humanitarian` | Redirects to `/`, `/consumer`, `/corporate` and `/humanitarian`, so links shared while the site was under review at `/new` still work |
 
-The `/new/*` pages are not in `public/sitemap.xml` while under review. The nav
-switches to the new version's links (Home → `/new`, and Consumer/Corporate/
-Humanitarian replacing Solution) only while on a `/new/*` route; the live `/`
-home page is unchanged. On those routes the nav button reads "Investor brief"
-and links to `/investors`, replacing "Learn more" and the separate Investors
-link, and the footer Home link stays inside `/new`.
+All nine pages are in `public/sitemap.xml`. The nav always shows a Markets menu
+(Consumer, Corporate, Humanitarian) and an "Investor brief" button linking to
+`/investors`. There is no Solution link and no Learn more button. The page
+components for the home and audience pages still live in `src/pages/new/` for
+now.
 
 `vercel.json` rewrites all paths to `index.html` so client-side routes survive a
 hard refresh.
@@ -58,7 +57,8 @@ hard refresh.
   Summaries are written for this site; no source text is reproduced.
 - **`src/data/investor.ts`** — investor-page content, drawn from HYDRGEL's own
   company presentation, executive summary and company summary.
-- **`src/data/focus.ts`** — content for the `/new` pages: the three pillars, the
+- **`src/data/focus.ts`** — content for the home page and the three audience
+  pages (`/consumer`, `/corporate`, `/humanitarian`): the three pillars, the
   three audience doors and the concept imagery sets. Claims rule: only bacteria
   removal is evidenced (the October 2020 lab reports behind `EFFICACY` in
   `investor.ts`), and only as a proof of concept; other contaminants are
@@ -70,6 +70,12 @@ hard refresh.
   imagery carries `CONCEPT_NOTICE`, and imagery of the pouch in the field carries
   `ILLUSTRATIVE_NOTICE`. The brand renders are temporary and are due to be
   recreated without real companies' marks.
+- **Humanitarian statistics** — each public statistic on `/humanitarian` is
+  worded as its source words it and listed in the `SOURCES` array in
+  `src/pages/new/Humanitarian.tsx` (WHO/UNICEF JMP 2025, WHO drinking-water fact
+  sheet 2023, World Bank High and Dry 2016). The cost-per-litre comparison is
+  HYDRGEL's own planning estimate against bottled water only, with no audited
+  basis, and must stay labelled as such.
 
 ### Content rules
 
@@ -140,4 +146,7 @@ locally with `node scripts/fetch-sources.mjs .sources-out`.
 ## Deployment
 
 Pushes to `main` deploy automatically via the connected Vercel project.
+hydrgel.com is being moved to this Vercel project; until the DNS change is made,
+the public domain may still serve an older build hosted elsewhere.
+
 Snapshot refreshes do not touch `main`, so they never trigger a deploy.

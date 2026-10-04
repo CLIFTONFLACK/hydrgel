@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import Home from './pages/Home'
-import NewHome from './pages/new/Home'
+import Home from './pages/new/Home'
 import Consumer from './pages/new/Consumer'
 import Corporate from './pages/new/Corporate'
 import Humanitarian from './pages/new/Humanitarian'
@@ -22,7 +21,8 @@ import NotFound from './pages/NotFound'
  * and back-navigation — so refreshing halfway down /news reopened it halfway
  * down. Switching to 'manual' hands that decision to us.
  *
- * Hash links still win, so the home page's #solution anchor keeps working.
+ * Hash links still win, so links such as /#why-hydrgel and
+ * /investors#request-deck land on their section.
  */
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -47,6 +47,12 @@ function ScrollManager() {
   return null
 }
 
+/** Redirects an old /new path, keeping the query string and the section hash. */
+function LegacyRedirect({ to }: { to: string }) {
+  const { search, hash } = useLocation()
+  return <Navigate to={{ pathname: to, search, hash }} replace />
+}
+
 export default function App() {
   return (
     <>
@@ -54,11 +60,16 @@ export default function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* New version under review: three-audience home and its pages. */}
-        <Route path="/new" element={<NewHome />} />
-        <Route path="/new/consumer" element={<Consumer />} />
-        <Route path="/new/corporate" element={<Corporate />} />
-        <Route path="/new/humanitarian" element={<Humanitarian />} />
+        <Route path="/consumer" element={<Consumer />} />
+        <Route path="/corporate" element={<Corporate />} />
+        <Route path="/humanitarian" element={<Humanitarian />} />
+        {/* The site was reviewed under /new before it became the root. Links
+            shared during that review still work. vercel.json redirects these
+            first; the routes cover in-app navigation. */}
+        <Route path="/new" element={<LegacyRedirect to="/" />} />
+        <Route path="/new/consumer" element={<LegacyRedirect to="/consumer" />} />
+        <Route path="/new/corporate" element={<LegacyRedirect to="/corporate" />} />
+        <Route path="/new/humanitarian" element={<LegacyRedirect to="/humanitarian" />} />
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/news" element={<News />} />

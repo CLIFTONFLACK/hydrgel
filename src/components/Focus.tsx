@@ -154,7 +154,7 @@ export function Pillars({
           ))}
         </ul>
         <Link
-          to="/new#why-hydrgel"
+          to="/#why-hydrgel"
           className="mt-8 inline-flex items-center gap-2 font-display font-medium text-blue-600 hover:text-blue-700 transition-colors"
         >
           The technology in full

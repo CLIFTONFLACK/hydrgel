@@ -36,7 +36,7 @@ export default function Consumer() {
   useDocumentMeta(
     'Consumer | HYDRGEL personal water purification pouch',
     'A reusable HYDRGEL pouch for travel, the outdoors and home emergency kits. Fill, wait 3 minutes, drink. No power, no pump, no cartridge.',
-    '/new/consumer',
+    '/consumer',
   )
   return (
     <main id="main">
