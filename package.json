@@ -8,7 +8,8 @@
     "build": "node scripts/validate-news.mjs && tsc -b && vite build",
     "validate:news": "node scripts/validate-news.mjs",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test:consent": "node --test test/ga-consent.test.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.427.0",
