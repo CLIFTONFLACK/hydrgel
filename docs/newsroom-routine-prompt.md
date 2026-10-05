@@ -25,6 +25,9 @@ Neither works: the sandbox's egress policy denies every publisher the newsroom
 cites, so the verification step could never pass and the routine stopped every
 run without writing anything.
 
+The category list was also cut from seven to four (plus HYDRGEL): Humanitarian,
+Technology and Climate were folded into Crisis, Research and Policy.
+
 It now hydrates the runner's snapshot and verifies against that instead. The
 editorial standards are unchanged — the absolute content rules, the house
 style, the word bounds and the stop conditions all carry over verbatim. The
@@ -102,7 +105,12 @@ Append ONE item to the END of the NEWS array in src/data/news.ts, matching exist
   },
 
 - `id` = the date, then a short lowercase hyphenated slug from the title. Must be unique across the file.
-- `category` must be EXACTLY one of: Crisis, Humanitarian, Technology, Policy, Climate, Research, Industry. Use HYDRGEL only for the company's own milestones, never for third-party news.
+- `category` must be EXACTLY one of: Crisis, Policy, Research, Industry. Pick the closest fit:
+    - Crisis: disasters, floods, droughts, contamination incidents, outbreaks, humanitarian emergencies and the response to them.
+    - Policy: regulation, legislation, UN and government declarations, treaties, diplomacy, and regulatory approvals.
+    - Research: studies, data reports, forecasts, climate attribution, and treatment or desalination technology and prototypes.
+    - Industry: water-sector investment, funding, M&A, corporate moves and major sector conferences.
+  Use HYDRGEL only for the company's own milestones, never for third-party news.
 - Escape apostrophes inside single-quoted strings as \'.
 - url must be https.
 

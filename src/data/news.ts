@@ -12,15 +12,7 @@
  * purification, emergency response and water-technology investment.
  */
 
-export type Category =
-  | 'Crisis'
-  | 'Humanitarian'
-  | 'Technology'
-  | 'Policy'
-  | 'Climate'
-  | 'Research'
-  | 'Industry'
-  | 'HYDRGEL'
+export type Category = 'Crisis' | 'Policy' | 'Research' | 'Industry' | 'HYDRGEL'
 
 export interface NewsItem {
   /**
@@ -39,24 +31,12 @@ export interface NewsItem {
   url: string
 }
 
-export const CATEGORIES: Category[] = [
-  'Crisis',
-  'Humanitarian',
-  'Technology',
-  'Policy',
-  'Climate',
-  'Research',
-  'Industry',
-  'HYDRGEL',
-]
+export const CATEGORIES: Category[] = ['Crisis', 'Policy', 'Research', 'Industry', 'HYDRGEL']
 
 /** Tailwind classes per category, used for the card accent and filter chips. */
 export const CATEGORY_STYLES: Record<Category, { chip: string; tile: string }> = {
   Crisis: { chip: 'bg-red-100 text-red-700', tile: 'from-red-400 to-red-600' },
-  Humanitarian: { chip: 'bg-orange-100 text-orange-700', tile: 'from-orange-400 to-orange-600' },
-  Technology: { chip: 'bg-blue-100 text-blue-700', tile: 'from-blue-400 to-blue-600' },
   Policy: { chip: 'bg-purple-100 text-purple-700', tile: 'from-purple-400 to-purple-600' },
-  Climate: { chip: 'bg-amber-100 text-amber-700', tile: 'from-amber-400 to-amber-600' },
   Research: { chip: 'bg-teal-100 text-teal-700', tile: 'from-teal-400 to-teal-600' },
   Industry: { chip: 'bg-slate-100 text-slate-700', tile: 'from-slate-400 to-slate-600' },
   HYDRGEL: { chip: 'bg-green-100 text-green-700', tile: 'from-green-400 to-green-600' },
@@ -103,7 +83,7 @@ export const NEWS: NewsItem[] = [
     title: 'Global oral cholera vaccine stockpile runs empty',
     summary:
       'WHO confirmed the emergency stockpile of oral cholera vaccine had been fully drawn down, with no doses available for allocation. Requests reached 61 million doses against a fraction of that in supply, forcing single-dose campaigns and shifting the burden of outbreak control onto water and sanitation measures.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Global',
     source: 'Health Policy Watch',
     url: 'https://healthpolicy-watch.news/global-stockpile-is-empty-but-cholera-vaccines-are-being-shipped/',
@@ -147,7 +127,7 @@ export const NEWS: NewsItem[] = [
     title: 'Cholera deaths climb by half as outbreaks outpace response',
     summary:
       'WHO reporting showed cholera cases up around 5 percent year on year while deaths rose by roughly 50 percent, exceeding 6,000. The pattern pointed to late detection and degraded water and sanitation infrastructure in conflict-affected states rather than to any change in the pathogen itself.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Global',
     source: 'World Health Organization',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
@@ -182,7 +162,7 @@ export const NEWS: NewsItem[] = [
     title: 'UNICEF: nine in ten people in Gaza cannot access safe drinking water',
     summary:
       'Power and fuel restrictions took desalination capacity offline across Gaza, leaving roughly half of families below the humanitarian minimum of six litres per person per day. UNICEF reported around 1.8 million people requiring water, sanitation and hygiene assistance, over half of them children.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Gaza',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2025/03/1160961',
@@ -215,7 +195,7 @@ export const NEWS: NewsItem[] = [
     title: 'World Water Day 2025 marks glacier preservation',
     summary:
       'The UN observance centred on glacial meltwater as a foundation of drinking water, agriculture, industry and hydropower, and on what accelerating glacier retreat means for communities whose dry-season supply depends on it.',
-    category: 'Climate',
+    category: 'Policy',
     region: 'Global',
     source: 'UN-Water',
     url: 'https://www.unwater.org/our-work/world-water-day',
@@ -237,7 +217,7 @@ export const NEWS: NewsItem[] = [
     title: 'WHO prequalifies a simplified oral cholera vaccine',
     summary:
       'A streamlined vaccine formulation cleared WHO prequalification, projected to lift annual supply from around 45 million doses toward roughly 90 million by 2026. Even at that level, supply trails demand — leaving safe water provision as the first line of outbreak control.',
-    category: 'Humanitarian',
+    category: 'Policy',
     region: 'Global',
     source: 'World Health Organization',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
@@ -270,7 +250,7 @@ export const NEWS: NewsItem[] = [
     title: 'Hydrogel device pulls drinking water from air at 11 percent humidity',
     summary:
       'An international team optimised a cross-linked polyacrylamide hydrogel loaded with lithium chloride, extracting water from air far drier than previous devices could handle and reaching up to two litres per day. Field testing ran in the Atacama, among the driest inhabited places on Earth.',
-    category: 'Technology',
+    category: 'Research',
     region: 'Global',
     source: 'Tech Xplore',
     url: 'https://techxplore.com/news/2025-05-atmospheric-harvesting-optimization-hygroscopic-hydrogel.html',
@@ -281,7 +261,7 @@ export const NEWS: NewsItem[] = [
     title: 'Cholera response constrained by a persistent vaccine shortfall',
     summary:
       'Mid-2025 reporting showed the oral cholera vaccine stockpile still below its five-million-dose emergency threshold despite production gains. With vaccine rationed to single-dose reactive campaigns, safe water provision remained the primary tool available to responders.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Global',
     source: 'World Health Organization',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
@@ -303,7 +283,7 @@ export const NEWS: NewsItem[] = [
     title: 'Sudan cholera emergency spreads as water treatment collapses',
     summary:
       'Destruction of treatment plants during the conflict forced communities onto contaminated sources, driving one of the largest cholera outbreaks of the decade. Access constraints and damaged WASH infrastructure left the response chronically behind the caseload.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Sudan',
     source: 'UN OCHA',
     url: 'https://www.unocha.org/publications/report/sudan/sudan-cholera-operational-update-3-july-2025',
@@ -347,7 +327,7 @@ export const NEWS: NewsItem[] = [
     title: 'Cholera fatalities rise sharply against a depleted vaccine supply',
     summary:
       'Reporting through 2025 showed cholera deaths climbing steeply year on year, concentrated in states where conflict or disaster had degraded water treatment. The pattern reinforced that outbreak control ultimately depends on water quality at the point of consumption.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Global',
     source: 'World Health Organization',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
@@ -358,7 +338,7 @@ export const NEWS: NewsItem[] = [
     title: 'Solar desalination prototype produces fresh water without grid power',
     summary:
       'A UNIST team combined a perovskite-based photothermal material with a structural design that resists salt fouling, producing around 3.4 kg of fresh water per hour using sunlight alone. Salt accumulation has historically been the limiting factor in solar still durability.',
-    category: 'Technology',
+    category: 'Research',
     region: 'South Korea',
     source: 'Tech Xplore',
     url: 'https://techxplore.com/news/2025-09-solar-desalination-technology-sunlight-fresh.html',
@@ -380,7 +360,7 @@ export const NEWS: NewsItem[] = [
     title: 'Sudan passes 120,000 cholera cases with fatality rate near three percent',
     summary:
       'Sudan\'s health ministry reported 120,496 cases and 3,368 deaths. The case fatality rate of 2.8 percent ran close to three times the emergency threshold, a signal of how far treatment access had degraded alongside the water system itself.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Sudan',
     source: 'World Health Organization',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON579',
@@ -448,7 +428,7 @@ export const NEWS: NewsItem[] = [
     title: 'Attribution study revisits the Valencia flood in a fossil-fuel-free counterfactual',
     summary:
       'Researchers modelled how the October 2024 Valencia disaster would have unfolded in a world without fossil fuel warming, sharpening the evidentiary link between emissions and the extreme rainfall events that now routinely take municipal water systems offline.',
-    category: 'Climate',
+    category: 'Research',
     region: 'Spain',
     source: 'Euronews',
     url: 'https://www.euronews.com/2026/02/19/valencias-deadly-flood-still-haunts-spain-would-it-have-happened-in-a-fossil-fuel-free-wor',
@@ -536,7 +516,7 @@ export const NEWS: NewsItem[] = [
     title: 'Solar desalination device produces fresh water without brine waste',
     summary:
       'A University of Rochester team used laser-etched superwicking black metal to desalinate seawater while capturing salts and minerals as solids rather than discharging concentrated brine — addressing the disposal problem that constrains conventional desalination siting.',
-    category: 'Technology',
+    category: 'Research',
     region: 'United States',
     source: 'ScienceDaily',
     url: 'https://www.sciencedaily.com/releases/2026/05/260530053418.htm',
@@ -547,7 +527,7 @@ export const NEWS: NewsItem[] = [
     title: 'Thin snowpack and shrinking glaciers raise Alpine drought alarm',
     summary:
       'Low winter snow reserves and a dry spring left Alpine catchments short of the natural storage that normally releases meltwater through summer, putting downstream supply across several European basins on a precarious footing before the season began.',
-    category: 'Climate',
+    category: 'Crisis',
     region: 'Europe',
     source: 'The Ski Guru',
     url: 'https://www.the-ski-guru.com/2026/06/01/alps-drought-2026-water-reserves/',
@@ -602,7 +582,7 @@ export const NEWS: NewsItem[] = [
     title: 'Attribution study finds climate change deepening European drought',
     summary:
       'World Weather Attribution concluded the highly evaporative conditions across Europe in April–June 2026 were made vastly more likely by warming. The driver was less a rainfall deficit than a warmer atmosphere pulling moisture out of soils.',
-    category: 'Climate',
+    category: 'Research',
     region: 'Europe',
     source: 'World Weather Attribution',
     url: 'https://www.worldweatherattribution.org/increasingly-hot-europe-faces-more-severe-droughts-and-growing-challenges-for-water-and-land-management/',
@@ -624,7 +604,7 @@ export const NEWS: NewsItem[] = [
     title: 'Sudan displacement climbs as floods and power loss halt water pumping',
     summary:
       'IOM reported at least 200,000 more people displaced across Kordofan since late 2025, with drone strikes on El Obeid\'s main electrical transformer causing outages that stopped water pumping. Seasonal flooding destroyed or damaged nearly 1,350 shelters in Tawila\'s camps in North Darfur, and more than 4.5 million returnees face areas where services no longer function.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Sudan',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/08/1168165',
@@ -690,7 +670,7 @@ export const NEWS: NewsItem[] = [
     title: 'WMO forecasts a very strong El Niño persisting into 2027',
     summary:
       'The World Meteorological Organization put the likelihood of El Niño persisting through February 2027 at close to 100 per cent, the most unequivocal forecast it has issued for the pattern. Weekly Niño 3.4 readings reached 2.6 degrees above normal, and subsurface Pacific temperatures ran more than eight degrees warm in places.',
-    category: 'Climate',
+    category: 'Research',
     region: 'Global',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168265',
@@ -701,7 +681,7 @@ export const NEWS: NewsItem[] = [
     title: 'UNICEF: 22,000 children in Nepal\'s flood districts need safe water',
     summary:
       'More than a week after the Bhotekoshi-Trishuli basin flooded, UNICEF reported at least 22,000 children urgently needing safe drinking water, sanitation and hygiene support. Water systems were damaged across the affected districts and sanitation facilities destroyed. Supplies for around 19,000 people — largely jerrycans, buckets and water treatment solution — reached Rasuwa and Nuwakot.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Nepal',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168269',
@@ -712,7 +692,7 @@ export const NEWS: NewsItem[] = [
     title: 'Record heat preceded the Nepal glacier collapse, temperature analysis finds',
     summary:
       'Berkeley Earth chief scientist Robert Rohde reconstructed conditions at the 5,200-metre collapse site and estimated average temperatures around 5 degrees Celsius between 21 and 26 August, above anything in more than 55 years of records for those dates. Researchers caution that no direct link to the collapse has been established.',
-    category: 'Climate',
+    category: 'Research',
     region: 'Nepal',
     source: 'Phys.org',
     url: 'https://phys.org/news/2026-09-nepal-glacier-exceptional-collapse-deadly.html',
@@ -756,7 +736,7 @@ export const NEWS: NewsItem[] = [
     title: 'WMO finds 2025 among the driest years for the world\'s rivers in 35 years',
     summary:
       'The World Meteorological Organization\'s State of Global Water Resources report recorded below-normal discharge across 36 percent of the world\'s river basin area in 2025, the seventh straight year in which normal-flow rivers were a clear minority. Nearly two-thirds of monitored groundwater wells sat outside their normal range.',
-    category: 'Climate',
+    category: 'Research',
     region: 'Global',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168350',
@@ -811,7 +791,7 @@ export const NEWS: NewsItem[] = [
     title: 'Yemen escalation raises cholera risk as WHO supply lines run dry',
     summary:
       'Renewed fighting in southwest Yemen has uprooted more than 180,000 people, and WHO warns that unsafe water and poor sanitation at crowded displacement sites are raising the risk of a wider cholera outbreak. Several lifesaving supply lines at the agency\'s warehouse in Aden are already at zero stock.',
-    category: 'Humanitarian',
+    category: 'Crisis',
     region: 'Yemen',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168480',

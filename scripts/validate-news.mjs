@@ -19,10 +19,7 @@ const stories = fs.readFileSync(path.join(dataDir, 'stories.ts'), 'utf8')
 const errors = []
 const warn = (m) => errors.push(m)
 
-const VALID_CATEGORIES = [
-  'Crisis', 'Humanitarian', 'Technology', 'Policy',
-  'Climate', 'Research', 'Industry', 'HYDRGEL',
-]
+const VALID_CATEGORIES = ['Crisis', 'Policy', 'Research', 'Industry', 'HYDRGEL']
 
 // --- parse news items ------------------------------------------------------
 const itemRe =
