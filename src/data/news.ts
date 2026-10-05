@@ -795,6 +795,16 @@ export const NEWS: NewsItem[] = [
     region: 'Yemen',
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/09/1168480',
+  },  {
+    id: '2026-10-01-legionnaires-cases-second-highest-rate',
+    date: '2026-10-01',
+    title: 'Legionnaires\' disease cases reach their second-highest recorded rate in the US',
+    summary:
+      'Provisional CDC data put the US Legionnaires\' disease case rate at 2.9 for every 100,000 people in 2025, the second highest on record after 2018. The bacterium multiplies in warm, stagnant building plumbing rather than at the treatment works, and New York City has had three large outbreaks since July 2025, the deadliest killing 11 people.',
+    category: 'Crisis',
+    region: 'United States',
+    source: 'Circle of Blue',
+    url: 'https://www.circleofblue.org/2026/health/legionnaires-disease-cases-surge-again-cdc-data-shows/',
   },
 ]
 
