@@ -819,7 +819,19 @@ export const NEWS: NewsItem[] = [
   },
 ]
 
-/** Newest first. */
-export const NEWS_SORTED = [...NEWS].sort((a, b) => b.date.localeCompare(a.date))
+/**
+ * Newest first.
+ *
+ * Date alone is not a total order — two significant water events can fall on
+ * the same day, and the newsroom routine appends items that often share a date
+ * with one already published. A plain stable sort would leave the newer of the
+ * pair behind the older, so a fresh entry could land mid-page and read as
+ * missing. The index tie-break makes the later position in `NEWS` win, which
+ * matches the convention that new items are appended to the end of the array.
+ */
+export const NEWS_SORTED = [...NEWS]
+  .map((n, i) => ({ n, i }))
+  .sort((a, b) => b.n.date.localeCompare(a.n.date) || b.i - a.i)
+  .map(({ n }) => n)
 
 export const YEARS = [...new Set(NEWS.map((n) => n.date.slice(0, 4)))].sort().reverse()
