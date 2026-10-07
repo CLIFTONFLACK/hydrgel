@@ -806,6 +806,17 @@ export const NEWS: NewsItem[] = [
     source: 'Circle of Blue',
     url: 'https://www.circleofblue.org/2026/health/legionnaires-disease-cases-surge-again-cdc-data-shows/',
   },
+  {
+    id: '2026-10-01-colorado-river-rules-take-effect',
+    date: '2026-10-01',
+    title: 'New Colorado River rules take effect, cutting three states by about a fifth',
+    summary:
+      'Federal rules for sharing the Colorado River took effect on 1 October 2026, replacing a framework 20 years old and requiring Arizona, California and Nevada to take about 20 per cent less water. How the cuts will be absorbed is unresolved: Nevada has sued the federal government, and Arizona has set aside $9 million for litigation of its own.',
+    category: 'Policy',
+    region: 'United States',
+    source: 'NPR',
+    url: 'https://www.npr.org/2026/10/01/nx-s1-5980083/new-rules-for-sharing-the-colorado-river-start-today',
+  },
 ]
 
 /** Newest first. */
