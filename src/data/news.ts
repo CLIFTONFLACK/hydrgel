@@ -817,6 +817,17 @@ export const NEWS: NewsItem[] = [
     source: 'NPR',
     url: 'https://www.npr.org/2026/10/01/nx-s1-5980083/new-rules-for-sharing-the-colorado-river-start-today',
   },
+  {
+    id: '2026-10-06-unicef-el-nino-347-million-children',
+    date: '2026-10-06',
+    title: 'UNICEF warns 347 million children face El Niño flood and drought extremes',
+    summary:
+      'A new UNICEF analysis puts more than 347 million children in nearly 100 countries and territories in the path of unusually wet or unusually dry conditions between October and December. The Niño 3.4 index in September exceeded readings from every previous El Niño, including 1997 and 2015. Papua New Guinea already reports water shortages and crop losses.',
+    category: 'Crisis',
+    region: 'Global',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/10/1168537',
+  },
 ]
 
 /**
