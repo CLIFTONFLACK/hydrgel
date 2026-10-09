@@ -1,0 +1,783 @@
+{
+  "generated_at": "2026-10-09T11:59:48.870Z",
+  "window_days": 14,
+  "cutoff_date": "2026-09-25",
+  "article_char_limit": 6000,
+  "max_articles_total": 120,
+  "dropped_over_cap": 0,
+  "feeds": [
+    {
+      "slug": "who-don",
+      "kind": "primary",
+      "format": "who-odata",
+      "name": "WHO Disease Outbreak News",
+      "url": "https://www.who.int/api/news/diseaseoutbreaknews?$select=Title,Summary,UrlName,PublicationDate&$orderby=PublicationDate%20desc&$top=25",
+      "status": 200,
+      "item_count": 0,
+      "parsed_total": 25,
+      "error": null
+    },
+    {
+      "slug": "who-news",
+      "kind": "primary",
+      "name": "WHO news",
+      "url": "https://www.who.int/rss-feeds/news-english.xml",
+      "status": 200,
+      "item_count": 0,
+      "parsed_total": 25,
+      "error": null
+    },
+    {
+      "slug": "un-news",
+      "kind": "primary",
+      "name": "UN News",
+      "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+      "status": 200,
+      "item_count": 4,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "nature-water",
+      "kind": "primary",
+      "name": "Nature Water",
+      "url": "https://www.nature.com/natwater.rss",
+      "status": 200,
+      "item_count": 5,
+      "parsed_total": 8,
+      "error": null
+    },
+    {
+      "slug": "phys-environment",
+      "kind": "trade",
+      "name": "Phys.org environment",
+      "url": "https://phys.org/rss-feed/earth-news/environment-news/",
+      "status": 200,
+      "item_count": 8,
+      "parsed_total": 30,
+      "error": null
+    },
+    {
+      "slug": "sciencedaily-water",
+      "kind": "trade",
+      "name": "ScienceDaily water",
+      "url": "https://www.sciencedaily.com/rss/earth_climate/water.xml",
+      "status": 200,
+      "item_count": 1,
+      "parsed_total": 60,
+      "error": null
+    },
+    {
+      "slug": "sciencedaily-drought",
+      "kind": "trade",
+      "name": "ScienceDaily drought",
+      "url": "https://www.sciencedaily.com/rss/earth_climate/drought.xml",
+      "status": 200,
+      "item_count": 1,
+      "parsed_total": 60,
+      "error": null
+    },
+    {
+      "slug": "circle-of-blue",
+      "kind": "trade",
+      "name": "Circle of Blue",
+      "url": "https://www.circleofblue.org/feed/",
+      "status": 200,
+      "item_count": 3,
+      "parsed_total": 12,
+      "error": null
+    },
+    {
+      "slug": "bbc-science-env",
+      "kind": "general",
+      "name": "BBC science and environment",
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+      "status": 200,
+      "item_count": 10,
+      "parsed_total": 42,
+      "error": null
+    },
+    {
+      "slug": "bbc-world",
+      "kind": "general",
+      "name": "BBC world",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "status": 200,
+      "item_count": 1,
+      "parsed_total": 35,
+      "error": null
+    },
+    {
+      "slug": "guardian-water",
+      "kind": "general",
+      "name": "The Guardian water",
+      "url": "https://www.theguardian.com/environment/water/rss",
+      "status": 200,
+      "item_count": 12,
+      "parsed_total": 20,
+      "error": null
+    },
+    {
+      "slug": "yahoo-news",
+      "kind": "general",
+      "name": "Yahoo News",
+      "url": "https://news.yahoo.com/rss/",
+      "status": 200,
+      "item_count": 1,
+      "parsed_total": 14,
+      "error": null
+    },
+    {
+      "slug": "aljazeera",
+      "kind": "general",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "status": 200,
+      "item_count": 0,
+      "parsed_total": 25,
+      "error": null
+    },
+    {
+      "slug": "npr-environment",
+      "kind": "general",
+      "name": "NPR environment",
+      "url": "https://feeds.npr.org/1025/rss.xml",
+      "status": 200,
+      "item_count": 3,
+      "parsed_total": 10,
+      "error": null
+    },
+    {
+      "slug": "google-news-water",
+      "kind": "tips",
+      "fetch": false,
+      "name": "Google News water",
+      "url": "https://news.google.com/rss/search?q=%22drinking+water%22+OR+%22water+crisis%22+OR+cholera+OR+desalination+when:14d&hl=en-US&gl=US&ceid=US:en",
+      "status": 200,
+      "item_count": 12,
+      "parsed_total": 100,
+      "error": null
+    }
+  ],
+  "tips": [
+    {
+      "feed": "google-news-water",
+      "title": "American-Made Challenges: Solar Desalination Prize - Department of Energy (.gov)",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPaEhhNzdBdG1oZHM0QXB2WWdBMDJSbmlEMnpTM1I0ZEpPeWsyeHBhVkZtMnVxaXlwZkxOaUVQaHdXOGI1NHJjajdZTno1SkNYQm85cS1qWnN4cXQxZnM4RVRBSW1wazRXb0FIam9XSy0yd29xSm56Q0YyanhwY05GY1E1eWxMVmRDcVUzZmVn?oc=5",
+      "published": "2026-10-05"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "WHO reports latest global trends in cholera, meningitis and plague - World Health Organization (WHO)",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOaUNSR3p2bklKYTdNdHhUUmFBbERzYUVWdmtPYktyVzhBQXRTeUtaLXMyUlJIQnlJcjU0dHl0R1RZLUdySzBmbEw4UDQ4R0h2NGlVTW9PZ3luZXUyNzRBX1BwNEdGMlBrYkJZSkpGZFg0WTk2V0ZZNzQwU2JpcmhhOVVwTTNINDN5anMzVnZYX0g4SnA3eHpOaFBiQnpScmpTeHBvZHgxOVRESVU?oc=5",
+      "published": "2026-09-29"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "Battle over drinking water, fish protections and Detroit Lake reaches federal court - Oregon Public Broadcasting - OPB",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZlpDVGxaN0s2enBHTU1XSVNUdnd1MlZLaklLRVRGaUNJb1VncWlDWGZJTTJ6ekJqOGxtQ2d1WVh3eEtscElmeThEVjl4Z1BEMWtfWUFNZldzTHNHZmFfVDJ0VHdkWGRESnFjeFktcFJHdi1MbnJHTE9ubXVmTFhOT29zSDVJXzJEY1REUU1HZDFsb0FxaW9r?oc=5",
+      "published": "2026-10-07"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "UM-Flint to screen Benton Harbor water crisis documentary, host panel with filmmaker and activists - UM-Flint NOW",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNanFUamdydi04cHdpWTVxWGFRVkdQanh2ZWg4V01RTWxrd0szb3g1b2RVQlpET0RBRjFsdEEybm1JdWFDRTlDVDRHanp6NjhkUWZYRmtYY2hQNk5aWVZYNjNwYXdkRGlrdFNrU2t0Z05LSEstcWJjLUlQWGsyVmVFQWJSRDljVDVTdm50MWo3RjhYTHZMS1pGc1gxZ0U2bUZRWG90bjI1MjFYZlg0ZlhpODBReVo2dktTTk1BWHlBZXpvOC1MXy1maWdBZEs0b0E?oc=5",
+      "published": "2026-10-06"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "The Winter’s Snow Drought Is Now a Full-Blown Water Crisis - Atmos.earth",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPeHdJOF9sVGJGc1p6MDRHeklET0M4akNxVkNiMExmVFZ5dC16ZFdSUnExWlBWN0Q5bllCQnVqeTNTSUJQYi12VEFZbHZTQVJQTG12VVowNjVrN1NOTTdJV0dDUklFQUJoR2NqMDdGRlVsSDVpalVsVHdJbk5tdzE1d2xMLU5INi1zcjBUUFY3MHVRb3p0M2xzOHpabkJ2YjBa?oc=5",
+      "published": "2026-10-06"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "WIFA Advances Northern Gulf of California Desalination Project - Mexico Business News",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNN01pMko2NUlBU1FuMVNwU3B1aTJ1aGR0STNxSFFkTF93WmxCZURucG04MDNVOHRTWF9qU2F3RGo2ZnY4SmVnVWRCbml2Wmg1SzcxN2ZFdHBkX2REQ1BUX2J6UW9qOFgtbng5YUZGRHZiOXp1amRncXBIUEpMVkRDYnlDMHlQWHlRdVJhZ3kxbDBHenVLV0JRUTBIdWNCcTZMLUI3bE1rakM4X1E?oc=5",
+      "published": "2026-10-05"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "The Watch: Pesticide Contamination Threatens Drinking Water Sources - Public Health Watch",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNeGdETGFBenM3bTlLaHhHTkJOVU1HcC1RdWtaQ1NLS1Z5b2stQjhYdmJHZmxQdFRoV3cydmJiVmZRQUNUcE05M0VHOUhQeU54Si1kZXJuZ2FaUnpPYy1GWVpnYS1aaG9nWDN3RDVQUjJyTjlEWGJlTVR3NUUybGo5TGVnVDIyVDlETVk3bUNqcXlUdHlLUVp3MklaVGk2c2UyUnEwY0lrNm1qMlpD?oc=5",
+      "published": "2026-10-04"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "Arizona to study water desalination, reuse projects in Mexico - azcentral.com and The Arizona Republic",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNeWQ2NDF3VjNIcnBqckFiRFV3c1dZZ0p1Z1h3NUlNSWpLa1h3ODJYUUd1UjFSVnNvb2s3OUJhSTZMaUJYdFRWbXZjV21DQ1pha183YVY2TWdxcGVQXzZ2ZjBwcl9ZM25vbGpsS3piYklfajIzeWEzd1hVQUtfcG9fSXZ5N3k3Z3VTLS1KdHhZUWNEY0poRF9wRWk3SkU2OEprSGJaeUtEZTdPYXI0SkptMThUVTdSTVNBLVB0RWpmUS05OGpXR2Y4REJQeXFaUTQ?oc=5",
+      "published": "2026-10-06"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "Desalination project near Doheny State Beach gets changes approved, timeline pushed back - Orange County Register",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOTJQcVlET3BMWko3NVBJTHJuNDdVQTNrOTNUa2EtSTNYSkV0UGJrWV9BQjI3d1AxSkZ1c1FzVC14eUJZbmFpaElHUDEwWnlLRXV5S18teXlrRVBjaVJMUlMtWW0yamxHYzN3NGxrWDJYUF9kcEk4SUZaNEQxZjl4aWktNmo3NjE1eHdONjBXY3pxeGJYM05IelY5aHY1OW1STWpxOHlsTFpwVk1oRVMwLUF4dzJ1cDFmV0s2MG1fZXRfMVhr?oc=5",
+      "published": "2026-10-08"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "Amid Lawsuit Over Iowa’s Cancer-Linked Water Pollution, EPA Doubles Down On Inaction - Food & Water Watch",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPRUxtM0h2M0p6NW5hMk1rRzNUTF9SZzR3ZnQxNlJ5WkZ1dEozSDJtUzNCTlo1Q2JSd2l4Y1hNRy1SWDAtMGhndXdwaDFWeF90b2VhV3ppU04zbjBuNmlQUDJSaTVuTUZpY3g0aG9iclhwT3lkUjQ3T3cxM0hqV3EzcXNpNVNKbXRFVzFxcmtvWm9JNzZMZWtjZFJ5dEZqLUJWVGZQb3V5YjhBQnpaOURDLUpIM0VVb0QtTlIzbkVxOHdRRnF5Mzlv?oc=5",
+      "published": "2026-10-08"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "Oklahoma Oil Company Plugs Disposal Well That Posed Threat to City’s Drinking Water - ProPublica",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE43Nk52ckJBOUFybEdqalNBNmplMHN3NXlTY3pmOWQtc19YX0dzbDdtSFg2aWFqbzZ6OTFQTHJDQUdHUHpXY3lEWi1fWkp6eEZGS2U0RnpwUVBqQUtuM3Q0Sm5XM2FWbXlFdGxLWGtwaTM0SDRhLVgxMzcwM2duT0U?oc=5",
+      "published": "2026-10-05"
+    },
+    {
+      "feed": "google-news-water",
+      "title": "GSO City Council approves $260M to treat PFAS in drinking water - 88.5 WFDD",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdnk4RC1BUF9SY3dqc0V3TWlnVnN0ZEJhVVBRR2MtV3pFMGVLbVk4VVBmWk5EQjlyTVVMeVhGcEppX2VDblFobm5yXzBMRGo2SmhkcFhWOXhUeGN3SHExb2RGTGlVVVdZWldaYzRpa0NiOUtWN1JzVWF0Q2VQZHRKMzQwODhDWDdlbkVRT09pSF9VQjRVQ1l3WmNLeXh5dkZVNXliYVRudjhRZw?oc=5",
+      "published": "2026-10-07"
+    }
+  ],
+  "counts": {
+    "articles": 45,
+    "ok": 45,
+    "failed": 0
+  },
+  "items": [
+    {
+      "id": "1c082a291094",
+      "feed": "un-news",
+      "feed_kind": "primary",
+      "title": "World News in Brief: Russian attacks continue in Ukraine, Gazans shelter in flood-prone areas, keeping sight of eye health",
+      "url": "https://news.un.org/feed/view/en/story/2026/10/1168557",
+      "final_url": "https://news.un.org/en/story/2026/10/1168557",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/1c082a291094.json"
+    },
+    {
+      "id": "626952ddcae9",
+      "feed": "nature-water",
+      "feed_kind": "primary",
+      "title": "Synergistic water and mineral harvesting from seawater",
+      "url": "https://www.nature.com/articles/s44221-026-00729-3",
+      "final_url": "https://www.nature.com/articles/s44221-026-00729-3?error=cookies_not_supported&code=faba4c74-3068-4185-bd92-36ba605b054e",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/626952ddcae9.json"
+    },
+    {
+      "id": "204fbe3538ba",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Hurricane Isaias strengthens en route to US Gulf Coast",
+      "url": "https://phys.org/news/2026-10-hurricane-isaias-en-route-gulf.html",
+      "final_url": "https://phys.org/news/2026-10-hurricane-isaias-en-route-gulf.html",
+      "published": "2026-10-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/204fbe3538ba.json"
+    },
+    {
+      "id": "7174213d8bf4",
+      "feed": "sciencedaily-water",
+      "feed_kind": "trade",
+      "title": "Earth’s center is moving, and NASA just measured it",
+      "url": "https://www.sciencedaily.com/releases/2026/10/261005071520.htm",
+      "final_url": "https://www.sciencedaily.com/releases/2026/10/261005071520.htm",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/7174213d8bf4.json"
+    },
+    {
+      "id": "c21aec53933f",
+      "feed": "circle-of-blue",
+      "feed_kind": "trade",
+      "title": "Kansas Prairie Festival Celebrates Agriculture That Protects Soil, Water, and Communities",
+      "url": "https://www.circleofblue.org/2026/agriculture/kansas-prairie-festival-celebrates-agriculture-that-protects-soil-water-and-communities/",
+      "final_url": "https://www.circleofblue.org/2026/agriculture/kansas-prairie-festival-celebrates-agriculture-that-protects-soil-water-and-communities/",
+      "published": "2026-10-05",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/c21aec53933f.json"
+    },
+    {
+      "id": "beef92bb56d4",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "Hurricane Isaias forecast to strengthen to category three before landfall in US",
+      "url": "https://www.bbc.co.uk/weather/articles/cw146l6pnvx0o?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/weather/articles/cw146l6pnvx0o?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/beef92bb56d4.json"
+    },
+    {
+      "id": "df0f29cbb2d1",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Revealed: the ‘black box’ wastewater trade that rakes in millions for UK utility companies",
+      "url": "https://www.theguardian.com/environment/2026/oct/09/uk-water-companies-industrial-commercial-wastewater-sewage-treatment",
+      "final_url": "https://www.theguardian.com/environment/2026/oct/09/uk-water-companies-industrial-commercial-wastewater-sewage-treatment",
+      "published": "2026-10-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/df0f29cbb2d1.json"
+    },
+    {
+      "id": "b32d2da3f2b5",
+      "feed": "yahoo-news",
+      "feed_kind": "general",
+      "title": "Hurricane Isaias strengthens to Category 2 as Gulf Coast braces for landfall",
+      "url": "https://www.yahoo.com/news/weather-news/live/hurricane-isaias-tracker-category-1-storm-expected-to-strengthen-before-making-landfall-along-gulf-coast-florida-county-orders-evacuations-200409463.html",
+      "final_url": "https://www.yahoo.com/news/weather-news/live/hurricane-isaias-live-tracker-dangerous-category-2-storm-strengthening-before-making-landfall-along-gulf-coast-evacuations-ordered-in-alabama-and-florida-115816597.html",
+      "published": "2026-10-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/b32d2da3f2b5.json"
+    },
+    {
+      "id": "166fc165571f",
+      "feed": "npr-environment",
+      "feed_kind": "general",
+      "title": "Isaias strengthens into Category 2 hurricane on collision course with the Gulf Coast",
+      "url": "https://www.npr.org/2026/10/09/nx-s1-5996396/hurricane-isaias-updates",
+      "final_url": "https://www.npr.org/2026/10/09/nx-s1-5996396/hurricane-isaias-updates",
+      "published": "2026-10-09",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/166fc165571f.json"
+    },
+    {
+      "id": "8d601a294089",
+      "feed": "un-news",
+      "feed_kind": "primary",
+      "title": "Darfur: Healthcare needs outstrip resources as Security Council extends Sudan sanctions",
+      "url": "https://news.un.org/feed/view/en/story/2026/10/1168556",
+      "final_url": "https://news.un.org/en/story/2026/10/1168556",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 5622,
+      "file": "articles/8d601a294089.json"
+    },
+    {
+      "id": "806fbcfe5f7a",
+      "feed": "nature-water",
+      "feed_kind": "primary",
+      "title": "Ice–water interfaces drive speciation transformation and suppress bioavailability potential of freshly deposited arsenic during soil freeze–thaw cycles",
+      "url": "https://www.nature.com/articles/s44221-026-00730-w",
+      "final_url": "https://www.nature.com/articles/s44221-026-00730-w?error=cookies_not_supported&code=6b14870f-f790-47f3-9a86-10d50d9e2c84",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/806fbcfe5f7a.json"
+    },
+    {
+      "id": "0ec211c1046a",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Atlantic weather pattern shaped southern Greenland's rain and snow for millennia, sediments reveal",
+      "url": "https://phys.org/news/2026-10-atlantic-weather-pattern-southern-greenland.html",
+      "final_url": "https://phys.org/news/2026-10-atlantic-weather-pattern-southern-greenland.html",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/0ec211c1046a.json"
+    },
+    {
+      "id": "d8dede7a2d67",
+      "feed": "circle-of-blue",
+      "feed_kind": "trade",
+      "title": "A border town’s drinking water hangs in the balance of a proposed U.S. mine",
+      "url": "https://www.circleofblue.org/2026/great-lakes/a-border-towns-drinking-water-hangs-in-the-balance-of-a-proposed-u-s-mine/",
+      "final_url": "https://www.circleofblue.org/2026/great-lakes/a-border-towns-drinking-water-hangs-in-the-balance-of-a-proposed-u-s-mine/",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/d8dede7a2d67.json"
+    },
+    {
+      "id": "cb877fb25beb",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "BBC on Hurricane Isaias and its expected Gulf Coast landfall",
+      "url": "https://www.bbc.co.uk/news/videos/ckz65l2gne1po?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/videos/ckz65l2gne1po?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 5179,
+      "file": "articles/cb877fb25beb.json"
+    },
+    {
+      "id": "988faeeda928",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Stockpile food – and wash your hands: is that really how to prepare for environmental catastrophe? | George Monbiot",
+      "url": "https://www.theguardian.com/commentisfree/2026/oct/08/stockpile-food-wash-hands-how-to-prepare-environmental-catastrophe",
+      "final_url": "https://www.theguardian.com/commentisfree/2026/oct/08/stockpile-food-wash-hands-how-to-prepare-environmental-catastrophe",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/988faeeda928.json"
+    },
+    {
+      "id": "b2beff2c9cb6",
+      "feed": "npr-environment",
+      "feed_kind": "general",
+      "title": "New rules for sharing the Colorado River start today",
+      "url": "https://www.npr.org/2026/10/01/nx-s1-5980083/new-rules-for-sharing-the-colorado-river-start-today",
+      "final_url": "https://www.npr.org/2026/10/01/nx-s1-5980083/new-rules-for-sharing-the-colorado-river-start-today",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 5383,
+      "file": "articles/b2beff2c9cb6.json"
+    },
+    {
+      "id": "4dd2e0821eea",
+      "feed": "un-news",
+      "feed_kind": "primary",
+      "title": "‘Overshoot is not a reason to surrender’: UN calls for accelerated climate action ahead of COP31 summit",
+      "url": "https://news.un.org/feed/view/en/story/2026/10/1168555",
+      "final_url": "https://news.un.org/en/story/2026/10/1168555",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/4dd2e0821eea.json"
+    },
+    {
+      "id": "6a1ed301be29",
+      "feed": "nature-water",
+      "feed_kind": "primary",
+      "title": "Redefining advanced oxidation processes for low-carbon water treatment",
+      "url": "https://www.nature.com/articles/s44221-026-00714-w",
+      "final_url": "https://www.nature.com/articles/s44221-026-00714-w?error=cookies_not_supported&code=5cb71714-8031-43e8-8af0-6805eb61dc46",
+      "published": "2026-10-02",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/6a1ed301be29.json"
+    },
+    {
+      "id": "1134d849adbf",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Almost 300,000 people now live in flood‑prone areas in the Nepalese Himalayas—new research",
+      "url": "https://phys.org/news/2026-10-people-floodprone-areas-nepalese-himalayas.html",
+      "final_url": "https://phys.org/news/2026-10-people-floodprone-areas-nepalese-himalayas.html",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/1134d849adbf.json"
+    },
+    {
+      "id": "0e5f05b5a2eb",
+      "feed": "circle-of-blue",
+      "feed_kind": "trade",
+      "title": "Legionnaires’ Disease Cases Surge Again, CDC Data Shows",
+      "url": "https://www.circleofblue.org/2026/health/legionnaires-disease-cases-surge-again-cdc-data-shows/",
+      "final_url": "https://www.circleofblue.org/2026/health/legionnaires-disease-cases-surge-again-cdc-data-shows/",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/0e5f05b5a2eb.json"
+    },
+    {
+      "id": "c704a9a71b4a",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "More than 800,000 hours of sewage spills in Wales last year, report claims",
+      "url": "https://www.bbc.co.uk/news/articles/cqwy74e8nyggo?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/articles/cqwy74e8nyggo?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/c704a9a71b4a.json"
+    },
+    {
+      "id": "e4555b04a121",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "South West Water owner taps investors to fix infrastructure after sewage spills",
+      "url": "https://www.theguardian.com/business/2026/oct/07/south-west-water-owner-taps-investors-to-fix-infrastructure-after-sewage-spills",
+      "final_url": "https://www.theguardian.com/business/2026/oct/07/south-west-water-owner-taps-investors-to-fix-infrastructure-after-sewage-spills",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/e4555b04a121.json"
+    },
+    {
+      "id": "bc8cdabc64b8",
+      "feed": "npr-environment",
+      "feed_kind": "general",
+      "title": "Mexico's Baja California braces for Hurricane Polo as Hurricane Nolo threatens Hawaii",
+      "url": "https://www.npr.org/2026/09/28/nx-s1-5983317/hurricane-polo-hurricane-nolo",
+      "final_url": "https://www.npr.org/2026/09/28/nx-s1-5983317/hurricane-polo-hurricane-nolo",
+      "published": "2026-09-28",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/bc8cdabc64b8.json"
+    },
+    {
+      "id": "ba75a2cad5fe",
+      "feed": "un-news",
+      "feed_kind": "primary",
+      "title": "From drought to deluge: ‘Super’ El Niño’s expanding reach",
+      "url": "https://news.un.org/feed/view/en/story/2026/10/1168537",
+      "final_url": "https://news.un.org/en/story/2026/10/1168537",
+      "published": "2026-10-06",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/ba75a2cad5fe.json"
+    },
+    {
+      "id": "c3b6cc84a266",
+      "feed": "nature-water",
+      "feed_kind": "primary",
+      "title": "Calibrating antimicrobial resistance influent and effluent signals in wastewater systems",
+      "url": "https://www.nature.com/articles/s44221-026-00701-1",
+      "final_url": "https://www.nature.com/articles/s44221-026-00701-1?error=cookies_not_supported&code=6d1f10b8-3efc-4fda-8d78-f24fbc1a1c3f",
+      "published": "2026-10-02",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/c3b6cc84a266.json"
+    },
+    {
+      "id": "caa6626ad34e",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Scientists turn handheld car gadget into wildfire early-warning tool",
+      "url": "https://phys.org/news/2026-10-scientists-handheld-car-gadget-wildfire.html",
+      "final_url": "https://phys.org/news/2026-10-scientists-handheld-car-gadget-wildfire.html",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/caa6626ad34e.json"
+    },
+    {
+      "id": "487e6c341d52",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "Residents airlifted to safety after flooding in central Chile",
+      "url": "https://www.bbc.co.uk/news/articles/ck5yn8jn677vo?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/articles/ck5yn8jn677vo?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/487e6c341d52.json"
+    },
+    {
+      "id": "f06cf155ee2c",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "US households pay 62% more for water than they did a decade ago, study finds",
+      "url": "https://www.theguardian.com/us-news/2026/oct/06/households-drinking-water-cost-study",
+      "final_url": "https://www.theguardian.com/us-news/2026/oct/06/households-drinking-water-cost-study",
+      "published": "2026-10-06",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/f06cf155ee2c.json"
+    },
+    {
+      "id": "766755359df0",
+      "feed": "nature-water",
+      "feed_kind": "primary",
+      "title": "Balancing groundwater for crop production and a healthy environment",
+      "url": "https://www.nature.com/articles/s44221-026-00720-y",
+      "final_url": "https://www.nature.com/articles/s44221-026-00720-y?error=cookies_not_supported&code=6832aebd-a477-4276-8d53-2a36482a806f",
+      "published": "2026-09-30",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/766755359df0.json"
+    },
+    {
+      "id": "d509082a0126",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "How Spain's torrential rainstorms put sewage into its rivers and seas",
+      "url": "https://phys.org/news/2026-10-spain-torrential-rainstorms-sewage-rivers.html",
+      "final_url": "https://phys.org/news/2026-10-spain-torrential-rainstorms-sewage-rivers.html",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/d509082a0126.json"
+    },
+    {
+      "id": "c253441b11fb",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "Rainmakers: The drones used to seed clouds",
+      "url": "https://www.bbc.co.uk/news/articles/c64g71j4lgyjo?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/articles/c64g71j4lgyjo?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/c253441b11fb.json"
+    },
+    {
+      "id": "3dc4750742fa",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "‘It’s shocking really’: Devon community tracks River Dart sewage spills",
+      "url": "https://www.theguardian.com/environment/2026/oct/03/devon-community-platform-river-hub-dart-sewage-spills-overflows",
+      "final_url": "https://www.theguardian.com/environment/2026/oct/03/devon-community-platform-river-hub-dart-sewage-spills-overflows",
+      "published": "2026-10-03",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/3dc4750742fa.json"
+    },
+    {
+      "id": "610edb15e70c",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Tiny photosynthetic organisms help transport carbon to the depths of the Baltic Sea",
+      "url": "https://phys.org/news/2026-10-tiny-photosynthetic-carbon-depths-baltic.html",
+      "final_url": "https://phys.org/news/2026-10-tiny-photosynthetic-carbon-depths-baltic.html",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/610edb15e70c.json"
+    },
+    {
+      "id": "290906e08555",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "More controls possible as reservoir level drops",
+      "url": "https://www.bbc.co.uk/news/videos/cwnv03ee025do?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/videos/cwnv03ee025do?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-08",
+      "http_status": 200,
+      "text_chars": 4088,
+      "file": "articles/290906e08555.json"
+    },
+    {
+      "id": "8ad9e12445da",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Utilities are public services – and should not be run as businesses | Letters",
+      "url": "https://www.theguardian.com/business/2026/oct/02/utilities-are-public-services-and-should-not-be-run-as-businesses",
+      "final_url": "https://www.theguardian.com/business/2026/oct/02/utilities-are-public-services-and-should-not-be-run-as-businesses",
+      "published": "2026-10-02",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/8ad9e12445da.json"
+    },
+    {
+      "id": "59fb0f3f2fbb",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Australia's wildfire crisis linked to colonial land-use change",
+      "url": "https://phys.org/news/2026-10-australia-wildfire-crisis-linked-colonial.html",
+      "final_url": "https://phys.org/news/2026-10-australia-wildfire-crisis-linked-colonial.html",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/59fb0f3f2fbb.json"
+    },
+    {
+      "id": "c0bed386cea6",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "Swiss glaciers suffer 'disastrous' year of ice loss, threatening water supplies",
+      "url": "https://www.bbc.co.uk/news/articles/c6n9w0ypjwl9o?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/articles/c6n9w0ypjwl9o?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/c0bed386cea6.json"
+    },
+    {
+      "id": "2112d2064662",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "‘Water yes, mining no!’: the 87-year-old farmer who became a nature hero in Colombia",
+      "url": "https://www.theguardian.com/global-development/2026/oct/01/water-yes-mining-no-the-87-year-old-farmer-who-became-a-nature-hero-in-colombia",
+      "final_url": "https://www.theguardian.com/global-development/2026/oct/01/water-yes-mining-no-the-87-year-old-farmer-who-became-a-nature-hero-in-colombia",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/2112d2064662.json"
+    },
+    {
+      "id": "3c428af95e07",
+      "feed": "phys-environment",
+      "feed_kind": "trade",
+      "title": "Seafloor sediments reveal how East Antarctic ice temporarily halted its retreat and advanced 40 miles",
+      "url": "https://phys.org/news/2026-10-seafloor-sediments-reveal-east-antarctic.html",
+      "final_url": "https://phys.org/news/2026-10-seafloor-sediments-reveal-east-antarctic.html",
+      "published": "2026-10-07",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/3c428af95e07.json"
+    },
+    {
+      "id": "d1b2cce323cd",
+      "feed": "bbc-science-env",
+      "feed_kind": "general",
+      "title": "Warning more homes will be uninsurable due to flood risk",
+      "url": "https://www.bbc.co.uk/news/articles/c60qxk288e57o?at_medium=RSS&at_campaign=rss",
+      "final_url": "https://www.bbc.co.uk/news/articles/c60qxk288e57o?at_medium=RSS&at_campaign=rss",
+      "published": "2026-09-29",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/d1b2cce323cd.json"
+    },
+    {
+      "id": "f1e2e7a8cbd1",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Think more rain means more river water? Not necessarily",
+      "url": "https://www.theguardian.com/news/2026/oct/01/rivers-water-rain-study",
+      "final_url": "https://www.theguardian.com/news/2026/oct/01/rivers-water-rain-study",
+      "published": "2026-10-01",
+      "http_status": 200,
+      "text_chars": 4543,
+      "file": "articles/f1e2e7a8cbd1.json"
+    },
+    {
+      "id": "58fd39a35fb4",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "South West Water fined £8m for hundreds of sewage spills in Cornwall and Devon",
+      "url": "https://www.theguardian.com/environment/2026/sep/29/south-west-water-record-fine-sewage-spills-cornwall-devon",
+      "final_url": "https://www.theguardian.com/environment/2026/sep/29/south-west-water-record-fine-sewage-spills-cornwall-devon",
+      "published": "2026-09-29",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/58fd39a35fb4.json"
+    },
+    {
+      "id": "fcac6cb9e95e",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Schools forced to shut amid burst Thames Water pipe ‘leaking 750 litres a second’",
+      "url": "https://www.theguardian.com/business/2026/sep/28/schools-forced-to-shut-amid-burst-thames-water-pipe-leaking-750-litres-a-second",
+      "final_url": "https://www.theguardian.com/business/2026/sep/28/schools-forced-to-shut-amid-burst-thames-water-pipe-leaking-750-litres-a-second",
+      "published": "2026-09-28",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/fcac6cb9e95e.json"
+    },
+    {
+      "id": "55177db2a4ed",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "The Guardian view on Thames Water: Andy Burnham should nationalise this failed monopoly | Editorial",
+      "url": "https://www.theguardian.com/commentisfree/2026/sep/27/the-guardian-view-on-thames-water-andy-burnham-should-nationalise-this-failed-monopoly",
+      "final_url": "https://www.theguardian.com/commentisfree/2026/sep/27/the-guardian-view-on-thames-water-andy-burnham-should-nationalise-this-failed-monopoly",
+      "published": "2026-09-27",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/55177db2a4ed.json"
+    },
+    {
+      "id": "3c6bb9508d78",
+      "feed": "guardian-water",
+      "feed_kind": "general",
+      "title": "Most of UK’s essential food supply grown in drought-risk areas, report warns",
+      "url": "https://www.theguardian.com/business/2026/sep/27/most-of-uks-essential-food-supply-grown-in-drought-risk-areas-report-warns",
+      "final_url": "https://www.theguardian.com/business/2026/sep/27/most-of-uks-essential-food-supply-grown-in-drought-risk-areas-report-warns",
+      "published": "2026-09-27",
+      "http_status": 200,
+      "text_chars": 6000,
+      "file": "articles/3c6bb9508d78.json"
+    }
+  ]
+}
