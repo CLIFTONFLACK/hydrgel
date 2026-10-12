@@ -828,6 +828,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/10/1168537',
   },
+  {
+    id: '2026-10-06-us-water-bills-up-62-percent',
+    date: '2026-10-06',
+    title: 'US drinking water bills rose 62 per cent in a decade, study finds',
+    summary:
+      'A Food & Water Watch analysis of 2025 billing data from the 500 largest US community water systems found drinking water bills up 62 per cent in a decade, 1.6 times the rate of overall inflation. Bills exceeded the study\'s affordability threshold for the poorest fifth of households in 93 per cent of those systems.',
+    category: 'Research',
+    region: 'United States',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/us-news/2026/oct/06/households-drinking-water-cost-study',
+  },
 ]
 
 /**
