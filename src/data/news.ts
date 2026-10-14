@@ -839,6 +839,17 @@ export const NEWS: NewsItem[] = [
     source: 'The Guardian',
     url: 'https://www.theguardian.com/us-news/2026/oct/06/households-drinking-water-cost-study',
   },
+  {
+    id: '2026-10-12-china-wastewater-reuse-limit',
+    date: '2026-10-12',
+    title: 'Centralised wastewater reuse hits its economic limit across most of China',
+    summary:
+      'A Nature Water study built on an inventory of 10,826 Chinese wastewater treatment plants finds that reclaimed water reuse both pays for itself and eases local water stress only in areas holding about 0.45 billion people. The authors conclude that hybrid centralised–decentralised systems could meet national targets at 25 to 37 per cent lower cost.',
+    category: 'Research',
+    region: 'China',
+    source: 'Nature Water',
+    url: 'https://www.nature.com/articles/s44221-026-00727-5',
+  },
 ]
 
 /**
