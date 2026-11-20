@@ -872,6 +872,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org (AFP)',
     url: 'https://phys.org/news/2026-11-pacific-island-nations-declare-el.html',
   },
+  {
+    id: '2026-11-19-thailand-floods-expose-prachinburi-waste-pollution',
+    date: '2026-11-19',
+    title: 'Thai floods expose waste pollution in Prachinburi as residents distrust their water',
+    summary:
+      'Flooding in September and October spread oily, foul-smelling water across farmland in Thailand\'s Prachinburi province. Authorities found unusually high petroleum hydrocarbons and toxic aluminium near a landfill, closed it, and ordered inspections of 3,000 waste plants nationwide, 300 of which had already breached rules.',
+    category: 'Crisis',
+    region: 'Thailand',
+    source: 'Phys.org (AFP)',
+    url: 'https://phys.org/news/2026-11-thai-expose-pollution-garbage-dump.html',
+  },
 ]
 
 /**
