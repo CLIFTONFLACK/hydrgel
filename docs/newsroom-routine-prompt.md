@@ -1,8 +1,14 @@
 # Newsroom routine — prompt
 
 The scheduled agent that appends to the newsroom is configured outside this
-repo, in its routine (trigger `trig_015oXvD4P25fZN1apDvPJL3e`, cron
-`0 6 * * 1,3,5`). Its prompt and this repo have to move together: the prompt
+repo, in its routine (trigger `trig_01DTWAXWFuyAnhfYr19HcgCV`, cron
+`0 6 * * 1,3,5`, managed at
+https://claude.ai/code/routines/trig_01DTWAXWFuyAnhfYr19HcgCV). It replaced
+`trig_015oXvD4P25fZN1apDvPJL3e`, which no longer exists; the newsroom had no
+new posts from 14 October to 20 November 2026 while it was missing. The
+routine has no connectors attached: it reads untrusted web text, so it must
+not reach mail, payments or chat. Its prompt and this repo have to move
+together: the prompt
 below depends on `scripts/fetch-sources.mjs` and
 `.github/workflows/fetch-sources.yml`, so it lives here where a change to
 either is visible alongside it.
@@ -111,7 +117,7 @@ Append ONE item to the END of the NEWS array in src/data/news.ts, matching exist
     - Research: studies, data reports, forecasts, climate attribution, and treatment or desalination technology and prototypes.
     - Industry: water-sector investment, funding, M&A, corporate moves and major sector conferences.
   Use HYDRGEL only for the company's own milestones, never for third-party news.
-- Escape apostrophes inside single-quoted strings as \'.
+- Escape every apostrophe inside a single-quoted string with a backslash before it, exactly as the existing entries do.
 - url must be https.
 
 Then add the matching story to src/data/stories.ts, keyed by the SAME id:
