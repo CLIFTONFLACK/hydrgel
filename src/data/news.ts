@@ -850,6 +850,17 @@ export const NEWS: NewsItem[] = [
     source: 'Nature Water',
     url: 'https://www.nature.com/articles/s44221-026-00727-5',
   },
+  {
+    id: '2026-11-13-gaza-winter-flooding-appeal',
+    date: '2026-11-13',
+    title: 'UN and partners say Gaza\'s deadly winter flooding was preventable, and appeal for supplies',
+    summary:
+      'After a deadly weekend rainstorm, the UN Humanitarian Country Team in the occupied Palestinian territory appealed for immediate entry of winter supplies, including water-pumping equipment and repairs to water and wastewater networks. It said more than 150,000 tents sit outside Gaza awaiting dispatch while funding falls short.',
+    category: 'Crisis',
+    region: 'Gaza',
+    source: 'UN News',
+    url: 'https://news.un.org/en/story/2026/11/1168799',
+  },
 ]
 
 /**
