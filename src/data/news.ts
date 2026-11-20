@@ -861,6 +861,17 @@ export const NEWS: NewsItem[] = [
     source: 'UN News',
     url: 'https://news.un.org/en/story/2026/11/1168799',
   },
+  {
+    id: '2026-11-19-fiji-tonga-el-nino-drought-emergencies',
+    date: '2026-11-19',
+    title: 'Fiji and Tonga declare El Niño drought emergencies as water runs short',
+    summary:
+      'Fiji has declared a nationwide disaster and Tonga a 27-day state of emergency as El Niño drought reaches crisis levels in the South Pacific. Fiji\'s government gains powers to ration water, order evacuations and redirect public funds, while trucks resupply parched villages.',
+    category: 'Crisis',
+    region: 'South Pacific',
+    source: 'Phys.org (AFP)',
+    url: 'https://phys.org/news/2026-11-pacific-island-nations-declare-el.html',
+  },
 ]
 
 /**
