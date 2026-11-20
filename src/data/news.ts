@@ -883,6 +883,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org (AFP)',
     url: 'https://phys.org/news/2026-11-thai-expose-pollution-garbage-dump.html',
   },
+  {
+    id: '2026-11-12-ofwat-tightens-water-bonus-ban',
+    date: '2026-11-12',
+    title: 'Ofwat moves to tighten the water bonus ban as firms use "retention payments"',
+    summary:
+      'Ofwat said nine water companies in England and Wales were barred from paying bonuses for 2025-26, seven over pollution. It will speed up a review of the rules after warning that fixed "retention payments" and large base-pay rises risk looking like a way around the ban.',
+    category: 'Policy',
+    region: 'United Kingdom',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/business/2026/nov/12/water-industry-bonus-ban-tightened-ofwat',
+  },
 ]
 
 /**
