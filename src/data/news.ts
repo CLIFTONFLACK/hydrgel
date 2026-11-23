@@ -894,6 +894,17 @@ export const NEWS: NewsItem[] = [
     source: 'The Guardian',
     url: 'https://www.theguardian.com/business/2026/nov/12/water-industry-bonus-ban-tightened-ofwat',
   },
+  {
+    id: '2026-11-19-tiger-worm-toilets-sanitation',
+    date: '2026-11-19',
+    title: 'Tiger worm toilets keep users satisfied after ten years, Imperial researchers report',
+    summary:
+      'Marking World Toilet Day, an Imperial College London researcher described worm-based latrines that slow pit filling and cut manual emptying. A new paper from the group found user satisfaction remained high after ten years, while the WHO figure of 3.5 billion people without safely managed sanitation frames the need.',
+    category: 'Research',
+    region: 'Global',
+    source: 'Phys.org (Imperial College London)',
+    url: 'https://phys.org/news/2026-11-tiger-worms-tackle-global-sanitation.html',
+  },
 ]
 
 /**
