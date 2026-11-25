@@ -905,6 +905,17 @@ export const NEWS: NewsItem[] = [
     source: 'Phys.org (Imperial College London)',
     url: 'https://phys.org/news/2026-11-tiger-worms-tackle-global-sanitation.html',
   },
+  {
+    id: '2026-11-23-oxfam-gaza-environmental-contamination',
+    date: '2026-11-23',
+    title: 'Oxfam report finds contamination indicators across more than 99% of Gaza',
+    summary:
+      'A report by Oxfam and the Conflict and Environment Observatory, based on satellite and open-source data, says almost all of Gaza shows signs of possible contamination in air, soil and water. With all six wastewater treatment plants out of operation, untreated sewage is reaching groundwater and the sea.',
+    category: 'Crisis',
+    region: 'Gaza',
+    source: 'BBC News',
+    url: 'https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss',
+  },
 ]
 
 /**
