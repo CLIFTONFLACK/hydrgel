@@ -916,6 +916,17 @@ export const NEWS: NewsItem[] = [
     source: 'BBC News',
     url: 'https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss',
   },
+  {
+    id: '2026-11-23-nova-scotia-drought-risk-groundwater',
+    date: '2026-11-23',
+    title: 'Growing drought risk found in water-rich Nova Scotia',
+    summary:
+      'A Dalhousie-led study of 17 years of well, climate and streamflow records finds Nova Scotia drying, with the strongest signal in autumn and a sharper shift since 2016. Nearly half of residents rely on groundwater, and shallow dug wells are the most exposed.',
+    category: 'Research',
+    region: 'Nova Scotia, Canada',
+    source: 'Phys.org (Dalhousie University)',
+    url: 'https://phys.org/news/2026-11-drought-revealed-waterrich-nova-scotia.html',
+  },
 ]
 
 /**
